@@ -1,13 +1,13 @@
-import { BigNumber } from '@ethersproject/bignumber';
+import { BigNumber } from "@ethersproject/bignumber";
 import {
   ChainId,
   CurrencyAmount as CurrencyAmountRaw,
   Token,
-} from '@uniswap/sdk-core';
-import { Pair } from '@uniswap/v2-sdk';
-import { Pool } from '@uniswap/v3-sdk';
+} from "@uniswap/sdk-core";
+import { Pair } from "@uniswap/v2-sdk";
+import { Pool } from "@uniswap/v3-sdk";
 
-import { ProviderConfig } from '../../../providers/provider';
+import { ProviderConfig } from "../../../providers/provider";
 import {
   CUSD_CELO,
   CUSD_CELO_ALFAJORES,
@@ -15,16 +15,19 @@ import {
   DAI_AVAX,
   DAI_BNB,
   DAI_GOERLI,
+  DAI_HEMI,
+  DAI_LINEA,
   DAI_MAINNET,
   DAI_OPTIMISM,
   DAI_OPTIMISM_GOERLI,
   DAI_OPTIMISM_SEPOLIA,
   DAI_POLYGON_MUMBAI,
+  DAI_POLYGON_ZKEVM,
+  DAI_SCROLL,
   DAI_SEPOLIA,
   DAI_UNICHAIN,
   DAI_ZKSYNC,
   USDB_BLAST,
-  USDCE_ZKSYNC,
   USDC_ARBITRUM,
   USDC_ARBITRUM_GOERLI,
   USDC_ARBITRUM_SEPOLIA,
@@ -32,11 +35,24 @@ import {
   USDC_BASE,
   USDC_BASE_SEPOLIA,
   USDC_BNB,
+  USDC_BOB,
+  USDC_BOBA,
   USDC_BRIDGED_AVAX,
   USDC_CELO,
+  USDC_CORN,
   USDC_ETHEREUM_GNOSIS,
+  USDC_ETHERLINK,
+  USDC_FILECOIN,
+  USDC_GOAT,
   USDC_GOERLI,
+  USDC_HEMI,
+  USDC_LENS,
+  USDC_LIGHTLINK,
+  USDC_LINEA,
   USDC_MAINNET,
+  USDC_MANTA,
+  USDC_MANTLE,
+  USDC_MATCHAIN,
   USDC_MOONBEAM,
   USDC_NATIVE_ARBITRUM,
   USDC_NATIVE_AVAX,
@@ -44,42 +60,77 @@ import {
   USDC_NATIVE_CELO,
   USDC_NATIVE_OPTIMISM,
   USDC_NATIVE_POLYGON,
+  USDC_NIBIRU,
   USDC_OPTIMISM,
   USDC_OPTIMISM_GOERLI,
   USDC_OPTIMISM_SEPOLIA,
   USDC_POLYGON,
+  USDC_POLYGON_ZKEVM,
+  USDC_REDBELLY,
+  USDC_SAGA,
+  USDC_SCROLL,
+  USDC_SEI,
+  USDC_SEI_TESTNET,
   USDC_SEPOLIA,
   USDC_SONEIUM,
+  USDC_SONIC,
+  USDC_TAIKO,
+  USDC_TELOS,
   USDC_UNICHAIN,
   USDC_UNICHAIN_SEPOLIA,
   USDC_WORLDCHAIN,
   USDC_WORMHOLE_CELO,
+  USDC_XDC,
+  USDC_XLAYER,
+  USDC_ZKLINK,
   USDC_ZKSYNC,
   USDC_ZORA,
+  USDCE_ZKSYNC,
+  USDM_TELOS,
   USDT_ARBITRUM,
   USDT_BNB,
+  USDT_BOB,
+  USDT_ETHERLINK,
+  USDT_GOAT,
   USDT_GOERLI,
+  USDT_HEMI,
+  USDT_LIGHTLINK,
+  USDT_LISK,
   USDT_MAINNET,
+  USDT_MANTA,
+  USDT_MANTLE,
+  USDT_MATCHAIN,
   USDT_MONAD_TESTNET,
   USDT_OPTIMISM,
   USDT_OPTIMISM_GOERLI,
   USDT_OPTIMISM_SEPOLIA,
+  USDT_PLASMA,
+  USDT_POLYGON_ZKEVM,
+  USDT_REDBELLY,
+  USDT_ROOTSTOCK,
+  USDT_SAGA,
+  USDT_SCROLL,
+  USDT_TELOS,
+  USDT_UNICHAIN,
+  USDT_XLAYER,
+  USDT_ZKLINK,
+  USDT_ZKSYNC,
   WBTC_GOERLI,
-} from '../../../providers/token-provider';
-import { IV2PoolProvider } from '../../../providers/v2/pool-provider';
+} from "../../../providers/token-provider";
+import { IV2PoolProvider } from "../../../providers/v2/pool-provider";
 import {
   ArbitrumGasData,
   IL2GasDataProvider,
-} from '../../../providers/v3/gas-data-provider';
-import { WRAPPED_NATIVE_CURRENCY } from '../../../util';
-import { CurrencyAmount } from '../../../util/amounts';
+} from "../../../providers/v3/gas-data-provider";
+import { WRAPPED_NATIVE_CURRENCY } from "../../../util";
+import { CurrencyAmount } from "../../../util/amounts";
 import {
   MixedRouteWithValidQuote,
   RouteWithValidQuote,
   V2RouteWithValidQuote,
   V3RouteWithValidQuote,
   V4RouteWithValidQuote,
-} from '../entities/route-with-valid-quote';
+} from "../entities/route-with-valid-quote";
 
 // When adding new usd gas tokens, ensure the tokens are ordered
 // from tokens with highest decimals to lowest decimals. For example,
@@ -128,13 +179,46 @@ export const usdGasTokensByChain: { [chainId in ChainId]?: Token[] } = {
   [ChainId.BASE]: [USDC_BASE, USDC_NATIVE_BASE],
   [ChainId.BLAST]: [USDB_BLAST],
   [ChainId.ZORA]: [USDC_ZORA],
-  [ChainId.ZKSYNC]: [DAI_ZKSYNC, USDCE_ZKSYNC, USDC_ZKSYNC],
+  [ChainId.ZKSYNC]: [DAI_ZKSYNC, USDCE_ZKSYNC, USDC_ZKSYNC, USDT_ZKSYNC],
   [ChainId.WORLDCHAIN]: [USDC_WORLDCHAIN],
   [ChainId.UNICHAIN_SEPOLIA]: [USDC_UNICHAIN_SEPOLIA],
   [ChainId.MONAD_TESTNET]: [USDT_MONAD_TESTNET],
   [ChainId.BASE_SEPOLIA]: [USDC_BASE_SEPOLIA],
-  [ChainId.UNICHAIN]: [DAI_UNICHAIN, USDC_UNICHAIN],
+  [ChainId.UNICHAIN]: [DAI_UNICHAIN, USDC_UNICHAIN, USDT_UNICHAIN],
   [ChainId.SONEIUM]: [USDC_SONEIUM],
+  [ChainId.XLAYER]: [USDC_XLAYER, USDT_XLAYER],
+  [ChainId.ZKLINK]: [USDC_ZKLINK, USDT_ZKLINK],
+  [ChainId.LENS]: [USDC_LENS],
+  [ChainId.BOB]: [USDC_BOB, USDT_BOB],
+  [ChainId.LISK]: [USDT_LISK],
+  [ChainId.TAIKO]: [USDC_TAIKO],
+  [ChainId.SEI]: [USDC_SEI],
+  [ChainId.MANTLE]: [USDC_MANTLE, USDT_MANTLE],
+  [ChainId.SEI_TESTNET]: [USDC_SEI_TESTNET],
+  [ChainId.LINEA]: [USDC_LINEA, DAI_LINEA],
+  [ChainId.MANTA]: [USDC_MANTA, USDT_MANTA],
+  [ChainId.POLYGON_ZKEVM]: [
+    USDC_POLYGON_ZKEVM,
+    USDT_POLYGON_ZKEVM,
+    DAI_POLYGON_ZKEVM,
+  ],
+  [ChainId.FILECOIN]: [USDC_FILECOIN],
+  [ChainId.ROOTSTOCK]: [USDT_ROOTSTOCK],
+  [ChainId.SCROLL]: [USDC_SCROLL, USDT_SCROLL, DAI_SCROLL],
+  [ChainId.CORN]: [USDC_CORN],
+  [ChainId.ETHERLINK]: [USDC_ETHERLINK, USDT_ETHERLINK],
+  [ChainId.SONIC]: [USDC_SONIC],
+  [ChainId.XDC]: [USDC_XDC],
+  [ChainId.TELOS]: [USDC_TELOS, USDT_TELOS, USDM_TELOS],
+  [ChainId.HEMI]: [USDC_HEMI, USDT_HEMI, DAI_HEMI],
+  [ChainId.GOAT]: [USDC_GOAT, USDT_GOAT],
+  [ChainId.REDBELLY]: [USDC_REDBELLY, USDT_REDBELLY],
+  [ChainId.SAGA]: [USDC_SAGA, USDT_SAGA],
+  [ChainId.LIGHTLINK]: [USDC_LIGHTLINK, USDT_LIGHTLINK],
+  [ChainId.NIBIRU]: [USDC_NIBIRU],
+  [ChainId.MATCHAIN]: [USDC_MATCHAIN, USDT_MATCHAIN],
+  [ChainId.PLASMA]: [USDT_PLASMA],
+  [ChainId.BOBA]: [USDC_BOBA],
 };
 
 export type L1ToL2GasCosts = {
@@ -246,8 +330,8 @@ export abstract class IV2GasModelFactory {
  * @class IOnChainGasModelFactory
  */
 export abstract class IOnChainGasModelFactory<
-  TRouteWithValidQuote extends RouteWithValidQuote
-> {
+  TRouteWithValidQuote extends RouteWithValidQuote,
+  > {
   public abstract buildGasModel({
     chainId,
     gasPriceWei,
@@ -260,7 +344,7 @@ export abstract class IOnChainGasModelFactory<
   }: BuildOnChainGasModelFactoryType): Promise<IGasModel<TRouteWithValidQuote>>;
 
   protected totalInitializedTicksCrossed(
-    initializedTicksCrossedList: number[]
+    initializedTicksCrossedList: number[],
   ) {
     let ticksCrossed = 0;
     for (let i = 0; i < initializedTicksCrossedList.length; i++) {
@@ -282,7 +366,7 @@ export abstract class IOnChainGasModelFactory<
 export const getQuoteThroughNativePool = (
   chainId: ChainId,
   nativeTokenAmount: CurrencyAmountRaw<Token>,
-  nativeTokenPool: Pool | Pair
+  nativeTokenPool: Pool | Pair,
 ): CurrencyAmount => {
   const nativeCurrency = WRAPPED_NATIVE_CURRENCY[chainId];
   const isToken0 = nativeTokenPool.token0.equals(nativeCurrency);
