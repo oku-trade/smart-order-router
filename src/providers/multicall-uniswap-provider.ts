@@ -1,13 +1,13 @@
-import { BigNumber } from '@ethersproject/bignumber';
-import { BaseProvider } from '@ethersproject/providers';
-import { ChainId } from '@uniswap/sdk-core';
-import _ from 'lodash';
-import stats from 'stats-lite';
+import { BigNumber } from "@ethersproject/bignumber";
+import { BaseProvider } from "@ethersproject/providers";
+import { ChainId } from "@uniswap/sdk-core";
+import _ from "lodash";
+import stats from "stats-lite";
 
-import { UniswapInterfaceMulticall__factory } from '../types/v3/factories/UniswapInterfaceMulticall__factory';
-import { UniswapInterfaceMulticall } from '../types/v3/UniswapInterfaceMulticall';
-import { UNISWAP_MULTICALL_ADDRESSES } from '../util/addresses';
-import { log } from '../util/log';
+import { UniswapInterfaceMulticall } from "../types/v3/UniswapInterfaceMulticall";
+import { UniswapInterfaceMulticall__factory } from "../types/v3/factories/UniswapInterfaceMulticall__factory";
+import { UNISWAP_MULTICALL_ADDRESSES } from "../util/addresses";
+import { log } from "../util/log";
 
 import {
   CallMultipleFunctionsOnSameContractParams,
@@ -15,7 +15,7 @@ import {
   CallSameFunctionOnMultipleContractsParams,
   IMulticallProvider,
   Result,
-} from './multicall-provider';
+} from "./multicall-provider";
 
 export type UniswapMulticallConfig = {
   gasLimitPerCallOverride?: number;
@@ -36,28 +36,28 @@ export class UniswapMulticallProvider extends IMulticallProvider<UniswapMultical
   constructor(
     protected chainId: ChainId,
     protected provider: BaseProvider,
-    protected gasLimitPerCall = 1_000_000
+    protected gasLimitPerCall = 1_000_000_000,
   ) {
     super();
     const multicallAddress = UNISWAP_MULTICALL_ADDRESSES[this.chainId];
 
     if (!multicallAddress) {
       throw new Error(
-        `No address for Uniswap Multicall Contract on chain id: ${chainId}`
+        `No address for Uniswap Multicall Contract on chain id: ${chainId}`,
       );
     }
 
     this.multicallContract = UniswapInterfaceMulticall__factory.connect(
       multicallAddress,
-      this.provider
+      this.provider,
     );
   }
 
   public async callSameFunctionOnMultipleContracts<
     TFunctionParams extends any[] | undefined,
-    TReturn = any
-  >(
-    params: CallSameFunctionOnMultipleContractsParams<TFunctionParams>
+    TReturn = any,
+    >(
+      params: CallSameFunctionOnMultipleContractsParams<TFunctionParams>,
   ): Promise<{
     blockNumber: BigNumber;
     results: Result<TReturn>[];
@@ -75,7 +75,7 @@ export class UniswapMulticallProvider extends IMulticallProvider<UniswapMultical
     const fragment = contractInterface.getFunction(functionName);
     const callData = contractInterface.encodeFunctionData(
       fragment,
-      functionParams
+      functionParams,
     );
 
     const calls = _.map(addresses, (address) => {
@@ -88,7 +88,7 @@ export class UniswapMulticallProvider extends IMulticallProvider<UniswapMultical
 
     log.debug(
       { calls },
-      `About to multicall for ${functionName} across ${addresses.length} addresses`
+      `About to multicall for ${functionName} across ${addresses.length} addresses`,
     );
 
     const { blockNumber, returnData: aggregateResults } =
@@ -105,7 +105,7 @@ export class UniswapMulticallProvider extends IMulticallProvider<UniswapMultical
       if (!success || returnData.length <= 2) {
         log.debug(
           { result: aggregateResults[i] },
-          `Invalid result calling ${functionName} on address ${addresses[i]}`
+          `Invalid result calling ${functionName} on address ${addresses[i]}`,
         );
         results.push({
           success: false,
@@ -118,14 +118,14 @@ export class UniswapMulticallProvider extends IMulticallProvider<UniswapMultical
         success: true,
         result: contractInterface.decodeFunctionResult(
           fragment,
-          returnData
+          returnData,
         ) as unknown as TReturn,
       });
     }
 
     log.debug(
       { results },
-      `Results for multicall on ${functionName} across ${addresses.length} addresses as of block ${blockNumber}`
+      `Results for multicall on ${functionName} across ${addresses.length} addresses as of block ${blockNumber}`,
     );
 
     return { blockNumber, results };
@@ -133,12 +133,12 @@ export class UniswapMulticallProvider extends IMulticallProvider<UniswapMultical
 
   public async callSameFunctionOnContractWithMultipleParams<
     TFunctionParams extends any[] | undefined,
-    TReturn
-  >(
-    params: CallSameFunctionOnContractWithMultipleParams<
-      TFunctionParams,
-      UniswapMulticallConfig
-    >
+    TReturn,
+    >(
+      params: CallSameFunctionOnContractWithMultipleParams<
+        TFunctionParams,
+        UniswapMulticallConfig
+      >,
   ): Promise<{
     blockNumber: BigNumber;
     results: Result<TReturn>[];
@@ -161,7 +161,7 @@ export class UniswapMulticallProvider extends IMulticallProvider<UniswapMultical
     const calls = _.map(functionParams, (functionParam) => {
       const callData = contractInterface.encodeFunctionData(
         fragment,
-        functionParam
+        functionParam,
       );
 
       return {
@@ -173,7 +173,7 @@ export class UniswapMulticallProvider extends IMulticallProvider<UniswapMultical
 
     log.debug(
       { calls },
-      `About to multicall for ${functionName} at address ${address} with ${functionParams.length} different sets of params`
+      `About to multicall for ${functionName} at address ${address} with ${functionParams.length} different sets of params`,
     );
 
     const { blockNumber, returnData: aggregateResults } =
@@ -191,7 +191,7 @@ export class UniswapMulticallProvider extends IMulticallProvider<UniswapMultical
       if (!success || returnData.length <= 2) {
         log.debug(
           { result: aggregateResults[i] },
-          `Invalid result calling ${functionName} address ${address} with params ${functionParams[i]}`
+          `Invalid result calling ${functionName} address ${address} with params ${functionParams[i]}`,
         );
         results.push({
           success: false,
@@ -207,14 +207,14 @@ export class UniswapMulticallProvider extends IMulticallProvider<UniswapMultical
         success: true,
         result: contractInterface.decodeFunctionResult(
           fragment,
-          returnData
+          returnData,
         ) as unknown as TReturn,
       });
     }
 
     log.debug(
       { results, functionName, address },
-      `Results for multicall for ${functionName} at address ${address} with ${functionParams.length} different sets of params. Results as of block ${blockNumber}`
+      `Results for multicall for ${functionName} at address ${address} with ${functionParams.length} different sets of params. Results as of block ${blockNumber}`,
     );
     return {
       blockNumber,
@@ -225,12 +225,12 @@ export class UniswapMulticallProvider extends IMulticallProvider<UniswapMultical
 
   public async callMultipleFunctionsOnSameContract<
     TFunctionParams extends any[] | undefined,
-    TReturn
-  >(
-    params: CallMultipleFunctionsOnSameContractParams<
-      TFunctionParams,
-      UniswapMulticallConfig
-    >
+    TReturn,
+    >(
+      params: CallMultipleFunctionsOnSameContractParams<
+        TFunctionParams,
+        UniswapMulticallConfig
+      >,
   ): Promise<{
     blockNumber: BigNumber;
     results: Result<TReturn>[];
@@ -262,7 +262,7 @@ export class UniswapMulticallProvider extends IMulticallProvider<UniswapMultical
 
     log.debug(
       { calls },
-      `About to multicall for ${functionNames.length} functions at address ${address} with ${functionParams?.length} different sets of params`
+      `About to multicall for ${functionNames.length} functions at address ${address} with ${functionParams?.length} different sets of params`,
     );
 
     const { blockNumber, returnData: aggregateResults } =
@@ -281,9 +281,8 @@ export class UniswapMulticallProvider extends IMulticallProvider<UniswapMultical
       if (!success || returnData.length <= 2) {
         log.debug(
           { result: aggregateResults[i] },
-          `Invalid result calling ${functionNames[i]} with ${
-            functionParams ? functionParams[i] : '0'
-          } params`
+          `Invalid result calling ${functionNames[i]} with ${functionParams ? functionParams[i] : "0"
+          } params`,
         );
         results.push({
           success: false,
@@ -298,18 +297,16 @@ export class UniswapMulticallProvider extends IMulticallProvider<UniswapMultical
         success: true,
         result: contractInterface.decodeFunctionResult(
           fragment,
-          returnData
+          returnData,
         ) as unknown as TReturn,
       });
     }
 
     log.debug(
       { results, functionNames, address },
-      `Results for multicall for ${
-        functionNames.length
-      } functions at address ${address} with ${
-        functionParams ? functionParams.length : ' 0'
-      } different sets of params. Results as of block ${blockNumber}`
+      `Results for multicall for ${functionNames.length
+      } functions at address ${address} with ${functionParams ? functionParams.length : " 0"
+      } different sets of params. Results as of block ${blockNumber}`,
     );
     return {
       blockNumber,

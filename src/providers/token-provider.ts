@@ -1201,10 +1201,10 @@ export const MATIC_POLYGON_ZKEVM = new Token(
 // filecoin
 export const USDC_FILECOIN = new Token(
 	ChainId.FILECOIN,
-	"0xeb466342c4d449bc9f53a865d5cb90586f405215",
+	"0x2421db204968a367cc2c866cd057fa754cb84edf",
 	6,
-	"axlUSDC",
-	"Axelar USD Coin",
+	"celerUSDC",
+	"Celer USDC",
 );
 
 export const USDT_FILECOIN = new Token(
