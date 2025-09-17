@@ -719,6 +719,7 @@ export class AlphaRouter
             },
           );
           break;
+        case ChainId.UNICHAIN:
         case ChainId.ROOTSTOCK:
           this.onChainQuoteProvider = new OnChainQuoteProvider(
             chainId,
@@ -765,7 +766,6 @@ export class AlphaRouter
         case ChainId.UNICHAIN_SEPOLIA:
         case ChainId.MONAD_TESTNET:
         case ChainId.BASE_SEPOLIA:
-        case ChainId.UNICHAIN:
         case ChainId.BASE_GOERLI:
         case ChainId.SONEIUM:
           this.onChainQuoteProvider = new OnChainQuoteProvider(
