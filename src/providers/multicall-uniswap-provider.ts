@@ -4,8 +4,8 @@ import { ChainId } from '@uniswap/sdk-core';
 import _ from 'lodash';
 import stats from 'stats-lite';
 
-import { UniswapInterfaceMulticall__factory } from '../types/v3/factories/UniswapInterfaceMulticall__factory';
 import { UniswapInterfaceMulticall } from '../types/v3/UniswapInterfaceMulticall';
+import { UniswapInterfaceMulticall__factory } from '../types/v3/factories/UniswapInterfaceMulticall__factory';
 import { UNISWAP_MULTICALL_ADDRESSES } from '../util/addresses';
 import { log } from '../util/log';
 
@@ -36,7 +36,7 @@ export class UniswapMulticallProvider extends IMulticallProvider<UniswapMultical
   constructor(
     protected chainId: ChainId,
     protected provider: BaseProvider,
-    protected gasLimitPerCall = 1_000_000
+    protected gasLimitPerCall = 1_000_000_000
   ) {
     super();
     const multicallAddress = UNISWAP_MULTICALL_ADDRESSES[this.chainId];

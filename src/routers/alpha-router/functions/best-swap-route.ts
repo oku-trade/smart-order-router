@@ -693,22 +693,23 @@ export async function getBestSwapRouteBy(
           routeWithValidQuote.gasCostInUSD.quotient
         );
       }
-
-      if (decimalsDiff < 0 && chainId === 324) {
-        log.error(`Decimals diff is negative for ZkSync. This should not happen.
-          usdTokenDecimals ${usdTokenDecimals} routeWithValidQuote.gasCostInUSD.currency.decimals
-          ${
-            routeWithValidQuote.gasCostInUSD.currency.decimals
-          } ${JSON.stringify(routeWithValidQuote)}`);
+      if (decimalsDiff > 0) {
+        return CurrencyAmount.fromRawAmount(
+          usdToken,
+          JSBI.multiply(
+            routeWithValidQuote.gasCostInUSD.quotient,
+            JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(decimalsDiff))
+          )
+        );
+      } else {
+        return CurrencyAmount.fromRawAmount(
+          usdToken,
+          JSBI.divide(
+            routeWithValidQuote.gasCostInUSD.quotient,
+            JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(-decimalsDiff))
+          )
+        );
       }
-
-      return CurrencyAmount.fromRawAmount(
-        usdToken,
-        JSBI.multiply(
-          routeWithValidQuote.gasCostInUSD.quotient,
-          JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(decimalsDiff))
-        )
-      );
     })
     .value();
 

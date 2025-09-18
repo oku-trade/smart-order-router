@@ -1,6 +1,7 @@
+import { ADDRESS_ZERO } from '@uniswap/router-sdk';
 import {
-  ChainId,
   CHAIN_TO_ADDRESSES_MAP,
+  ChainId,
   Currency,
   SWAP_ROUTER_02_ADDRESSES as SWAP_ROUTER_02_ADDRESSES_HELPER,
   Token,
@@ -8,7 +9,6 @@ import {
 } from '@uniswap/sdk-core';
 import { FACTORY_ADDRESS } from '@uniswap/v3-sdk';
 
-import { ADDRESS_ZERO } from '@uniswap/router-sdk';
 import { NETWORKS_WITH_SAME_UNISWAP_ADDRESSES } from './chains';
 
 export const BNB_TICK_LENS_ADDRESS =
@@ -57,6 +57,47 @@ export const V3_CORE_FACTORY_ADDRESSES: AddressMap = {
     CHAIN_TO_ADDRESSES_MAP[ChainId.UNICHAIN].v3CoreFactoryAddress,
   [ChainId.SONEIUM]:
     CHAIN_TO_ADDRESSES_MAP[ChainId.SONEIUM].v3CoreFactoryAddress,
+  [ChainId.MOONBEAM]:
+    CHAIN_TO_ADDRESSES_MAP[ChainId.MOONBEAM].v3CoreFactoryAddress,
+  [ChainId.LENS]: CHAIN_TO_ADDRESSES_MAP[ChainId.LENS].v3CoreFactoryAddress,
+  [ChainId.XLAYER]: CHAIN_TO_ADDRESSES_MAP[ChainId.XLAYER].v3CoreFactoryAddress,
+  [ChainId.GNOSIS]: CHAIN_TO_ADDRESSES_MAP[ChainId.GNOSIS].v3CoreFactoryAddress,
+  [ChainId.BOB]: CHAIN_TO_ADDRESSES_MAP[ChainId.BOB].v3CoreFactoryAddress,
+  [ChainId.LISK]: CHAIN_TO_ADDRESSES_MAP[ChainId.LISK].v3CoreFactoryAddress,
+  [ChainId.ZKLINK]: CHAIN_TO_ADDRESSES_MAP[ChainId.ZKLINK].v3CoreFactoryAddress,
+  [ChainId.TAIKO]: CHAIN_TO_ADDRESSES_MAP[ChainId.TAIKO].v3CoreFactoryAddress,
+  [ChainId.SEI]: CHAIN_TO_ADDRESSES_MAP[ChainId.SEI].v3CoreFactoryAddress,
+  [ChainId.MANTLE]: CHAIN_TO_ADDRESSES_MAP[ChainId.MANTLE].v3CoreFactoryAddress,
+  [ChainId.SEI_TESTNET]:
+    CHAIN_TO_ADDRESSES_MAP[ChainId.SEI_TESTNET].v3CoreFactoryAddress,
+  [ChainId.LINEA]: CHAIN_TO_ADDRESSES_MAP[ChainId.LINEA].v3CoreFactoryAddress,
+  [ChainId.MANTA]: CHAIN_TO_ADDRESSES_MAP[ChainId.MANTA].v3CoreFactoryAddress,
+  [ChainId.POLYGON_ZKEVM]:
+    CHAIN_TO_ADDRESSES_MAP[ChainId.POLYGON_ZKEVM].v3CoreFactoryAddress,
+  [ChainId.FILECOIN]:
+    CHAIN_TO_ADDRESSES_MAP[ChainId.FILECOIN].v3CoreFactoryAddress,
+  [ChainId.ROOTSTOCK]:
+    CHAIN_TO_ADDRESSES_MAP[ChainId.ROOTSTOCK].v3CoreFactoryAddress,
+  [ChainId.SCROLL]: CHAIN_TO_ADDRESSES_MAP[ChainId.SCROLL].v3CoreFactoryAddress,
+  [ChainId.BOBA]: CHAIN_TO_ADDRESSES_MAP[ChainId.BOBA].v3CoreFactoryAddress,
+  [ChainId.CORN]: CHAIN_TO_ADDRESSES_MAP[ChainId.CORN].v3CoreFactoryAddress,
+  [ChainId.ETHERLINK]:
+    CHAIN_TO_ADDRESSES_MAP[ChainId.ETHERLINK].v3CoreFactoryAddress,
+  [ChainId.METAL]: CHAIN_TO_ADDRESSES_MAP[ChainId.METAL].v3CoreFactoryAddress,
+  [ChainId.SONIC]: CHAIN_TO_ADDRESSES_MAP[ChainId.SONIC].v3CoreFactoryAddress,
+  [ChainId.XDC]: CHAIN_TO_ADDRESSES_MAP[ChainId.XDC].v3CoreFactoryAddress,
+  [ChainId.LIGHTLINK]:
+    CHAIN_TO_ADDRESSES_MAP[ChainId.LIGHTLINK].v3CoreFactoryAddress,
+  [ChainId.GOAT]: CHAIN_TO_ADDRESSES_MAP[ChainId.GOAT].v3CoreFactoryAddress,
+  [ChainId.REDBELLY]:
+    CHAIN_TO_ADDRESSES_MAP[ChainId.REDBELLY].v3CoreFactoryAddress,
+  [ChainId.SAGA]: CHAIN_TO_ADDRESSES_MAP[ChainId.SAGA].v3CoreFactoryAddress,
+  [ChainId.TELOS]: CHAIN_TO_ADDRESSES_MAP[ChainId.TELOS].v3CoreFactoryAddress,
+  [ChainId.HEMI]: CHAIN_TO_ADDRESSES_MAP[ChainId.HEMI].v3CoreFactoryAddress,
+  [ChainId.NIBIRU]: CHAIN_TO_ADDRESSES_MAP[ChainId.NIBIRU].v3CoreFactoryAddress,
+  [ChainId.MATCHAIN]:
+    CHAIN_TO_ADDRESSES_MAP[ChainId.MATCHAIN].v3CoreFactoryAddress,
+  [ChainId.PLASMA]: CHAIN_TO_ADDRESSES_MAP[ChainId.PLASMA].v3CoreFactoryAddress,
 };
 
 export const QUOTER_V2_ADDRESSES: AddressMap = {
@@ -92,6 +133,40 @@ export const QUOTER_V2_ADDRESSES: AddressMap = {
   // TODO: Gnosis + Moonbeam contracts to be deployed
   [ChainId.UNICHAIN]: CHAIN_TO_ADDRESSES_MAP[ChainId.UNICHAIN].quoterAddress,
   [ChainId.SONEIUM]: CHAIN_TO_ADDRESSES_MAP[ChainId.SONEIUM].quoterAddress,
+  [ChainId.MOONBEAM]: CHAIN_TO_ADDRESSES_MAP[ChainId.MOONBEAM].quoterAddress,
+  [ChainId.LENS]: CHAIN_TO_ADDRESSES_MAP[ChainId.LENS].quoterAddress,
+  [ChainId.XLAYER]: CHAIN_TO_ADDRESSES_MAP[ChainId.XLAYER].quoterAddress,
+  [ChainId.GNOSIS]: CHAIN_TO_ADDRESSES_MAP[ChainId.GNOSIS].quoterAddress,
+  [ChainId.BOB]: CHAIN_TO_ADDRESSES_MAP[ChainId.BOB].quoterAddress,
+  [ChainId.LISK]: CHAIN_TO_ADDRESSES_MAP[ChainId.LISK].quoterAddress,
+  [ChainId.ZKLINK]: CHAIN_TO_ADDRESSES_MAP[ChainId.ZKLINK].quoterAddress,
+  [ChainId.TAIKO]: CHAIN_TO_ADDRESSES_MAP[ChainId.TAIKO].quoterAddress,
+  [ChainId.SEI]: CHAIN_TO_ADDRESSES_MAP[ChainId.SEI].quoterAddress,
+  [ChainId.MANTLE]: CHAIN_TO_ADDRESSES_MAP[ChainId.MANTLE].quoterAddress,
+  [ChainId.SEI_TESTNET]:
+    CHAIN_TO_ADDRESSES_MAP[ChainId.SEI_TESTNET].quoterAddress,
+  [ChainId.LINEA]: CHAIN_TO_ADDRESSES_MAP[ChainId.LINEA].quoterAddress,
+  [ChainId.MANTA]: CHAIN_TO_ADDRESSES_MAP[ChainId.MANTA].quoterAddress,
+  [ChainId.POLYGON_ZKEVM]:
+    CHAIN_TO_ADDRESSES_MAP[ChainId.POLYGON_ZKEVM].quoterAddress,
+  [ChainId.FILECOIN]: CHAIN_TO_ADDRESSES_MAP[ChainId.FILECOIN].quoterAddress,
+  [ChainId.ROOTSTOCK]: CHAIN_TO_ADDRESSES_MAP[ChainId.ROOTSTOCK].quoterAddress,
+  [ChainId.SCROLL]: CHAIN_TO_ADDRESSES_MAP[ChainId.SCROLL].quoterAddress,
+  [ChainId.BOBA]: CHAIN_TO_ADDRESSES_MAP[ChainId.BOBA].quoterAddress,
+  [ChainId.CORN]: CHAIN_TO_ADDRESSES_MAP[ChainId.CORN].quoterAddress,
+  [ChainId.ETHERLINK]: CHAIN_TO_ADDRESSES_MAP[ChainId.ETHERLINK].quoterAddress,
+  [ChainId.METAL]: CHAIN_TO_ADDRESSES_MAP[ChainId.METAL].quoterAddress,
+  [ChainId.SONIC]: CHAIN_TO_ADDRESSES_MAP[ChainId.SONIC].quoterAddress,
+  [ChainId.XDC]: CHAIN_TO_ADDRESSES_MAP[ChainId.XDC].quoterAddress,
+  [ChainId.LIGHTLINK]: CHAIN_TO_ADDRESSES_MAP[ChainId.LIGHTLINK].quoterAddress,
+  [ChainId.GOAT]: CHAIN_TO_ADDRESSES_MAP[ChainId.GOAT].quoterAddress,
+  [ChainId.REDBELLY]: CHAIN_TO_ADDRESSES_MAP[ChainId.REDBELLY].quoterAddress,
+  [ChainId.SAGA]: CHAIN_TO_ADDRESSES_MAP[ChainId.SAGA].quoterAddress,
+  [ChainId.TELOS]: CHAIN_TO_ADDRESSES_MAP[ChainId.TELOS].quoterAddress,
+  [ChainId.HEMI]: CHAIN_TO_ADDRESSES_MAP[ChainId.HEMI].quoterAddress,
+  [ChainId.NIBIRU]: CHAIN_TO_ADDRESSES_MAP[ChainId.NIBIRU].quoterAddress,
+  [ChainId.MATCHAIN]: CHAIN_TO_ADDRESSES_MAP[ChainId.MATCHAIN].quoterAddress,
+  [ChainId.PLASMA]: CHAIN_TO_ADDRESSES_MAP[ChainId.PLASMA].quoterAddress,
 };
 
 export const NEW_QUOTER_V2_ADDRESSES: AddressMap = {
@@ -118,6 +193,40 @@ export const NEW_QUOTER_V2_ADDRESSES: AddressMap = {
     CHAIN_TO_ADDRESSES_MAP[ChainId.BASE_SEPOLIA].quoterAddress,
   [ChainId.UNICHAIN]: CHAIN_TO_ADDRESSES_MAP[ChainId.UNICHAIN].quoterAddress, // TODO: deploy view-only-quoter to unichain
   [ChainId.SONEIUM]: CHAIN_TO_ADDRESSES_MAP[ChainId.SONEIUM].quoterAddress,
+  [ChainId.MOONBEAM]: CHAIN_TO_ADDRESSES_MAP[ChainId.MOONBEAM].quoterAddress,
+  [ChainId.LENS]: CHAIN_TO_ADDRESSES_MAP[ChainId.LENS].quoterAddress,
+  [ChainId.XLAYER]: CHAIN_TO_ADDRESSES_MAP[ChainId.XLAYER].quoterAddress,
+  [ChainId.GNOSIS]: CHAIN_TO_ADDRESSES_MAP[ChainId.GNOSIS].quoterAddress,
+  [ChainId.BOB]: CHAIN_TO_ADDRESSES_MAP[ChainId.BOB].quoterAddress,
+  [ChainId.LISK]: CHAIN_TO_ADDRESSES_MAP[ChainId.LISK].quoterAddress,
+  [ChainId.ZKLINK]: CHAIN_TO_ADDRESSES_MAP[ChainId.ZKLINK].quoterAddress,
+  [ChainId.TAIKO]: CHAIN_TO_ADDRESSES_MAP[ChainId.TAIKO].quoterAddress,
+  [ChainId.SEI]: CHAIN_TO_ADDRESSES_MAP[ChainId.SEI].quoterAddress,
+  [ChainId.MANTLE]: CHAIN_TO_ADDRESSES_MAP[ChainId.MANTLE].quoterAddress,
+  [ChainId.SEI_TESTNET]:
+    CHAIN_TO_ADDRESSES_MAP[ChainId.SEI_TESTNET].quoterAddress,
+  [ChainId.LINEA]: CHAIN_TO_ADDRESSES_MAP[ChainId.LINEA].quoterAddress,
+  [ChainId.MANTA]: CHAIN_TO_ADDRESSES_MAP[ChainId.MANTA].quoterAddress,
+  [ChainId.POLYGON_ZKEVM]:
+    CHAIN_TO_ADDRESSES_MAP[ChainId.POLYGON_ZKEVM].quoterAddress,
+  [ChainId.FILECOIN]: CHAIN_TO_ADDRESSES_MAP[ChainId.FILECOIN].quoterAddress,
+  [ChainId.ROOTSTOCK]: CHAIN_TO_ADDRESSES_MAP[ChainId.ROOTSTOCK].quoterAddress,
+  [ChainId.SCROLL]: CHAIN_TO_ADDRESSES_MAP[ChainId.SCROLL].quoterAddress,
+  [ChainId.BOBA]: CHAIN_TO_ADDRESSES_MAP[ChainId.BOBA].quoterAddress,
+  [ChainId.CORN]: CHAIN_TO_ADDRESSES_MAP[ChainId.CORN].quoterAddress,
+  [ChainId.ETHERLINK]: CHAIN_TO_ADDRESSES_MAP[ChainId.ETHERLINK].quoterAddress,
+  [ChainId.METAL]: CHAIN_TO_ADDRESSES_MAP[ChainId.METAL].quoterAddress,
+  [ChainId.SONIC]: CHAIN_TO_ADDRESSES_MAP[ChainId.SONIC].quoterAddress,
+  [ChainId.XDC]: CHAIN_TO_ADDRESSES_MAP[ChainId.XDC].quoterAddress,
+  [ChainId.LIGHTLINK]: CHAIN_TO_ADDRESSES_MAP[ChainId.LIGHTLINK].quoterAddress,
+  [ChainId.GOAT]: CHAIN_TO_ADDRESSES_MAP[ChainId.GOAT].quoterAddress,
+  [ChainId.REDBELLY]: CHAIN_TO_ADDRESSES_MAP[ChainId.REDBELLY].quoterAddress,
+  [ChainId.SAGA]: CHAIN_TO_ADDRESSES_MAP[ChainId.SAGA].quoterAddress,
+  [ChainId.TELOS]: CHAIN_TO_ADDRESSES_MAP[ChainId.TELOS].quoterAddress,
+  [ChainId.HEMI]: CHAIN_TO_ADDRESSES_MAP[ChainId.HEMI].quoterAddress,
+  [ChainId.NIBIRU]: CHAIN_TO_ADDRESSES_MAP[ChainId.NIBIRU].quoterAddress,
+  [ChainId.MATCHAIN]: CHAIN_TO_ADDRESSES_MAP[ChainId.MATCHAIN].quoterAddress,
+  [ChainId.PLASMA]: CHAIN_TO_ADDRESSES_MAP[ChainId.PLASMA].quoterAddress,
 };
 
 export const PROTOCOL_V4_QUOTER_ADDRESSES: AddressMap = {
@@ -206,9 +315,45 @@ export const UNISWAP_MULTICALL_ADDRESSES: AddressMap = {
     CHAIN_TO_ADDRESSES_MAP[ChainId.MONAD_TESTNET].multicallAddress,
   [ChainId.BASE_SEPOLIA]:
     CHAIN_TO_ADDRESSES_MAP[ChainId.BASE_SEPOLIA].multicallAddress,
-  // TODO: Gnosis + Moonbeam contracts to be deployed
   [ChainId.UNICHAIN]: CHAIN_TO_ADDRESSES_MAP[ChainId.UNICHAIN].multicallAddress,
   [ChainId.SONEIUM]: CHAIN_TO_ADDRESSES_MAP[ChainId.SONEIUM].multicallAddress,
+  [ChainId.MOONBEAM]: CHAIN_TO_ADDRESSES_MAP[ChainId.MOONBEAM].multicallAddress,
+  [ChainId.LENS]: CHAIN_TO_ADDRESSES_MAP[ChainId.LENS].multicallAddress,
+  [ChainId.XLAYER]: CHAIN_TO_ADDRESSES_MAP[ChainId.XLAYER].multicallAddress,
+  [ChainId.GNOSIS]: CHAIN_TO_ADDRESSES_MAP[ChainId.GNOSIS].multicallAddress,
+  [ChainId.BOB]: CHAIN_TO_ADDRESSES_MAP[ChainId.BOB].multicallAddress,
+  [ChainId.LISK]: CHAIN_TO_ADDRESSES_MAP[ChainId.LISK].multicallAddress,
+  [ChainId.ZKLINK]: CHAIN_TO_ADDRESSES_MAP[ChainId.ZKLINK].multicallAddress,
+  [ChainId.TAIKO]: CHAIN_TO_ADDRESSES_MAP[ChainId.TAIKO].multicallAddress,
+  [ChainId.SEI]: CHAIN_TO_ADDRESSES_MAP[ChainId.SEI].multicallAddress,
+  [ChainId.MANTLE]: CHAIN_TO_ADDRESSES_MAP[ChainId.MANTLE].multicallAddress,
+  [ChainId.SEI_TESTNET]:
+    CHAIN_TO_ADDRESSES_MAP[ChainId.SEI_TESTNET].multicallAddress,
+  [ChainId.LINEA]: CHAIN_TO_ADDRESSES_MAP[ChainId.LINEA].multicallAddress,
+  [ChainId.MANTA]: CHAIN_TO_ADDRESSES_MAP[ChainId.MANTA].multicallAddress,
+  [ChainId.POLYGON_ZKEVM]:
+    CHAIN_TO_ADDRESSES_MAP[ChainId.POLYGON_ZKEVM].multicallAddress,
+  [ChainId.FILECOIN]: CHAIN_TO_ADDRESSES_MAP[ChainId.FILECOIN].multicallAddress,
+  [ChainId.ROOTSTOCK]:
+    CHAIN_TO_ADDRESSES_MAP[ChainId.ROOTSTOCK].multicallAddress,
+  [ChainId.SCROLL]: CHAIN_TO_ADDRESSES_MAP[ChainId.SCROLL].multicallAddress,
+  [ChainId.BOBA]: CHAIN_TO_ADDRESSES_MAP[ChainId.BOBA].multicallAddress,
+  [ChainId.CORN]: CHAIN_TO_ADDRESSES_MAP[ChainId.CORN].multicallAddress,
+  [ChainId.ETHERLINK]:
+    CHAIN_TO_ADDRESSES_MAP[ChainId.ETHERLINK].multicallAddress,
+  [ChainId.METAL]: CHAIN_TO_ADDRESSES_MAP[ChainId.METAL].multicallAddress,
+  [ChainId.SONIC]: CHAIN_TO_ADDRESSES_MAP[ChainId.SONIC].multicallAddress,
+  [ChainId.XDC]: CHAIN_TO_ADDRESSES_MAP[ChainId.XDC].multicallAddress,
+  [ChainId.LIGHTLINK]:
+    CHAIN_TO_ADDRESSES_MAP[ChainId.LIGHTLINK].multicallAddress,
+  [ChainId.GOAT]: CHAIN_TO_ADDRESSES_MAP[ChainId.GOAT].multicallAddress,
+  [ChainId.REDBELLY]: CHAIN_TO_ADDRESSES_MAP[ChainId.REDBELLY].multicallAddress,
+  [ChainId.SAGA]: CHAIN_TO_ADDRESSES_MAP[ChainId.SAGA].multicallAddress,
+  [ChainId.TELOS]: CHAIN_TO_ADDRESSES_MAP[ChainId.TELOS].multicallAddress,
+  [ChainId.HEMI]: CHAIN_TO_ADDRESSES_MAP[ChainId.HEMI].multicallAddress,
+  [ChainId.NIBIRU]: CHAIN_TO_ADDRESSES_MAP[ChainId.NIBIRU].multicallAddress,
+  [ChainId.MATCHAIN]: CHAIN_TO_ADDRESSES_MAP[ChainId.MATCHAIN].multicallAddress,
+  [ChainId.PLASMA]: CHAIN_TO_ADDRESSES_MAP[ChainId.PLASMA].multicallAddress,
 };
 
 export const SWAP_ROUTER_02_ADDRESSES = (chainId: number): string => {
@@ -272,13 +417,10 @@ export const WETH9: {
     | ChainId.POLYGON_MUMBAI
     | ChainId.CELO
     | ChainId.CELO_ALFAJORES
-    | ChainId.GNOSIS
     | ChainId.MOONBEAM
     | ChainId.BNB
     | ChainId.AVALANCHE
     | ChainId.MONAD_TESTNET
-    // TODO: remove ROOTSTOCK once we support both at the routing level
-    | ChainId.ROOTSTOCK
   >]: Token;
 } = {
   [ChainId.MAINNET]: WETH9_HELPER[ChainId.MAINNET]!,
@@ -325,6 +467,38 @@ export const WETH9: {
   [ChainId.BASE_SEPOLIA]: WETH9_HELPER[ChainId.BASE_SEPOLIA]!,
   [ChainId.UNICHAIN]: WETH9_HELPER[ChainId.UNICHAIN]!,
   [ChainId.SONEIUM]: WETH9_HELPER[ChainId.SONEIUM]!,
+  [ChainId.TAIKO]: WETH9_HELPER[ChainId.TAIKO]!,
+  [ChainId.SEI]: WETH9_HELPER[ChainId.SEI]!,
+  [ChainId.ZKLINK]: WETH9_HELPER[ChainId.ZKLINK]!,
+  [ChainId.LISK]: WETH9_HELPER[ChainId.LISK]!,
+  [ChainId.MANTLE]: WETH9_HELPER[ChainId.MANTLE]!,
+  [ChainId.BOBA]: WETH9_HELPER[ChainId.BOBA]!,
+  [ChainId.BOB]: WETH9_HELPER[ChainId.BOB]!,
+  [ChainId.SCROLL]: WETH9_HELPER[ChainId.SCROLL]!,
+  [ChainId.MANTA]: WETH9_HELPER[ChainId.MANTA]!,
+  [ChainId.LINEA]: WETH9_HELPER[ChainId.LINEA]!,
+  [ChainId.POLYGON_ZKEVM]: WETH9_HELPER[ChainId.POLYGON_ZKEVM]!,
+  [ChainId.XLAYER]: WETH9_HELPER[ChainId.XLAYER]!,
+  [ChainId.GNOSIS]: WETH9_HELPER[ChainId.GNOSIS]!,
+  [ChainId.CORN]: WETH9_HELPER[ChainId.CORN]!,
+  [ChainId.ETHERLINK]: WETH9_HELPER[ChainId.ETHERLINK]!,
+  [ChainId.METAL]: WETH9_HELPER[ChainId.METAL]!,
+  [ChainId.SONIC]: WETH9_HELPER[ChainId.SONIC]!,
+  [ChainId.XDC]: WETH9_HELPER[ChainId.XDC]!,
+  [ChainId.WORLDCHAIN]: WETH9_HELPER[ChainId.WORLDCHAIN]!,
+  [ChainId.LIGHTLINK]: WETH9_HELPER[ChainId.LIGHTLINK]!,
+  [ChainId.GOAT]: WETH9_HELPER[ChainId.GOAT]!,
+  [ChainId.REDBELLY]: WETH9_HELPER[ChainId.REDBELLY]!,
+  [ChainId.SAGA]: WETH9_HELPER[ChainId.SAGA]!,
+  [ChainId.TELOS]: WETH9_HELPER[ChainId.TELOS]!,
+  [ChainId.HEMI]: WETH9_HELPER[ChainId.HEMI]!,
+  [ChainId.LENS]: WETH9_HELPER[ChainId.LENS]!,
+  [ChainId.NIBIRU]: WETH9_HELPER[ChainId.NIBIRU]!,
+  [ChainId.MATCHAIN]: WETH9_HELPER[ChainId.MATCHAIN]!,
+  [ChainId.PLASMA]: WETH9_HELPER[ChainId.PLASMA]!,
+  [ChainId.ROOTSTOCK]: WETH9_HELPER[ChainId.ROOTSTOCK]!,
+  [ChainId.SEI_TESTNET]: WETH9_HELPER[ChainId.SEI_TESTNET]!,
+  [ChainId.FILECOIN]: WETH9_HELPER[ChainId.FILECOIN]!,
 };
 
 export const BEACON_CHAIN_DEPOSIT_ADDRESS =

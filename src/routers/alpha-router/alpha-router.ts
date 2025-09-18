@@ -2,9 +2,9 @@ import { BigNumber } from '@ethersproject/bignumber';
 import { BaseProvider, JsonRpcProvider } from '@ethersproject/providers';
 import DEFAULT_TOKEN_LIST from '@uniswap/default-token-list';
 import {
+  TPool as MixedPool,
   Protocol,
   SwapRouter,
-  TPool as MixedPool,
   Trade,
   ZERO,
 } from '@uniswap/router-sdk';
@@ -20,10 +20,10 @@ import { UniversalRouterVersion } from '@uniswap/universal-router-sdk';
 import { Pair as V2Pool } from '@uniswap/v2-sdk';
 import {
   Pool,
-  Pool as V3Pool,
   Position,
   SqrtPriceMath,
   TickMath,
+  Pool as V3Pool,
 } from '@uniswap/v3-sdk';
 import { Pool as V4Pool } from '@uniswap/v4-sdk';
 import retry from 'async-retry';
@@ -719,6 +719,46 @@ export class AlphaRouter
             }
           );
           break;
+        case ChainId.UNICHAIN:
+        case ChainId.ROOTSTOCK:
+          this.onChainQuoteProvider = new OnChainQuoteProvider(
+            chainId,
+            provider,
+            this.multicall2Provider,
+            {
+              retries: 2,
+              minTimeout: 100,
+              maxTimeout: 1000,
+            },
+            (_) => {
+              return {
+                multicallChunk: 70,
+                gasLimitPerCall: 705_000,
+                quoteMinSuccessRate: 0,
+              };
+            }
+          );
+          break;
+        case ChainId.ETHERLINK:
+        case ChainId.LENS:
+          this.onChainQuoteProvider = new OnChainQuoteProvider(
+            chainId,
+            provider,
+            this.multicall2Provider,
+            {
+              retries: 2,
+              minTimeout: 100,
+              maxTimeout: 1000,
+            },
+            (_) => {
+              return {
+                multicallChunk: 10,
+                gasLimitPerCall: 250_000,
+                quoteMinSuccessRate: 0,
+              };
+            }
+          );
+          break;
         case ChainId.BASE:
         case ChainId.BLAST:
         case ChainId.ZORA:
@@ -726,7 +766,6 @@ export class AlphaRouter
         case ChainId.UNICHAIN_SEPOLIA:
         case ChainId.MONAD_TESTNET:
         case ChainId.BASE_SEPOLIA:
-        case ChainId.UNICHAIN:
         case ChainId.BASE_GOERLI:
         case ChainId.SONEIUM:
           this.onChainQuoteProvider = new OnChainQuoteProvider(
@@ -769,6 +808,100 @@ export class AlphaRouter
             }
           );
           break;
+        case ChainId.FILECOIN:
+          this.onChainQuoteProvider = new OnChainQuoteProvider(
+            chainId,
+            provider,
+            this.multicall2Provider,
+            {
+              retries: 2,
+              minTimeout: 100,
+              maxTimeout: 1000,
+            },
+            (_) => {
+              return {
+                multicallChunk: 10,
+                gasLimitPerCall: 1_000_000_000_000,
+                quoteMinSuccessRate: 0,
+              };
+            },
+            (_) => {
+              return {
+                gasLimitOverride: 1_000_000_000_000,
+                multicallChunk: 6,
+              };
+            }
+          );
+          break;
+        case ChainId.LISK:
+          this.onChainQuoteProvider = new OnChainQuoteProvider(
+            chainId,
+            provider,
+            this.multicall2Provider,
+            {
+              retries: 2,
+              minTimeout: 100,
+              maxTimeout: 1000,
+            },
+            (_) => {
+              return {
+                multicallChunk: 10,
+                gasLimitPerCall: 1_000_000,
+                quoteMinSuccessRate: 0,
+              };
+            }
+          );
+          break;
+        case ChainId.SCROLL:
+          this.onChainQuoteProvider = new OnChainQuoteProvider(
+            chainId,
+            provider,
+            this.multicall2Provider,
+            {
+              retries: 4,
+              minTimeout: 100,
+              maxTimeout: 2000,
+            },
+            (_) => {
+              return {
+                multicallChunk: 10,
+                gasLimitPerCall: 750_000,
+                quoteMinSuccessRate: 0.1,
+              };
+            },
+            (_) => {
+              return {
+                gasLimitOverride: 1_000_000,
+                multicallChunk: 8,
+              };
+            }
+          );
+          break;
+        case ChainId.LINEA:
+          this.onChainQuoteProvider = new OnChainQuoteProvider(
+            chainId,
+            provider,
+            this.multicall2Provider,
+            {
+              retries: 4,
+              minTimeout: 100,
+              maxTimeout: 2000,
+            },
+            (_) => {
+              return {
+                multicallChunk: 10,
+                gasLimitPerCall: 705_000,
+                quoteMinSuccessRate: 0,
+              };
+            },
+            (_) => {
+              return {
+                gasLimitOverride: 2_000_000,
+                multicallChunk: 5,
+              };
+            }
+          );
+          break;
         case ChainId.ZKSYNC:
           this.onChainQuoteProvider = new OnChainQuoteProvider(
             chainId,
@@ -806,6 +939,57 @@ export class AlphaRouter
                   attemptsBeforeRollback: 1,
                   rollbackBlockOffset: -10,
                 },
+              };
+            }
+          );
+          break;
+        case ChainId.SEI:
+          this.onChainQuoteProvider = new OnChainQuoteProvider(
+            chainId,
+            provider,
+            this.multicall2Provider,
+            {
+              retries: 2,
+              minTimeout: 100,
+              maxTimeout: 1000,
+            },
+            (_) => {
+              return {
+                multicallChunk: 10,
+                gasLimitPerCall: 705_000,
+                quoteMinSuccessRate: 0,
+              };
+            },
+            (_) => {
+              return {
+                gasLimitOverride: 2_000_000,
+                multicallChunk: 5,
+              };
+            }
+          );
+          break;
+        case ChainId.SAGA:
+        case ChainId.NIBIRU:
+          this.onChainQuoteProvider = new OnChainQuoteProvider(
+            chainId,
+            provider,
+            this.multicall2Provider,
+            {
+              retries: 2,
+              minTimeout: 100,
+              maxTimeout: 1000,
+            },
+            (_) => {
+              return {
+                multicallChunk: 10,
+                gasLimitPerCall: 10_000_000,
+                quoteMinSuccessRate: 0,
+              };
+            },
+            (_) => {
+              return {
+                gasLimitOverride: 10_000_000,
+                multicallChunk: 5,
               };
             }
           );

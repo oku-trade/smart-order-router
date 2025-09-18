@@ -6,6 +6,7 @@ import retry, { Options as RetryOptions } from 'async-retry';
 import { IUniswapV3PoolState__factory } from '../../types/v3/factories/IUniswapV3PoolState__factory';
 import { V3_CORE_FACTORY_ADDRESSES } from '../../util/addresses';
 import { log } from '../../util/log';
+import { computeZkPoolAddress } from '../../util/zksyncComputePoolAddress';
 import { IMulticallProvider, Result } from '../multicall-provider';
 import { ILiquidity, ISlot0, PoolProvider } from '../pool-provider';
 import { ProviderConfig } from '../provider';
@@ -173,13 +174,18 @@ export class V3PoolProvider
       };
     }
 
-    const poolAddress = computePoolAddress({
+    const computeAddress =
+      this.chainId === ChainId.ZKSYNC ||
+      this.chainId === ChainId.ZKLINK ||
+      this.chainId === ChainId.LENS
+        ? computeZkPoolAddress
+        : computePoolAddress;
+
+    const poolAddress = computeAddress({
       factoryAddress: V3_CORE_FACTORY_ADDRESSES[this.chainId]!,
       tokenA: token0,
       tokenB: token1,
       fee: feeAmount,
-      initCodeHashManualOverride: undefined,
-      chainId: this.chainId,
     });
 
     this.POOL_ADDRESS_CACHE[cacheKey] = poolAddress;

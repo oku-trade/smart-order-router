@@ -307,4 +307,295 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     0,
     0
   ),
+  // TODO: ADD FAKE POOLS FOR THE FOLLOWING CHAINS
+  [ChainId.LENS]: new V4Pool(
+    nativeOnChain(ChainId.LENS),
+    nativeOnChain(ChainId.LENS).wrapped,
+    0,
+    FAKE_TICK_SPACING,
+    ADDRESS_ZERO,
+    79228162514264337593543950336,
+    0,
+    0
+  ),
+  [ChainId.XLAYER]: new V4Pool(
+    nativeOnChain(ChainId.XLAYER),
+    nativeOnChain(ChainId.XLAYER).wrapped,
+    0,
+    FAKE_TICK_SPACING,
+    ADDRESS_ZERO,
+    79228162514264337593543950336,
+    0,
+    0
+  ),
+  [ChainId.BOB]: new V4Pool(
+    nativeOnChain(ChainId.BOB),
+    nativeOnChain(ChainId.BOB).wrapped,
+    0,
+    FAKE_TICK_SPACING,
+    ADDRESS_ZERO,
+    79228162514264337593543950336,
+    0,
+    0
+  ),
+  [ChainId.LISK]: new V4Pool(
+    nativeOnChain(ChainId.LISK),
+    nativeOnChain(ChainId.LISK).wrapped,
+    0,
+    FAKE_TICK_SPACING,
+    ADDRESS_ZERO,
+    79228162514264337593543950336,
+    0,
+    0
+  ),
+  [ChainId.ZKLINK]: new V4Pool(
+    nativeOnChain(ChainId.ZKLINK),
+    nativeOnChain(ChainId.ZKLINK).wrapped,
+    0,
+    FAKE_TICK_SPACING,
+    ADDRESS_ZERO,
+    79228162514264337593543950336,
+    0,
+    0
+  ),
+  [ChainId.TAIKO]: new V4Pool(
+    nativeOnChain(ChainId.TAIKO),
+    nativeOnChain(ChainId.TAIKO).wrapped,
+    0,
+    FAKE_TICK_SPACING,
+    ADDRESS_ZERO,
+    79228162514264337593543950336,
+    0,
+    0
+  ),
+  [ChainId.SEI]: new V4Pool(
+    nativeOnChain(ChainId.SEI),
+    nativeOnChain(ChainId.SEI).wrapped,
+    0,
+    FAKE_TICK_SPACING,
+    ADDRESS_ZERO,
+    79228162514264337593543950336,
+    0,
+    0
+  ),
+  [ChainId.MANTLE]: new V4Pool(
+    nativeOnChain(ChainId.MANTLE),
+    nativeOnChain(ChainId.MANTLE).wrapped,
+    0,
+    FAKE_TICK_SPACING,
+    ADDRESS_ZERO,
+    79228162514264337593543950336,
+    0,
+    0
+  ),
+  [ChainId.SEI_TESTNET]: new V4Pool(
+    nativeOnChain(ChainId.SEI_TESTNET),
+    nativeOnChain(ChainId.SEI_TESTNET).wrapped,
+    0,
+    FAKE_TICK_SPACING,
+    ADDRESS_ZERO,
+    79228162514264337593543950336,
+    0,
+    0
+  ),
+  [ChainId.LINEA]: new V4Pool(
+    nativeOnChain(ChainId.LINEA),
+    nativeOnChain(ChainId.LINEA).wrapped,
+    0,
+    FAKE_TICK_SPACING,
+    ADDRESS_ZERO,
+    79228162514264337593543950336,
+    0,
+    0
+  ),
+  [ChainId.MANTA]: new V4Pool(
+    nativeOnChain(ChainId.MANTA),
+    nativeOnChain(ChainId.MANTA).wrapped,
+    0,
+    FAKE_TICK_SPACING,
+    ADDRESS_ZERO,
+    79228162514264337593543950336,
+    0,
+    0
+  ),
+  [ChainId.POLYGON_ZKEVM]: new V4Pool(
+    nativeOnChain(ChainId.POLYGON_ZKEVM),
+    nativeOnChain(ChainId.POLYGON_ZKEVM).wrapped,
+    0,
+    FAKE_TICK_SPACING,
+    ADDRESS_ZERO,
+    79228162514264337593543950336,
+    0,
+    0
+  ),
+  [ChainId.FILECOIN]: new V4Pool(
+    nativeOnChain(ChainId.FILECOIN),
+    nativeOnChain(ChainId.FILECOIN).wrapped,
+    0,
+    FAKE_TICK_SPACING,
+    ADDRESS_ZERO,
+    79228162514264337593543950336,
+    0,
+    0
+  ),
+  [ChainId.SCROLL]: new V4Pool(
+    nativeOnChain(ChainId.SCROLL),
+    nativeOnChain(ChainId.SCROLL).wrapped,
+    0,
+    FAKE_TICK_SPACING,
+    ADDRESS_ZERO,
+    79228162514264337593543950336,
+    0,
+    0
+  ),
+  [ChainId.BOBA]: new V4Pool(
+    nativeOnChain(ChainId.BOBA),
+    nativeOnChain(ChainId.BOBA).wrapped,
+    0,
+    FAKE_TICK_SPACING,
+    ADDRESS_ZERO,
+    79228162514264337593543950336,
+    0,
+    0
+  ),
+  [ChainId.CORN]: new V4Pool(
+    nativeOnChain(ChainId.CORN),
+    nativeOnChain(ChainId.CORN).wrapped,
+    0,
+    FAKE_TICK_SPACING,
+    ADDRESS_ZERO,
+    79228162514264337593543950336,
+    0,
+    0
+  ),
+  [ChainId.METAL]: new V4Pool(
+    nativeOnChain(ChainId.METAL),
+    nativeOnChain(ChainId.METAL).wrapped,
+    0,
+    FAKE_TICK_SPACING,
+    ADDRESS_ZERO,
+    79228162514264337593543950336,
+    0,
+    0
+  ),
+  [ChainId.SONIC]: new V4Pool(
+    nativeOnChain(ChainId.SONIC),
+    nativeOnChain(ChainId.SONIC).wrapped,
+    0,
+    FAKE_TICK_SPACING,
+    ADDRESS_ZERO,
+    79228162514264337593543950336,
+    0,
+    0
+  ),
+  [ChainId.XDC]: new V4Pool(
+    nativeOnChain(ChainId.XDC),
+    nativeOnChain(ChainId.XDC).wrapped,
+    0,
+    FAKE_TICK_SPACING,
+    ADDRESS_ZERO,
+    79228162514264337593543950336,
+    0,
+    0
+  ),
+  [ChainId.LIGHTLINK]: new V4Pool(
+    nativeOnChain(ChainId.LIGHTLINK),
+    nativeOnChain(ChainId.LIGHTLINK).wrapped,
+    0,
+    FAKE_TICK_SPACING,
+    ADDRESS_ZERO,
+    79228162514264337593543950336,
+    0,
+    0
+  ),
+  [ChainId.TELOS]: new V4Pool(
+    nativeOnChain(ChainId.TELOS),
+    nativeOnChain(ChainId.TELOS).wrapped,
+    0,
+    FAKE_TICK_SPACING,
+    ADDRESS_ZERO,
+    79228162514264337593543950336,
+    0,
+    0
+  ),
+  [ChainId.HEMI]: new V4Pool(
+    nativeOnChain(ChainId.HEMI),
+    nativeOnChain(ChainId.HEMI).wrapped,
+    0,
+    FAKE_TICK_SPACING,
+    ADDRESS_ZERO,
+    79228162514264337593543950336,
+    0,
+    0
+  ),
+  [ChainId.GOAT]: new V4Pool(
+    nativeOnChain(ChainId.GOAT),
+    nativeOnChain(ChainId.GOAT).wrapped,
+    0,
+    FAKE_TICK_SPACING,
+    ADDRESS_ZERO,
+    79228162514264337593543950336,
+    0,
+    0
+  ),
+  [ChainId.REDBELLY]: new V4Pool(
+    nativeOnChain(ChainId.REDBELLY),
+    nativeOnChain(ChainId.REDBELLY).wrapped,
+    0,
+    FAKE_TICK_SPACING,
+    ADDRESS_ZERO,
+    79228162514264337593543950336,
+    0,
+    0
+  ),
+  [ChainId.SAGA]: new V4Pool(
+    nativeOnChain(ChainId.SAGA),
+    nativeOnChain(ChainId.SAGA).wrapped,
+    0,
+    FAKE_TICK_SPACING,
+    ADDRESS_ZERO,
+    79228162514264337593543950336,
+    0,
+    0
+  ),
+  [ChainId.NIBIRU]: new V4Pool(
+    nativeOnChain(ChainId.NIBIRU),
+    nativeOnChain(ChainId.NIBIRU).wrapped,
+    0,
+    FAKE_TICK_SPACING,
+    ADDRESS_ZERO,
+    79228162514264337593543950336,
+    0,
+    0
+  ),
+  [ChainId.ETHERLINK]: new V4Pool(
+    nativeOnChain(ChainId.ETHERLINK),
+    nativeOnChain(ChainId.ETHERLINK).wrapped,
+    0,
+    FAKE_TICK_SPACING,
+    ADDRESS_ZERO,
+    79228162514264337593543950336,
+    0,
+    0
+  ),
+  [ChainId.MATCHAIN]: new V4Pool(
+    nativeOnChain(ChainId.MATCHAIN),
+    nativeOnChain(ChainId.MATCHAIN).wrapped,
+    0,
+    FAKE_TICK_SPACING,
+    ADDRESS_ZERO,
+    79228162514264337593543950336,
+    0,
+    0
+  ),
+  [ChainId.PLASMA]: new V4Pool(
+    nativeOnChain(ChainId.PLASMA),
+    nativeOnChain(ChainId.PLASMA).wrapped,
+    0,
+    FAKE_TICK_SPACING,
+    ADDRESS_ZERO,
+    79228162514264337593543950336,
+    0,
+    0
+  ),
 };

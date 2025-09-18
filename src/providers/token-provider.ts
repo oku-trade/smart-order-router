@@ -797,12 +797,859 @@ export const DAI_UNICHAIN = new Token(
   'Dai Stablecoin'
 );
 
+export const USDT_UNICHAIN = new Token(
+  ChainId.UNICHAIN,
+  '0x9151434b16b9763660705744891fa906f660ecc5',
+  6,
+  'USDT',
+  'Tether USD'
+);
+
 export const USDC_SONEIUM = new Token(
   ChainId.SONEIUM,
   '0xbA9986D2381edf1DA03B0B9c1f8b00dc4AacC369',
   6,
   'USDCE',
   'Soneium Bridged USDC Soneium'
+);
+
+// Gnosis Tokens
+export const USDC_GNOSIS = new Token(
+  ChainId.GNOSIS,
+  '0xddafbb505ad214d7b80b1f830fccc89b60fb7a83',
+  6,
+  'USDC',
+  'USDC from Ethereum on Gnosis'
+);
+
+export const USDT_GNOSIS = new Token(
+  ChainId.GNOSIS,
+  '0x4ecaba5870353805a9f068101a40e0f32ed605c6',
+  6,
+  'USDT',
+  'Tether USD on xDai'
+);
+
+export const USDC_MC_MOONBEAM = new Token(
+  ChainId.MOONBEAM,
+  '0x818ec0a7fe18ff94269904fced6ae3dae6d6dc0b',
+  6,
+  'USDC',
+  'USD Coin bridged using Multichain'
+);
+
+export const USDT_ZKSYNC = new Token(
+  ChainId.ZKSYNC,
+  '0x493257fD37EDB34451f62EDf8D2a0C418852bA4C',
+  6,
+  'USDT',
+  'Tether USD'
+);
+
+export const WBTC_ZKSYNC = new Token(
+  ChainId.ZKSYNC,
+  '0xBBeB516fb02a01611cBBE0453Fe3c580D7281011',
+  8,
+  'WBTC',
+  'Wrapped BTC'
+);
+
+export const WETH_ZKSYNC = new Token(
+  ChainId.ZKSYNC,
+  '0x5AEa5775959fBC2557Cc8789bC1bf90A239D9a91',
+  18,
+  'WETH',
+  'Wrapped ETH'
+);
+
+// lens
+export const USDC_LENS = new Token(
+  ChainId.LENS,
+  '0x88F08E304EC4f90D644Cec3Fb69b8aD414acf884',
+  6,
+  'USDC',
+  'USD Coin'
+);
+
+export const WETH_LENS = new Token(
+  ChainId.LENS,
+  '0xE5ecd226b3032910CEaa43ba92EE8232f8237553',
+  18,
+  'WETH',
+  'Wrapped Ether'
+);
+
+// xlayer
+export const USDC_XLAYER = new Token(
+  ChainId.XLAYER,
+  '0x74b7f16337b8972027f6196a17a631ac6de26d22',
+  6,
+  'USDC',
+  'USD Coin'
+);
+
+export const USDT_XLAYER = new Token(
+  ChainId.XLAYER,
+  '0x1e4a5963abfd975d8c9021ce480b42188849d41d',
+  6,
+  'USDT',
+  'Tether USD'
+);
+
+export const WBTC_XLAYER = new Token(
+  ChainId.XLAYER,
+  '0xea034fb02eb1808c2cc3adbc15f447b93cbe08e1',
+  8,
+  'WBTC',
+  'Wrapped BTC'
+);
+
+export const WETH_XLAYER = new Token(
+  ChainId.XLAYER,
+  '0xe538905cf8410324e03a5a23c1c177a474d59b2b',
+  18,
+  'WOKB',
+  'Wrapped OKB'
+);
+
+// bob
+export const USDC_BOB = new Token(
+  ChainId.BOB,
+  '0xe75D0fB2C24A55cA1e3F96781a2bCC7bdba058F0',
+  6,
+  'USDC.e',
+  'Bridged USDC (BOB)'
+);
+export const USDT_BOB = new Token(
+  ChainId.BOB,
+  '0x05D032ac25d322df992303dCa074EE7392C117b9',
+  6,
+  'USDT',
+  'Tether USD'
+);
+export const WETH_BOB = new Token(
+  ChainId.BOB,
+  '0x4200000000000000000000000000000000000006',
+  18,
+  'WETH',
+  'Wrapped Ether'
+);
+export const WBTC_BOB = new Token(
+  ChainId.BOB,
+  '0x03c7054bcb39f7b2e5b2c7acb37583e32d70cfa3',
+  8,
+  'WBTC',
+  'Wrapped BTC'
+);
+export const SOLVBTC_BOB = new Token(
+  ChainId.BOB,
+  '0x541fd749419ca806a8bc7da8ac23d346f2df8b77',
+  8,
+  'SolvBTC',
+  'Solv Protocol SolvBTC'
+);
+
+// lisk
+export const USDT_LISK = new Token(
+  ChainId.LISK,
+  '0x05D032ac25d322df992303dCa074EE7392C117b9',
+  6,
+  'USDT',
+  'Tether USD'
+);
+
+export const WETH_LISK = new Token(
+  ChainId.LISK,
+  '0x4200000000000000000000000000000000000006',
+  18,
+  'WETH',
+  'Wrapped ETH'
+);
+
+// zklink
+export const USDC_ZKLINK = new Token(
+  ChainId.ZKLINK,
+  '0x1a1A3b2ff016332e866787B311fcB63928464509',
+  6,
+  'USDC',
+  'USD Coin'
+);
+
+export const USDT_ZKLINK = new Token(
+  ChainId.ZKLINK,
+  '0x2F8A25ac62179B31D62D7F80884AE57464699059',
+  6,
+  'USDT',
+  'Tether USD'
+);
+
+export const WBTC_ZKLINK = new Token(
+  ChainId.ZKLINK,
+  '0xDa4AaEd3A53962c83B35697Cd138cc6df43aF71f',
+  8,
+  'WBTC',
+  'Wrapped BTC'
+);
+
+export const WETH_ZKLINK = new Token(
+  ChainId.ZKLINK,
+  '0x8280a4e7D5B3B658ec4580d3Bc30f5e50454F169',
+  18,
+  'WETH',
+  'Wrapped ETH'
+);
+
+// taiko
+export const USDC_TAIKO = new Token(
+  ChainId.TAIKO,
+  '0x07d83526730c7438048D55A4fc0b850e2aaB6f0b',
+  6,
+  'USDC',
+  'USD Coin'
+);
+
+export const WETH_TAIKO = new Token(
+  ChainId.TAIKO,
+  '0xA51894664A773981C6C112C43ce576f315d5b1B6',
+  18,
+  'WETH',
+  'Wrapped ETH'
+);
+
+// sei
+export const USDC_SEI = new Token(
+  ChainId.SEI,
+  '0x3894085Ef7Ff0f0aeDf52E2A2704928d1Ec074F1',
+  6,
+  'USDC',
+  'USD Coin'
+);
+
+export const WSEI_SEI = new Token(
+  ChainId.SEI,
+  '0xE30feDd158A2e3b13e9badaeABaFc5516e95e8C7',
+  18,
+  'WSEI',
+  'Wrapped SEI'
+);
+
+// mantle
+export const USDC_MANTLE = new Token(
+  ChainId.MANTLE,
+  '0x09Bc4E0D864854c6aFB6eB9A9cdF58aC190D0dF9',
+  6,
+  'USDC',
+  'USD Coin'
+);
+
+export const USDT_MANTLE = new Token(
+  ChainId.MANTLE,
+  '0x201EBa5CC46D216Ce6DC03F6a759e8E766e956aE',
+  6,
+  'USDT',
+  'Tether USD'
+);
+
+export const WETH_MANTLE = new Token(
+  ChainId.MANTLE,
+  '0x78c1b0C915c4FAA5FffA6CAbf0219DA63d7f4cb8',
+  18,
+  'WMNT',
+  'Wrapped Mantle'
+);
+
+// sei testnet
+export const USDC_SEI_TESTNET = new Token(
+  ChainId.SEI_TESTNET,
+  '0xA09F3386E05CEAC547b02f223bF500a728BE7d77',
+  6,
+  'USDC',
+  'USD Coin'
+);
+
+export const WSEI_SEI_TESTNET = new Token(
+  ChainId.SEI_TESTNET,
+  '0x57eE725BEeB991c70c53f9642f36755EC6eb2139',
+  18,
+  'WSEI',
+  'Wrapped SEI'
+);
+
+// linea
+export const USDC_LINEA = new Token(
+  ChainId.LINEA,
+  '0x176211869ca2b568f2a7d4ee941e073a821ee1ff',
+  6,
+  'USDC',
+  'USD Coin'
+);
+
+export const DAI_LINEA = new Token(
+  ChainId.LINEA,
+  '0x4af15ec2a0bd43db75dd04e62faa3b8ef36b00d5',
+  18,
+  'DAI',
+  'Dai Stablecoin'
+);
+
+export const WBTC_LINEA = new Token(
+  ChainId.LINEA,
+  '0x3aab2285ddcddad8edf438c1bab47e1a9d05a9b4',
+  8,
+  'WBTC',
+  'Wrapped BTC'
+);
+
+export const WETH_LINEA = new Token(
+  ChainId.LINEA,
+  '0xe5d7c2a44ffddf6b295a15c148167daaaf5cf34f',
+  18,
+  'WETH',
+  'Wrapped ETH'
+);
+
+export const WETH_BLAST = new Token(
+  ChainId.BLAST,
+  '0x4300000000000000000000000000000000000004',
+  18,
+  'WETH',
+  'Wrapped ETH'
+);
+
+// manta
+export const USDC_MANTA = new Token(
+  ChainId.MANTA,
+  '0xb73603C5d87fA094B7314C74ACE2e64D165016fb',
+  6,
+  'USDC',
+  'USD Coin'
+);
+
+export const USDT_MANTA = new Token(
+  ChainId.MANTA,
+  '0xf417F5A458eC102B90352F697D6e2Ac3A3d2851f',
+  6,
+  'USDT',
+  'Tether USD'
+);
+
+export const WBTC_MANTA = new Token(
+  ChainId.MANTA,
+  '0x305E88d809c9DC03179554BFbf85Ac05Ce8F18d6',
+  8,
+  'WBTC',
+  'Wrapped BTC'
+);
+
+export const MANTA_MANTA = new Token(
+  ChainId.MANTA,
+  '0x95CeF13441Be50d20cA4558CC0a27B601aC544E5',
+  18,
+  'MANTA',
+  'Manta'
+);
+
+// polylgon zkevm
+export const USDC_POLYGON_ZKEVM = new Token(
+  ChainId.POLYGON_ZKEVM,
+  '0x37eaa0ef3549a5bb7d431be78a3d99bd360d19e5',
+  6,
+  'USDC',
+  'USD Coin'
+);
+
+export const DAI_POLYGON_ZKEVM = new Token(
+  ChainId.POLYGON_ZKEVM,
+  '0x744C5860ba161b5316F7E80D9Ec415e2727e5bD5',
+  18,
+  'DAI',
+  'Dai Stablecoin'
+);
+
+export const USDT_POLYGON_ZKEVM = new Token(
+  ChainId.POLYGON_ZKEVM,
+  '0x1E4a5963aBFD975d8c9021ce480b42188849D41d',
+  6,
+  'USDT',
+  'Tether USD'
+);
+
+export const WBTC_POLYGON_ZKEVM = new Token(
+  ChainId.POLYGON_ZKEVM,
+  '0xEA034fb02eB1808C2cc3adbC15f447B93CbE08e1',
+  8,
+  'WBTC',
+  'Wrapped BTC'
+);
+
+export const WETH_POLYGON_ZKEVM = new Token(
+  ChainId.POLYGON_ZKEVM,
+  '0x4F9A0e7FD2Bf6067db6994CF12E4495Df938E6e9',
+  18,
+  'WETH',
+  'Wrapped ETH'
+);
+
+export const MATIC_POLYGON_ZKEVM = new Token(
+  ChainId.POLYGON_ZKEVM,
+  '0xa2036f0538221a77A3937F1379699f44945018d0',
+  18,
+  'MATIC',
+  'Matic Token'
+);
+
+// filecoin
+export const USDC_FILECOIN = new Token(
+  ChainId.FILECOIN,
+  '0x2421db204968a367cc2c866cd057fa754cb84edf',
+  6,
+  'celerUSDC',
+  'Celer USDC'
+);
+
+export const USDT_FILECOIN = new Token(
+  ChainId.FILECOIN,
+  '0x7f5373AE26c3E8FfC4c77b7255DF7eC1A9aF52a6',
+  6,
+  'axlUSDT',
+  'Axelar Tether USD'
+);
+
+export const WBTC_FILECOIN = new Token(
+  ChainId.FILECOIN,
+  '0x1a35EE4640b0A3B87705B0A4B45D227Ba60Ca2ad',
+  8,
+  'axlWBTC',
+  'Axelar Wrapped BTC'
+);
+
+export const WETH_FILECOIN = new Token(
+  ChainId.FILECOIN,
+  '0xb829b68f57CC546dA7E5806A929e53bE32a4625D',
+  18,
+  'axlWETH',
+  'Axelar Wrapped ETH'
+);
+
+export const WFIL_FILECOIN = new Token(
+  ChainId.FILECOIN,
+  '0x60E1773636CF5E4A227d9AC24F20fEca034ee25A',
+  18,
+  'WFIL',
+  'Wrapped FIL'
+);
+
+//rootstock
+export const RUSDT_ROOTSTOCK = new Token(
+  ChainId.ROOTSTOCK,
+  '0xef213441a85df4d7acbdae0cf78004e1e486bb96',
+  18,
+  'RUSDT',
+  'Rootstock USDT'
+);
+
+export const USDT_ROOTSTOCK = new Token(
+  ChainId.ROOTSTOCK,
+  '0xaf368c91793cb22739386dfcbbb2f1a9e4bcbebf',
+  6,
+  'USDT',
+  'Tether USD'
+);
+
+export const RIF_ROOTSTOCK = new Token(
+  ChainId.ROOTSTOCK,
+  '0x2acc95758f8b5f583470ba265eb685a8f45fc9d5',
+  18,
+  'RIF',
+  'RIF'
+);
+
+export const WRBTC_ROOTSTOCK = new Token(
+  ChainId.ROOTSTOCK,
+  '0x542fDA317318eBF1d3DEAf76E0b632741A7e677d',
+  18,
+  'WRBTC',
+  'Wrapped BTC'
+);
+
+//scroll
+export const USDT_SCROLL = new Token(
+  ChainId.SCROLL,
+  '0xf55bec9cafdbe8730f096aa55dad6d22d44099df',
+  6,
+  'USDT',
+  'Tether USD'
+);
+
+export const USDC_SCROLL = new Token(
+  ChainId.SCROLL,
+  '0x06efdbff2a14a7c8e15944d1f4a48f9f95f663a4',
+  6,
+  'USDC',
+  'USD Coin'
+);
+
+export const WBTC_SCROLL = new Token(
+  ChainId.SCROLL,
+  '0x3c1bca5a656e69edcd0d4e36bebb3fcdaca60cf1',
+  8,
+  'WBTC',
+  'Wrapped BTC'
+);
+
+export const DAI_SCROLL = new Token(
+  ChainId.SCROLL,
+  '0xca77eb3fefe3725dc33bccb54edefc3d9f764f97',
+  18,
+  'DAI',
+  'Dai Stablecoin'
+);
+
+export const LUSD_SCROLL = new Token(
+  ChainId.SCROLL,
+  '0xedeabc3a1e7d21fe835ffa6f83a710c70bb1a051',
+  18,
+  'LUSD',
+  'LUSD Stablecoin'
+);
+
+// BOBA Tokens
+export const BOBA = new Token(
+  ChainId.BOBA,
+  '0xa18bf3994c0cc6e3b63ac420308e5383f53120d7',
+  18,
+  'BOBA',
+  'Boba native asset'
+);
+export const USDC_BOBA = new Token(
+  ChainId.BOBA,
+  '0x66a2a913e447d6b4bf33efbec43aaef87890fbbc',
+  6,
+  'USDC',
+  'USD Coin'
+);
+
+// Corn Tokens
+export const USDC_CORN = new Token(
+  ChainId.CORN,
+  '0xDF0B24095e15044538866576754F3C964e902Ee6',
+  6,
+  'USDC',
+  'USD Coin'
+);
+
+// Etherlink Tokens
+export const USDC_ETHERLINK = new Token(
+  ChainId.ETHERLINK,
+  '0x796Ea11Fa2dD751eD01b53C372fFDB4AAa8f00F9',
+  6,
+  'USDC',
+  'USD Coin'
+);
+
+export const USDT_ETHERLINK = new Token(
+  ChainId.ETHERLINK,
+  '0x2C03058C8AFC06713be23e58D2febC8337dbfE6A',
+  6,
+  'USDT',
+  'Tether USD'
+);
+
+export const WETH_ETHERLINK = new Token(
+  ChainId.ETHERLINK,
+  '0xfc24f770F94edBca6D6f885E12d4317320BcB401',
+  18,
+  'WETH',
+  'Wrapped Ether'
+);
+
+// Redbelly Tokens
+export const USDT_REDBELLY = new Token(
+  ChainId.REDBELLY,
+  '0x8C4aCd74Ff4385f3B7911432FA6787Aa14406f8B',
+  6,
+  'USDT',
+  'Tether USD'
+);
+
+export const USDC_REDBELLY = new Token(
+  ChainId.REDBELLY,
+  '0x8201c02d4AB2214471E8C3AD6475C8b0CD9F2D06',
+  6,
+  'USDC.e',
+  'USD Coin'
+);
+
+export const WETH_REDBELLY = new Token(
+  ChainId.REDBELLY,
+  '0x0Fa205c0446cD9EeDCc7538c9E24BC55AD08207f',
+  18,
+  'WETH',
+  'Wrapped Ether'
+);
+
+export const PGK_REDBELLY = new Token(
+  ChainId.REDBELLY,
+  '0xd527b16ade7adb4ad38b0a8baf17fc56050ef596',
+  18,
+  'PGK',
+  'PGK'
+);
+
+export const FJD_REDBELLY = new Token(
+  ChainId.REDBELLY,
+  '0x2c120acf414d6720b0fd7428a2feedfc06a4850c',
+  18,
+  'FJD',
+  'FJD'
+);
+
+export const RAUD_REDBELLY = new Token(
+  ChainId.REDBELLY,
+  '0x3347618acc92226b2efa6eb8c35e5cc3d56eab1f',
+  18,
+  'RAUD',
+  'RAUD'
+);
+
+// Saga Tokens
+export const USDT_SAGA = new Token(
+  ChainId.SAGA,
+  '0xC8fe3C1de344854f4429bB333AFFAeF97eF88CEa',
+  6,
+  'USDT',
+  'Usdt'
+);
+
+export const USDC_SAGA = new Token(
+  ChainId.SAGA,
+  '0xfc960C233B8E98e0Cf282e29BDE8d3f105fc24d5',
+  6,
+  'USDC',
+  'Usdc'
+);
+
+export const ETH_SAGA = new Token(
+  ChainId.SAGA,
+  '0xeb41D53F14Cb9a67907f2b8b5DBc223944158cCb',
+  18,
+  'ETH-WEI',
+  'Eth-wei'
+);
+
+// Lightlink Tokens
+export const USDT_LIGHTLINK = new Token(
+  ChainId.LIGHTLINK,
+  '0x808d7c71ad2ba3FA531b068a2417C63106BC0949',
+  6,
+  'USDT',
+  'Usdt'
+);
+
+export const USDC_LIGHTLINK = new Token(
+  ChainId.LIGHTLINK,
+  '0xbCF8C1B03bBDDA88D579330BDF236B58F8bb2cFd',
+  6,
+  'USDC',
+  'Usdc'
+);
+
+export const WBTC_LIGHTLINK = new Token(
+  ChainId.LIGHTLINK,
+  '0x46A5e3Fa4a02B9Ae43D9dF9408C86eD643144A67',
+  18,
+  'ETH-WEI',
+  'Eth-wei'
+);
+
+export const LIGHTLINK_LIGHTLINK = new Token(
+  ChainId.LIGHTLINK,
+  '0xd9d7123552fA2bEdB2348bB562576D67f6E8e96E',
+  18,
+  'LL.e',
+  'Lightlink'
+);
+
+// Goat Tokens
+export const USDT_GOAT = new Token(
+  ChainId.GOAT,
+  '0xE1AD845D93853fff44990aE0DcecD8575293681e',
+  6,
+  'USDT',
+  'Tether USD'
+);
+
+export const USDC_GOAT = new Token(
+  ChainId.GOAT,
+  '0x3022b87ac063DE95b1570F46f5e470F8B53112D8',
+  6,
+  'USDC.e',
+  'USD Coin'
+);
+
+export const WETH_GOAT = new Token(
+  ChainId.GOAT,
+  '0x3a1293Bdb83bBbDd5Ebf4fAc96605aD2021BbC0f',
+  18,
+  'WETH',
+  'Wrapped Ether'
+);
+
+// Metal Tokens
+export const USDC_METAL = new Token(
+  ChainId.METAL,
+  '0x51E85d70944256710cb141847F1a04f568C1Db0e',
+  6,
+  'USDC',
+  'USD Coin'
+);
+
+// Sonic Tokens
+export const USDC_SONIC = new Token(
+  ChainId.SONIC,
+  '0x29219dd400f2bf60e5a23d13be72b486d4038894',
+  6,
+  'USDC',
+  'USD Coin'
+);
+
+// XDC Tokens
+export const USDC_XDC = new Token(
+  ChainId.XDC,
+  '0x2A8E898b6242355c290E1f4Fc966b8788729A4D4',
+  6,
+  'USDC.e',
+  'USD Coin'
+);
+
+// Telos Tokens
+export const USDC_TELOS = new Token(
+  ChainId.TELOS,
+  '0xf1815bd50389c46847f0bda824ec8da914045d14',
+  6,
+  'USDC',
+  'USD Coin'
+);
+
+export const USDT_TELOS = new Token(
+  ChainId.TELOS,
+  '0x674843C06FF83502ddb4D37c2E09C01cdA38cbc8',
+  6,
+  'USDT',
+  'USD Tether'
+);
+
+export const WBTC_TELOS = new Token(
+  ChainId.TELOS,
+  '0x0555E30da8f98308EdB960aa94C0Db47230d2B9c',
+  8,
+  'WBTC',
+  'Wrapped BTC'
+);
+
+export const WETH_TELOS = new Token(
+  ChainId.TELOS,
+  '0xbab93b7ad7fe8692a878b95a8e689423437cc500',
+  18,
+  'WETH',
+  'Wrapped Ether'
+);
+
+export const MST_TELOS = new Token(
+  ChainId.TELOS,
+  '0x568524da340579887db50ecf602cd1ba8451b243',
+  18,
+  'MST',
+  'MST'
+);
+
+export const USDM_TELOS = new Token(
+  ChainId.TELOS,
+  '0x8f7d64ea96d729ef24a0f30b4526d47b80d877b9',
+  18,
+  'USDM',
+  'USDM Stablecoin'
+);
+
+// Hemi Tokens
+export const USDC_HEMI = new Token(
+  ChainId.HEMI,
+  '0xad11a8BEb98bbf61dbb1aa0F6d6F2ECD87b35afA',
+  6,
+  'USDC',
+  'USD Coin'
+);
+export const USDT_HEMI = new Token(
+  ChainId.HEMI,
+  '0xbB0D083fb1be0A9f6157ec484b6C79E0A4e31C2e',
+  6,
+  'USDT',
+  'Tether USD'
+);
+export const DAI_HEMI = new Token(
+  ChainId.HEMI,
+  '0x6c851F501a3F24E29A8E39a29591cddf09369080',
+  18,
+  'DAI',
+  'Dai Stablecoin'
+);
+export const WBTC_HEMI = new Token(
+  ChainId.HEMI,
+  '0x03C7054BCB39f7b2e5B2c7AcB37583e32D70Cfa3',
+  8,
+  'WBTC',
+  'Wrapped BTC'
+);
+
+//Nibiru
+export const USDC_NIBIRU = new Token(
+  ChainId.NIBIRU,
+  '0x0829F361A05D993d5CEb035cA6DF3446b060970b',
+  6,
+  'USDC',
+  'USD Coin'
+);
+
+export const STNIBI_NIBIRU = new Token(
+  ChainId.NIBIRU,
+  '0xca0a9fb5fbf692fa12fd13c0a900ec56bb3f0a7b',
+  6,
+  'stNIBI',
+  'Liquid Staked Nibiru'
+);
+
+//Matchain
+export const USDC_MATCHAIN = new Token(
+  ChainId.MATCHAIN,
+  '0x679Dc08cC3A4acFeea2f7CAFAa37561aE0b41Ce7',
+  6,
+  'USDC',
+  'USD Token'
+);
+
+export const USDT_MATCHAIN = new Token(
+  ChainId.MATCHAIN,
+  '0xB6dc6C8b71e88642cEAD3be1025565A9eE74d1C6',
+  6,
+  'USDT',
+  'Tether USD'
+);
+
+//Plasma
+export const USDT_PLASMA = new Token(
+  ChainId.PLASMA,
+  '0xB8CE59FC3717ada4C02eaDF9682A9e934F625ebb',
+  6,
+  'USDT0',
+  'USDT0'
+);
+
+export const WETH_PLASMA = new Token(
+  ChainId.PLASMA,
+  '0x9895D81bB462A195b4922ED7De0e3ACD007c32CB',
+  18,
+  'WXPL',
+  'Wrapped XPL'
 );
 
 export class TokenProvider implements ITokenProvider {
@@ -1038,6 +1885,12 @@ export const DAI_ON = (chainId: ChainId): Token => {
       return DAI_UNICHAIN;
     case ChainId.BASE_SEPOLIA:
       return DAI_BASE_SEPOLIA;
+    case ChainId.LINEA:
+      return DAI_LINEA;
+    case ChainId.SCROLL:
+      return DAI_SCROLL;
+    case ChainId.HEMI:
+      return DAI_HEMI;
     default:
       throw new Error(`Chain id: ${chainId} not supported`);
   }
@@ -1061,6 +1914,48 @@ export const USDT_ON = (chainId: ChainId): Token => {
       return USDT_BNB;
     case ChainId.MONAD_TESTNET:
       return USDT_MONAD_TESTNET;
+    case ChainId.ZKSYNC:
+      return USDT_ZKSYNC;
+    case ChainId.BOB:
+      return USDT_BOB;
+    case ChainId.LISK:
+      return USDT_LISK;
+    case ChainId.GNOSIS:
+      return USDT_GNOSIS;
+    case ChainId.XLAYER:
+      return USDT_XLAYER;
+    case ChainId.ZKLINK:
+      return USDT_ZKLINK;
+    case ChainId.MANTLE:
+      return USDT_MANTLE;
+    case ChainId.MANTA:
+      return USDT_MANTA;
+    case ChainId.FILECOIN:
+      return USDT_FILECOIN;
+    case ChainId.ROOTSTOCK:
+      return USDT_ROOTSTOCK;
+    case ChainId.SCROLL:
+      return USDT_SCROLL;
+    case ChainId.HEMI:
+      return USDT_HEMI;
+    case ChainId.TELOS:
+      return USDT_TELOS;
+    case ChainId.REDBELLY:
+      return USDT_REDBELLY;
+    case ChainId.SAGA:
+      return USDT_SAGA;
+    case ChainId.GOAT:
+      return USDT_GOAT;
+    case ChainId.LIGHTLINK:
+      return USDT_LIGHTLINK;
+    case ChainId.ETHERLINK:
+      return USDT_ETHERLINK;
+    case ChainId.UNICHAIN:
+      return USDT_UNICHAIN;
+    case ChainId.MATCHAIN:
+      return USDT_MATCHAIN;
+    case ChainId.PLASMA:
+      return USDT_PLASMA;
     default:
       throw new Error(`Chain id: ${chainId} not supported`);
   }
@@ -1116,6 +2011,60 @@ export const USDC_ON = (chainId: ChainId): Token => {
       return USDC_UNICHAIN;
     case ChainId.SONEIUM:
       return USDC_SONEIUM;
+    case ChainId.BOBA:
+      return USDC_BOBA;
+    case ChainId.LENS:
+      return USDC_LENS;
+    case ChainId.XLAYER:
+      return USDC_XLAYER;
+    case ChainId.BOB:
+      return USDC_BOB;
+    case ChainId.ZKLINK:
+      return USDC_ZKLINK;
+    case ChainId.TAIKO:
+      return USDC_TAIKO;
+    case ChainId.SEI:
+      return USDC_SEI;
+    case ChainId.MANTLE:
+      return USDC_MANTLE;
+    case ChainId.SEI_TESTNET:
+      return USDC_SEI_TESTNET;
+    case ChainId.LINEA:
+      return USDC_LINEA;
+    case ChainId.BLAST:
+      return USDB_BLAST;
+    case ChainId.MANTA:
+      return USDC_MANTA;
+    case ChainId.FILECOIN:
+      return USDC_FILECOIN;
+    case ChainId.SCROLL:
+      return USDC_SCROLL;
+    case ChainId.CORN:
+      return USDC_CORN;
+    case ChainId.ETHERLINK:
+      return USDC_ETHERLINK;
+    case ChainId.METAL:
+      return USDC_METAL;
+    case ChainId.SONIC:
+      return USDC_SONIC;
+    case ChainId.XDC:
+      return USDC_XDC;
+    case ChainId.REDBELLY:
+      return USDC_REDBELLY;
+    case ChainId.SAGA:
+      return USDC_SAGA;
+    case ChainId.GOAT:
+      return USDC_GOAT;
+    case ChainId.TELOS:
+      return USDC_TELOS;
+    case ChainId.HEMI:
+      return USDC_HEMI;
+    case ChainId.LIGHTLINK:
+      return USDC_LIGHTLINK;
+    case ChainId.NIBIRU:
+      return USDC_NIBIRU;
+    case ChainId.MATCHAIN:
+      return USDC_MATCHAIN;
     default:
       throw new Error(`Chain id: ${chainId} not supported`);
   }
