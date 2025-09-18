@@ -1,8 +1,8 @@
-import { ADDRESS_ZERO } from "@uniswap/router-sdk";
-import { ChainId } from "@uniswap/sdk-core";
-import { Pool as V4Pool } from "@uniswap/v4-sdk";
+import { ADDRESS_ZERO } from '@uniswap/router-sdk';
+import { ChainId } from '@uniswap/sdk-core';
+import { Pool as V4Pool } from '@uniswap/v4-sdk';
 
-import { nativeOnChain } from "./chains";
+import { nativeOnChain } from './chains';
 
 const FAKE_TICK_SPACING = 0;
 
@@ -15,7 +15,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.GOERLI]: new V4Pool(
     nativeOnChain(ChainId.GOERLI),
@@ -25,7 +25,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.SEPOLIA]: new V4Pool(
     nativeOnChain(ChainId.SEPOLIA),
@@ -35,7 +35,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.OPTIMISM]: new V4Pool(
     nativeOnChain(ChainId.OPTIMISM),
@@ -45,7 +45,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.OPTIMISM_GOERLI]: new V4Pool(
     nativeOnChain(ChainId.OPTIMISM_GOERLI),
@@ -55,7 +55,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.OPTIMISM_SEPOLIA]: new V4Pool(
     nativeOnChain(ChainId.OPTIMISM_SEPOLIA),
@@ -65,7 +65,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.ARBITRUM_ONE]: new V4Pool(
     nativeOnChain(ChainId.ARBITRUM_ONE),
@@ -75,7 +75,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.ARBITRUM_GOERLI]: new V4Pool(
     nativeOnChain(ChainId.ARBITRUM_GOERLI),
@@ -85,7 +85,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.ARBITRUM_SEPOLIA]: new V4Pool(
     nativeOnChain(ChainId.ARBITRUM_SEPOLIA),
@@ -95,7 +95,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.POLYGON]: new V4Pool(
     nativeOnChain(ChainId.POLYGON),
@@ -105,7 +105,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.POLYGON_MUMBAI]: new V4Pool(
     nativeOnChain(ChainId.POLYGON_MUMBAI),
@@ -115,7 +115,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.CELO]: new V4Pool(
     nativeOnChain(ChainId.CELO),
@@ -125,7 +125,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.CELO_ALFAJORES]: new V4Pool(
     nativeOnChain(ChainId.CELO_ALFAJORES),
@@ -135,7 +135,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.GNOSIS]: new V4Pool(
     nativeOnChain(ChainId.GNOSIS),
@@ -145,7 +145,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.MOONBEAM]: new V4Pool(
     nativeOnChain(ChainId.MOONBEAM),
@@ -155,7 +155,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.BNB]: new V4Pool(
     nativeOnChain(ChainId.BNB),
@@ -165,7 +165,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.AVALANCHE]: new V4Pool(
     nativeOnChain(ChainId.AVALANCHE),
@@ -175,7 +175,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.BASE_GOERLI]: new V4Pool(
     nativeOnChain(ChainId.BASE_GOERLI),
@@ -185,7 +185,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.BASE_SEPOLIA]: new V4Pool(
     nativeOnChain(ChainId.BASE_SEPOLIA),
@@ -195,7 +195,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.BASE]: new V4Pool(
     nativeOnChain(ChainId.BASE),
@@ -205,7 +205,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.ZORA]: new V4Pool(
     nativeOnChain(ChainId.ZORA),
@@ -215,7 +215,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.ZORA_SEPOLIA]: new V4Pool(
     nativeOnChain(ChainId.ZORA_SEPOLIA),
@@ -225,7 +225,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.ROOTSTOCK]: new V4Pool(
     nativeOnChain(ChainId.ROOTSTOCK),
@@ -235,7 +235,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.BLAST]: new V4Pool(
     nativeOnChain(ChainId.BLAST),
@@ -245,7 +245,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.ZKSYNC]: new V4Pool(
     nativeOnChain(ChainId.ZKSYNC),
@@ -255,7 +255,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.WORLDCHAIN]: new V4Pool(
     nativeOnChain(ChainId.WORLDCHAIN),
@@ -265,7 +265,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.UNICHAIN_SEPOLIA]: new V4Pool(
     nativeOnChain(ChainId.UNICHAIN_SEPOLIA),
@@ -275,7 +275,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.UNICHAIN]: new V4Pool(
     nativeOnChain(ChainId.UNICHAIN),
@@ -285,7 +285,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.MONAD_TESTNET]: new V4Pool(
     nativeOnChain(ChainId.MONAD_TESTNET),
@@ -295,7 +295,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.SONEIUM]: new V4Pool(
     nativeOnChain(ChainId.SONEIUM),
@@ -305,7 +305,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   // TODO: ADD FAKE POOLS FOR THE FOLLOWING CHAINS
   [ChainId.LENS]: new V4Pool(
@@ -316,7 +316,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.XLAYER]: new V4Pool(
     nativeOnChain(ChainId.XLAYER),
@@ -326,7 +326,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.BOB]: new V4Pool(
     nativeOnChain(ChainId.BOB),
@@ -336,7 +336,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.LISK]: new V4Pool(
     nativeOnChain(ChainId.LISK),
@@ -346,7 +346,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.ZKLINK]: new V4Pool(
     nativeOnChain(ChainId.ZKLINK),
@@ -356,7 +356,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.TAIKO]: new V4Pool(
     nativeOnChain(ChainId.TAIKO),
@@ -366,7 +366,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.SEI]: new V4Pool(
     nativeOnChain(ChainId.SEI),
@@ -376,7 +376,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.MANTLE]: new V4Pool(
     nativeOnChain(ChainId.MANTLE),
@@ -386,7 +386,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.SEI_TESTNET]: new V4Pool(
     nativeOnChain(ChainId.SEI_TESTNET),
@@ -396,7 +396,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.LINEA]: new V4Pool(
     nativeOnChain(ChainId.LINEA),
@@ -406,7 +406,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.MANTA]: new V4Pool(
     nativeOnChain(ChainId.MANTA),
@@ -416,7 +416,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.POLYGON_ZKEVM]: new V4Pool(
     nativeOnChain(ChainId.POLYGON_ZKEVM),
@@ -426,7 +426,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.FILECOIN]: new V4Pool(
     nativeOnChain(ChainId.FILECOIN),
@@ -436,7 +436,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.SCROLL]: new V4Pool(
     nativeOnChain(ChainId.SCROLL),
@@ -446,7 +446,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.BOBA]: new V4Pool(
     nativeOnChain(ChainId.BOBA),
@@ -456,7 +456,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.CORN]: new V4Pool(
     nativeOnChain(ChainId.CORN),
@@ -466,7 +466,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.METAL]: new V4Pool(
     nativeOnChain(ChainId.METAL),
@@ -476,7 +476,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.SONIC]: new V4Pool(
     nativeOnChain(ChainId.SONIC),
@@ -486,7 +486,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.XDC]: new V4Pool(
     nativeOnChain(ChainId.XDC),
@@ -496,7 +496,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.LIGHTLINK]: new V4Pool(
     nativeOnChain(ChainId.LIGHTLINK),
@@ -506,7 +506,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.TELOS]: new V4Pool(
     nativeOnChain(ChainId.TELOS),
@@ -516,7 +516,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.HEMI]: new V4Pool(
     nativeOnChain(ChainId.HEMI),
@@ -526,7 +526,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.GOAT]: new V4Pool(
     nativeOnChain(ChainId.GOAT),
@@ -536,7 +536,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.REDBELLY]: new V4Pool(
     nativeOnChain(ChainId.REDBELLY),
@@ -546,7 +546,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.SAGA]: new V4Pool(
     nativeOnChain(ChainId.SAGA),
@@ -556,7 +556,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.NIBIRU]: new V4Pool(
     nativeOnChain(ChainId.NIBIRU),
@@ -566,7 +566,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.ETHERLINK]: new V4Pool(
     nativeOnChain(ChainId.ETHERLINK),
@@ -576,7 +576,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.MATCHAIN]: new V4Pool(
     nativeOnChain(ChainId.MATCHAIN),
@@ -586,7 +586,7 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
   [ChainId.PLASMA]: new V4Pool(
     nativeOnChain(ChainId.PLASMA),
@@ -596,6 +596,6 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     ADDRESS_ZERO,
     79228162514264337593543950336,
     0,
-    0,
+    0
   ),
 };

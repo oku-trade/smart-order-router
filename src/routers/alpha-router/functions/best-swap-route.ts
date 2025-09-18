@@ -1,33 +1,33 @@
-import { BigNumber } from "@ethersproject/bignumber";
-import { Protocol } from "@uniswap/router-sdk";
-import { ChainId, TradeType } from "@uniswap/sdk-core";
-import JSBI from "jsbi";
-import _ from "lodash";
-import FixedReverseHeap from "mnemonist/fixed-reverse-heap";
-import Queue from "mnemonist/queue";
+import { BigNumber } from '@ethersproject/bignumber';
+import { Protocol } from '@uniswap/router-sdk';
+import { ChainId, TradeType } from '@uniswap/sdk-core';
+import JSBI from 'jsbi';
+import _ from 'lodash';
+import FixedReverseHeap from 'mnemonist/fixed-reverse-heap';
+import Queue from 'mnemonist/queue';
 
-import { IPortionProvider } from "../../../providers/portion-provider";
-import { ProviderConfig } from "../../../providers/provider";
+import { IPortionProvider } from '../../../providers/portion-provider';
+import { ProviderConfig } from '../../../providers/provider';
 import {
   HAS_L1_FEE,
   V2_SUPPORTED,
   V4_SUPPORTED,
   WRAPPED_NATIVE_CURRENCY,
-} from "../../../util";
-import { CurrencyAmount } from "../../../util/amounts";
-import { log } from "../../../util/log";
-import { metric, MetricLoggerUnit } from "../../../util/metric";
-import { routeAmountsToString, routeToString } from "../../../util/routes";
-import { SwapOptions } from "../../router";
-import { AlphaRouterConfig } from "../alpha-router";
-import { IGasModel, L1ToL2GasCosts, usdGasTokensByChain } from "../gas-models";
+} from '../../../util';
+import { CurrencyAmount } from '../../../util/amounts';
+import { log } from '../../../util/log';
+import { metric, MetricLoggerUnit } from '../../../util/metric';
+import { routeAmountsToString, routeToString } from '../../../util/routes';
+import { SwapOptions } from '../../router';
+import { AlphaRouterConfig } from '../alpha-router';
+import { IGasModel, L1ToL2GasCosts, usdGasTokensByChain } from '../gas-models';
 
 import {
   RouteWithValidQuote,
   V2RouteWithValidQuote,
   V3RouteWithValidQuote,
   V4RouteWithValidQuote,
-} from "./../entities/route-with-valid-quote";
+} from './../entities/route-with-valid-quote';
 
 export type BestSwapRoute = {
   quote: CurrencyAmount;
@@ -51,7 +51,7 @@ export async function getBestSwapRoute(
   v3GasModel?: IGasModel<V3RouteWithValidQuote>,
   v4GasModel?: IGasModel<V4RouteWithValidQuote>,
   swapConfig?: SwapOptions,
-  providerConfig?: ProviderConfig,
+  providerConfig?: ProviderConfig
 ): Promise<BestSwapRoute | null> {
   const now = Date.now();
 
@@ -63,7 +63,7 @@ export async function getBestSwapRoute(
       {
         forceMixedRoutes: forceMixedRoutes,
       },
-      "Forcing mixed routes by filtering out other route types",
+      'Forcing mixed routes by filtering out other route types'
     );
     routesWithValidQuotes = _.filter(routesWithValidQuotes, (quotes) => {
       return quotes.protocol === Protocol.MIXED;
@@ -84,9 +84,9 @@ export async function getBestSwapRoute(
   }
 
   metric.putMetric(
-    "BuildRouteWithValidQuoteObjects",
+    'BuildRouteWithValidQuoteObjects',
     Date.now() - now,
-    MetricLoggerUnit.Milliseconds,
+    MetricLoggerUnit.Milliseconds
   );
 
   // Given all the valid quotes for each percentage find the optimal route.
@@ -103,20 +103,20 @@ export async function getBestSwapRoute(
     v3GasModel,
     v4GasModel,
     swapConfig,
-    providerConfig,
+    providerConfig
   );
   const getBestSwapRouteByLatencyMs = Date.now() - getBestSwapRouteByStartTime;
 
   // Add latency metrics.
   metric.putMetric(
-    "GetBestSwapRouteByLatency",
+    'GetBestSwapRouteByLatency',
     getBestSwapRouteByLatencyMs,
-    MetricLoggerUnit.Milliseconds,
+    MetricLoggerUnit.Milliseconds
   );
   metric.putMetric(
     `GetBestSwapRouteByLatency_Chain${chainId}`,
     getBestSwapRouteByLatencyMs,
-    MetricLoggerUnit.Milliseconds,
+    MetricLoggerUnit.Milliseconds
   );
 
   // It is possible we were unable to find any valid route given the quotes.
@@ -133,7 +133,7 @@ export async function getBestSwapRoute(
   const totalAmount = _.reduce(
     routeAmounts,
     (total, routeAmount) => total.add(routeAmount.amount),
-    CurrencyAmount.fromRawAmount(routeAmounts[0]!.amount.currency, 0),
+    CurrencyAmount.fromRawAmount(routeAmounts[0]!.amount.currency, 0)
   );
 
   const missingAmount = amount.subtract(totalAmount);
@@ -142,7 +142,7 @@ export async function getBestSwapRoute(
       {
         missingAmount: missingAmount.quotient.toString(),
       },
-      `Optimal route's amounts did not equal exactIn/exactOut total. Adding missing amount to last route in array.`,
+      `Optimal route's amounts did not equal exactIn/exactOut total. Adding missing amount to last route in array.`
     );
 
     routeAmounts[routeAmounts.length - 1]!.amount =
@@ -156,16 +156,16 @@ export async function getBestSwapRoute(
       amount: amount.toExact(),
       quote: swapRoute.quote.toExact(),
       quoteGasAdjusted: swapRoute.quoteGasAdjusted.toFixed(
-        Math.min(swapRoute.quoteGasAdjusted.currency.decimals, 2),
+        Math.min(swapRoute.quoteGasAdjusted.currency.decimals, 2)
       ),
       estimatedGasUSD: swapRoute.estimatedGasUsedUSD.toFixed(
-        Math.min(swapRoute.estimatedGasUsedUSD.currency.decimals, 2),
+        Math.min(swapRoute.estimatedGasUsedUSD.currency.decimals, 2)
       ),
       estimatedGasToken: swapRoute.estimatedGasUsedQuoteToken.toFixed(
-        Math.min(swapRoute.estimatedGasUsedQuoteToken.currency.decimals, 2),
+        Math.min(swapRoute.estimatedGasUsedQuoteToken.currency.decimals, 2)
       ),
     },
-    `Found best swap route. ${routeAmounts.length} split.`,
+    `Found best swap route. ${routeAmounts.length} split.`
   );
 
   return swapRoute;
@@ -183,7 +183,7 @@ export async function getBestSwapRouteBy(
   v3GasModel?: IGasModel<V3RouteWithValidQuote>,
   v4GasModel?: IGasModel<V4RouteWithValidQuote>,
   swapConfig?: SwapOptions,
-  providerConfig?: ProviderConfig,
+  providerConfig?: ProviderConfig
 ): Promise<BestSwapRoute | undefined> {
   // Build a map of percentage to sorted list of quotes, with the biggest quote being first in the list.
   const percentToSortedQuotes = _.mapValues(
@@ -196,7 +196,7 @@ export async function getBestSwapRouteBy(
           return by(routeQuoteA).lessThan(by(routeQuoteB)) ? -1 : 1;
         }
       });
-    },
+    }
   );
 
   const quoteCompFn =
@@ -224,7 +224,7 @@ export async function getBestSwapRouteBy(
     (a, b) => {
       return quoteCompFn(a.quote, b.quote) ? -1 : 1;
     },
-    3,
+    3
   );
 
   const { minSplits, maxSplits, forceCrossProtocol } = routingConfig;
@@ -234,10 +234,10 @@ export async function getBestSwapRouteBy(
       {
         percentToSortedQuotes: _.mapValues(
           percentToSortedQuotes,
-          (p) => p.length,
+          (p) => p.length
         ),
       },
-      "Did not find a valid route without any splits. Continuing search anyway.",
+      'Did not find a valid route without any splits. Continuing search anyway.'
     );
   } else {
     bestQuote = by(percentToSortedQuotes[100][0]!);
@@ -298,13 +298,13 @@ export async function getBestSwapRouteBy(
     metric.putMetric(
       `Split${splits}Done`,
       Date.now() - startedSplit,
-      MetricLoggerUnit.Milliseconds,
+      MetricLoggerUnit.Milliseconds
     );
 
     metric.putMetric(
       `Split${splits}Done_Chain${chainId}`,
       Date.now() - startedSplit,
-      MetricLoggerUnit.Milliseconds,
+      MetricLoggerUnit.Milliseconds
     );
 
     startedSplit = Date.now();
@@ -316,11 +316,11 @@ export async function getBestSwapRouteBy(
           (q) =>
             `${q.quote.toExact()} (${_(q.routes)
               .map((r) => r.toString())
-              .join(", ")})`,
+              .join(', ')})`
         ),
         onQueue: queue.size,
       },
-      `Top 3 with ${splits} splits`,
+      `Top 3 with ${splits} splits`
     );
 
     bestSwapsPerSplit.clear();
@@ -335,7 +335,7 @@ export async function getBestSwapRouteBy(
     }
 
     if (splits > maxSplits) {
-      log.info("Max splits reached. Stopping search.");
+      log.info('Max splits reached. Stopping search.');
       metric.putMetric(`MaxSplitsHitReached`, 1, MetricLoggerUnit.Count);
       break;
     }
@@ -370,7 +370,7 @@ export async function getBestSwapRouteBy(
         const routeWithQuoteA = findFirstRouteNotUsingUsedPools(
           curRoutes,
           candidateRoutesA,
-          forceCrossProtocol,
+          forceCrossProtocol
         );
 
         if (!routeWithQuoteA) {
@@ -387,7 +387,7 @@ export async function getBestSwapRouteBy(
 
           let gasCostL1QuoteToken = CurrencyAmount.fromRawAmount(
             quoteNew.currency,
-            0,
+            0
           );
 
           if (HAS_L1_FEE.includes(chainId)) {
@@ -400,41 +400,41 @@ export async function getBestSwapRouteBy(
             } else {
               // ROUTE-249: consoliate L1 + L2 gas fee adjustment within best-swap-route
               const v2Routes = curRoutesNew.filter(
-                (routes) => routes.protocol === Protocol.V2,
+                (routes) => routes.protocol === Protocol.V2
               );
               if (v2Routes.length > 0 && V2_SUPPORTED.includes(chainId)) {
                 if (v2GasModel) {
                   const v2GasCostL1 = await v2GasModel.calculateL1GasFees!(
-                    v2Routes as V2RouteWithValidQuote[],
+                    v2Routes as V2RouteWithValidQuote[]
                   );
                   gasCostL1QuoteToken = gasCostL1QuoteToken.add(
-                    v2GasCostL1.gasCostL1QuoteToken,
+                    v2GasCostL1.gasCostL1QuoteToken
                   );
                 }
               }
               const v3Routes = curRoutesNew.filter(
-                (routes) => routes.protocol === Protocol.V3,
+                (routes) => routes.protocol === Protocol.V3
               );
               if (v3Routes.length > 0) {
                 if (v3GasModel) {
                   const v3GasCostL1 = await v3GasModel.calculateL1GasFees!(
-                    v3Routes as V3RouteWithValidQuote[],
+                    v3Routes as V3RouteWithValidQuote[]
                   );
                   gasCostL1QuoteToken = gasCostL1QuoteToken.add(
-                    v3GasCostL1.gasCostL1QuoteToken,
+                    v3GasCostL1.gasCostL1QuoteToken
                   );
                 }
               }
               const v4Routes = curRoutesNew.filter(
-                (routes) => routes.protocol === Protocol.V4,
+                (routes) => routes.protocol === Protocol.V4
               );
               if (v4Routes.length > 0 && V4_SUPPORTED.includes(chainId)) {
                 if (v4GasModel) {
                   const v4GasCostL1 = await v4GasModel.calculateL1GasFees!(
-                    v4Routes as V4RouteWithValidQuote[],
+                    v4Routes as V4RouteWithValidQuote[]
                   );
                   gasCostL1QuoteToken = gasCostL1QuoteToken.add(
-                    v4GasCostL1.gasCostL1QuoteToken,
+                    v4GasCostL1.gasCostL1QuoteToken
                   );
                 }
               }
@@ -460,7 +460,7 @@ export async function getBestSwapRouteBy(
               metric.putMetric(
                 `BestSwapNotPickingBestForPercent`,
                 1,
-                MetricLoggerUnit.Count,
+                MetricLoggerUnit.Count
               );
             }
           }
@@ -486,8 +486,8 @@ export async function getBestSwapRouteBy(
   let quoteGasAdjusted = sumFn(
     _.map(
       bestSwap,
-      (routeWithValidQuote) => routeWithValidQuote.quoteAdjustedForGas,
-    ),
+      (routeWithValidQuote) => routeWithValidQuote.quoteAdjustedForGas
+    )
   );
 
   // this calculates the base gas used
@@ -497,7 +497,7 @@ export async function getBestSwapRouteBy(
     .map((routeWithValidQuote) => routeWithValidQuote.gasEstimate)
     .reduce(
       (sum, routeWithValidQuote) => sum.add(routeWithValidQuote),
-      BigNumber.from(0),
+      BigNumber.from(0)
     );
 
   if (!usdGasTokensByChain[chainId] || !usdGasTokensByChain[chainId]![0]) {
@@ -505,7 +505,7 @@ export async function getBestSwapRouteBy(
     // They should all be pegged, and this is just an estimate, so we do a merge
     // to an arbitrary stable.
     throw new Error(
-      `Could not find a USD token for computing gas costs on ${chainId}`,
+      `Could not find a USD token for computing gas costs on ${chainId}`
     );
   }
   const usdToken = usdGasTokensByChain[chainId]![0]!;
@@ -519,7 +519,7 @@ export async function getBestSwapRouteBy(
     gasCostL1QuoteToken: CurrencyAmount.fromRawAmount(
       // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
       bestSwap[0]?.quoteToken!,
-      0,
+      0
     ),
   };
   // If swapping on an L2 that includes a L1 security fee, calculate the fee and include it in the gas adjusted quotes
@@ -538,26 +538,26 @@ export async function getBestSwapRouteBy(
       // Since a split is possible now, the gas cost will be the summation of both v2 and v3 gas models.
       // So as long as any route contains v2/v3 protocol, we will calculate the gas cost accumulatively.
       const v2Routes = bestSwap.filter(
-        (routes) => routes.protocol === Protocol.V2,
+        (routes) => routes.protocol === Protocol.V2
       );
       if (v2Routes.length > 0 && V2_SUPPORTED.includes(chainId)) {
         if (v2GasModel) {
           const v2GasCostL1 = await v2GasModel.calculateL1GasFees!(
-            v2Routes as V2RouteWithValidQuote[],
+            v2Routes as V2RouteWithValidQuote[]
           );
           gasCostsL1ToL2.gasUsedL1 = gasCostsL1ToL2.gasUsedL1.add(
-            v2GasCostL1.gasUsedL1,
+            v2GasCostL1.gasUsedL1
           );
           gasCostsL1ToL2.gasUsedL1OnL2 = gasCostsL1ToL2.gasUsedL1OnL2.add(
-            v2GasCostL1.gasUsedL1OnL2,
+            v2GasCostL1.gasUsedL1OnL2
           );
           if (
             gasCostsL1ToL2.gasCostL1USD.currency.equals(
-              v2GasCostL1.gasCostL1USD.currency,
+              v2GasCostL1.gasCostL1USD.currency
             )
           ) {
             gasCostsL1ToL2.gasCostL1USD = gasCostsL1ToL2.gasCostL1USD.add(
-              v2GasCostL1.gasCostL1USD,
+              v2GasCostL1.gasCostL1USD
             );
           } else {
             // This is to handle the case where gasCostsL1ToL2.gasCostL1USD and v2GasCostL1.gasCostL1USD have different currencies.
@@ -579,31 +579,31 @@ export async function getBestSwapRouteBy(
           }
           gasCostsL1ToL2.gasCostL1QuoteToken =
             gasCostsL1ToL2.gasCostL1QuoteToken.add(
-              v2GasCostL1.gasCostL1QuoteToken,
+              v2GasCostL1.gasCostL1QuoteToken
             );
         }
       }
       const v3Routes = bestSwap.filter(
-        (routes) => routes.protocol === Protocol.V3,
+        (routes) => routes.protocol === Protocol.V3
       );
       if (v3Routes.length > 0) {
         if (v3GasModel) {
           const v3GasCostL1 = await v3GasModel.calculateL1GasFees!(
-            v3Routes as V3RouteWithValidQuote[],
+            v3Routes as V3RouteWithValidQuote[]
           );
           gasCostsL1ToL2.gasUsedL1 = gasCostsL1ToL2.gasUsedL1.add(
-            v3GasCostL1.gasUsedL1,
+            v3GasCostL1.gasUsedL1
           );
           gasCostsL1ToL2.gasUsedL1OnL2 = gasCostsL1ToL2.gasUsedL1OnL2.add(
-            v3GasCostL1.gasUsedL1OnL2,
+            v3GasCostL1.gasUsedL1OnL2
           );
           if (
             gasCostsL1ToL2.gasCostL1USD.currency.equals(
-              v3GasCostL1.gasCostL1USD.currency,
+              v3GasCostL1.gasCostL1USD.currency
             )
           ) {
             gasCostsL1ToL2.gasCostL1USD = gasCostsL1ToL2.gasCostL1USD.add(
-              v3GasCostL1.gasCostL1USD,
+              v3GasCostL1.gasCostL1USD
             );
           } else {
             // This is to handle the case where gasCostsL1ToL2.gasCostL1USD and v3GasCostL1.gasCostL1USD have different currencies.
@@ -625,31 +625,31 @@ export async function getBestSwapRouteBy(
           }
           gasCostsL1ToL2.gasCostL1QuoteToken =
             gasCostsL1ToL2.gasCostL1QuoteToken.add(
-              v3GasCostL1.gasCostL1QuoteToken,
+              v3GasCostL1.gasCostL1QuoteToken
             );
         }
       }
       const v4Routes = bestSwap.filter(
-        (routes) => routes.protocol === Protocol.V4,
+        (routes) => routes.protocol === Protocol.V4
       );
       if (v4Routes.length > 0 && V4_SUPPORTED.includes(chainId)) {
         if (v4GasModel) {
           const v4GasCostL1 = await v4GasModel.calculateL1GasFees!(
-            v4Routes as V4RouteWithValidQuote[],
+            v4Routes as V4RouteWithValidQuote[]
           );
           gasCostsL1ToL2.gasUsedL1 = gasCostsL1ToL2.gasUsedL1.add(
-            v4GasCostL1.gasUsedL1,
+            v4GasCostL1.gasUsedL1
           );
           gasCostsL1ToL2.gasUsedL1OnL2 = gasCostsL1ToL2.gasUsedL1OnL2.add(
-            v4GasCostL1.gasUsedL1OnL2,
+            v4GasCostL1.gasUsedL1OnL2
           );
           if (
             gasCostsL1ToL2.gasCostL1USD.currency.equals(
-              v4GasCostL1.gasCostL1USD.currency,
+              v4GasCostL1.gasCostL1USD.currency
             )
           ) {
             gasCostsL1ToL2.gasCostL1USD = gasCostsL1ToL2.gasCostL1USD.add(
-              v4GasCostL1.gasCostL1USD,
+              v4GasCostL1.gasCostL1USD
             );
           } else {
             // This is to handle the case where gasCostsL1ToL2.gasCostL1USD and v4GasCostL1.gasCostL1USD have different currencies.
@@ -671,7 +671,7 @@ export async function getBestSwapRouteBy(
           }
           gasCostsL1ToL2.gasCostL1QuoteToken =
             gasCostsL1ToL2.gasCostL1QuoteToken.add(
-              v4GasCostL1.gasCostL1QuoteToken,
+              v4GasCostL1.gasCostL1QuoteToken
             );
         }
       }
@@ -690,7 +690,7 @@ export async function getBestSwapRouteBy(
       if (decimalsDiff == 0) {
         return CurrencyAmount.fromRawAmount(
           usdToken,
-          routeWithValidQuote.gasCostInUSD.quotient,
+          routeWithValidQuote.gasCostInUSD.quotient
         );
       }
       if (decimalsDiff > 0) {
@@ -698,16 +698,16 @@ export async function getBestSwapRouteBy(
           usdToken,
           JSBI.multiply(
             routeWithValidQuote.gasCostInUSD.quotient,
-            JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(decimalsDiff)),
-          ),
+            JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(decimalsDiff))
+          )
         );
       } else {
         return CurrencyAmount.fromRawAmount(
           usdToken,
           JSBI.divide(
             routeWithValidQuote.gasCostInUSD.quotient,
-            JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(-decimalsDiff)),
-          ),
+            JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(-decimalsDiff))
+          )
         );
       }
     })
@@ -723,9 +723,9 @@ export async function getBestSwapRouteBy(
         usdToken,
         JSBI.multiply(
           gasCostL1USD.quotient,
-          JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(decimalsDiff)),
-        ),
-      ),
+          JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(decimalsDiff))
+        )
+      )
     );
   } else {
     estimatedGasUsedUSD = estimatedGasUsedUSD.add(gasCostL1USD);
@@ -738,18 +738,15 @@ export async function getBestSwapRouteBy(
       routeUSDGasEstimates: _.map(
         bestSwap,
         (b) =>
-          `${b.percent}% ${routeToString(b.route)} ${b.gasCostInUSD.toExact()}`,
+          `${b.percent}% ${routeToString(b.route)} ${b.gasCostInUSD.toExact()}`
       ),
       flatL1GasCostUSD: gasCostL1USD.toExact(),
     },
-    "USD gas estimates of best route",
+    'USD gas estimates of best route'
   );
 
   const estimatedGasUsedQuoteToken = sumFn(
-    _.map(
-      bestSwap,
-      (routeWithValidQuote) => routeWithValidQuote.gasCostInToken,
-    ),
+    _.map(bestSwap, (routeWithValidQuote) => routeWithValidQuote.gasCostInToken)
   ).add(gasCostL1QuoteToken);
 
   let estimatedGasUsedGasToken: CurrencyAmount | undefined;
@@ -759,7 +756,7 @@ export async function getBestSwapRouteBy(
     if (
       bestSwap.some(
         (routeWithValidQuote) =>
-          routeWithValidQuote.gasCostInGasToken === undefined,
+          routeWithValidQuote.gasCostInGasToken === undefined
       )
     ) {
       log.info(
@@ -767,7 +764,7 @@ export async function getBestSwapRouteBy(
           bestSwap,
           routingConfig,
         },
-        "Could not find gasCostInGasToken for a route in bestSwap",
+        'Could not find gasCostInGasToken for a route in bestSwap'
       );
       throw new Error("Can't compute estimatedGasUsedGasToken");
     }
@@ -776,13 +773,13 @@ export async function getBestSwapRouteBy(
         bestSwap,
         // ok to type cast here because we throw above if any are not defined
         (routeWithValidQuote) =>
-          routeWithValidQuote.gasCostInGasToken as CurrencyAmount,
-      ),
+          routeWithValidQuote.gasCostInGasToken as CurrencyAmount
+      )
     );
   }
 
   const quote = sumFn(
-    _.map(bestSwap, (routeWithValidQuote) => routeWithValidQuote.quote),
+    _.map(bestSwap, (routeWithValidQuote) => routeWithValidQuote.quote)
   );
 
   // Adjust the quoteGasAdjusted for the l1 fee
@@ -796,13 +793,13 @@ export async function getBestSwapRouteBy(
   }
 
   const routeWithQuotes = bestSwap.sort((routeAmountA, routeAmountB) =>
-    routeAmountB.amount.greaterThan(routeAmountA.amount) ? 1 : -1,
+    routeAmountB.amount.greaterThan(routeAmountA.amount) ? 1 : -1
   );
 
   metric.putMetric(
-    "PostSplitDone",
+    'PostSplitDone',
     Date.now() - postSplitNow,
-    MetricLoggerUnit.Milliseconds,
+    MetricLoggerUnit.Milliseconds
   );
   return {
     quote,
@@ -815,7 +812,7 @@ export async function getBestSwapRouteBy(
       routeType,
       routeWithQuotes,
       swapConfig,
-      providerConfig,
+      providerConfig
     ),
   };
 }
@@ -825,7 +822,7 @@ export async function getBestSwapRouteBy(
 const findFirstRouteNotUsingUsedPools = (
   usedRoutes: RouteWithValidQuote[],
   candidateRouteQuotes: RouteWithValidQuote[],
-  forceCrossProtocol: boolean,
+  forceCrossProtocol: boolean
 ): RouteWithValidQuote | null => {
   const poolAddressSet = new Set();
   const usedPoolAddresses = _(usedRoutes)
@@ -863,10 +860,10 @@ const findFirstRouteNotUsingUsedPools = (
     // Note: Below is a temporary fix until we have this logic handled in the SDK level.
     // If any previous route has Native token, don't allow Wrapped Native token routes and vice versa
     const hasNativeInUsedRoutes = usedRoutes.some(
-      routeHasNativeTokenInputOrOutput,
+      routeHasNativeTokenInputOrOutput
     );
     const hasWrappedNativeInUsedRoutes = usedRoutes.some(
-      routeHasWrappedNativeTokenInputOrOutput,
+      routeHasWrappedNativeTokenInputOrOutput
     );
 
     if (
@@ -885,7 +882,7 @@ const findFirstRouteNotUsingUsedPools = (
 };
 
 export const routeHasNativeTokenInputOrOutput = (
-  routeWithValidQuote: RouteWithValidQuote,
+  routeWithValidQuote: RouteWithValidQuote
 ): boolean => {
   return (
     routeWithValidQuote.route.input.isNative ||
@@ -894,7 +891,7 @@ export const routeHasNativeTokenInputOrOutput = (
 };
 
 export const routeHasWrappedNativeTokenInputOrOutput = (
-  routeWithValidQuote: RouteWithValidQuote,
+  routeWithValidQuote: RouteWithValidQuote
 ): boolean => {
   const chainId = routeWithValidQuote.route.chainId;
   const wrappedNativeToken =
