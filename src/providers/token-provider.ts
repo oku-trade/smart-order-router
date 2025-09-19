@@ -1514,11 +1514,19 @@ export const USDC_SONIC = new Token(
 );
 
 // XDC Tokens
-export const USDC_XDC = new Token(
+export const USDCE_XDC = new Token(
   ChainId.XDC,
   '0x2A8E898b6242355c290E1f4Fc966b8788729A4D4',
   6,
   'USDC.e',
+  'USD Coin'
+);
+
+export const USDC_XDC = new Token(
+  ChainId.XDC,
+  '0xfa2958cb79b0491cc627c1557f441ef849ca8eb1',
+  6,
+  'USDC',
   'USD Coin'
 );
 

@@ -57,6 +57,7 @@ import {
   SOLVBTC_BOB,
   STNIBI_NIBIRU,
   USDB_BLAST,
+  USDCE_XDC,
   USDC_ARBITRUM,
   USDC_ARBITRUM_GOERLI,
   USDC_AVAX,
@@ -432,7 +433,7 @@ const baseTokensByChain: { [chainId in ChainId]?: Token[] } = {
   ],
   [ChainId.METAL]: [USDC_METAL],
   [ChainId.SONIC]: [USDC_SONIC],
-  [ChainId.XDC]: [USDC_XDC],
+  [ChainId.XDC]: [USDCE_XDC, USDC_XDC],
   [ChainId.TELOS]: [
     USDC_TELOS,
     USDT_TELOS,

@@ -8,7 +8,6 @@ import { IMulticallProvider, Result } from '../multicall-provider';
 import { ILiquidity, ISlot0, PoolProvider } from '../pool-provider';
 import { ProviderConfig } from '../provider';
 
-
 import { V4SubgraphPool } from './subgraph-provider';
 
 type V4ISlot0 = ISlot0 & {
