@@ -54,6 +54,7 @@ import {
   USDT_SAGA,
   USDT_TELOS,
   USDT_UNICHAIN,
+  USDC_ZEROG,
   WBTC_HEMI,
   WBTC_LIGHTLINK,
   WBTC_MAINNET,
@@ -245,6 +246,10 @@ export const BASES_TO_CHECK_TRADES_AGAINST = (
       WRAPPED_NATIVE_CURRENCY[ChainId.PLASMA]!,
       USDT_PLASMA,
       WETH_PLASMA,
+    ],
+    [ChainId.ZEROG]: [
+      WRAPPED_NATIVE_CURRENCY[ChainId.ZEROG]!,
+      USDC_ZEROG,
     ],
   };
 };

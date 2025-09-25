@@ -1660,6 +1660,15 @@ export const WETH_PLASMA = new Token(
   'Wrapped XPL'
 );
 
+//ZEROG
+export const USDC_ZEROG = new Token(
+  ChainId.ZEROG,
+  '0x1f3aa82227281ca364bfb3d253b0f1af1da6473e',
+  6,
+  'USDC',
+  'USD Coin'
+);
+
 export class TokenProvider implements ITokenProvider {
   constructor(
     private chainId: ChainId,
@@ -1964,6 +1973,8 @@ export const USDT_ON = (chainId: ChainId): Token => {
       return USDT_MATCHAIN;
     case ChainId.PLASMA:
       return USDT_PLASMA;
+    case ChainId.ZEROG:
+      return USDC_ZEROG;
     default:
       throw new Error(`Chain id: ${chainId} not supported`);
   }

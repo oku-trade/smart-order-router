@@ -66,6 +66,7 @@ export const SUPPORTED_CHAINS: ChainId[] = [
   ChainId.NIBIRU,
   ChainId.MATCHAIN,
   ChainId.PLASMA,
+  ChainId.ZEROG,
 ];
 
 export const V2_SUPPORTED = [
@@ -262,6 +263,8 @@ export const ID_TO_CHAIN_ID = (id: number): ChainId => {
       return ChainId.MATCHAIN;
     case 9745:
       return ChainId.PLASMA;
+    case 16661:
+      return ChainId.ZEROG;
     default:
       throw new Error(`Unknown chain id: ${id}`);
   }
@@ -326,6 +329,7 @@ export enum ChainName {
   NIBIRU = 'nibiru',
   MATCHAIN = 'matchain',
   PLASMA = 'plasma',
+  ZEROG = 'zerog',
 }
 
 export enum NativeCurrencyName {
@@ -372,6 +376,7 @@ export enum NativeCurrencyName {
   UNICHAIN = 'ETH',
   MATCHAIN = 'BNB',
   PLASMA = 'XPL',
+  ZEROG = '0G',
 }
 
 export const NATIVE_NAMES_BY_ID: { [chainId: number]: string[] } = {
@@ -522,6 +527,7 @@ export const NATIVE_NAMES_BY_ID: { [chainId: number]: string[] } = {
   [ChainId.NIBIRU]: ['NIBI'],
   [ChainId.MATCHAIN]: ['BNB'],
   [ChainId.PLASMA]: ['XPL'],
+  [ChainId.ZEROG]: ['0G'],
 };
 
 export const NATIVE_CURRENCY: { [chainId: number]: NativeCurrencyName } = {
@@ -582,6 +588,7 @@ export const NATIVE_CURRENCY: { [chainId: number]: NativeCurrencyName } = {
   [ChainId.NIBIRU]: NativeCurrencyName.NIBIRU,
   [ChainId.MATCHAIN]: NativeCurrencyName.MATCHAIN,
   [ChainId.PLASMA]: NativeCurrencyName.PLASMA,
+  [ChainId.ZEROG]: NativeCurrencyName.ZEROG,
 };
 
 export const ID_TO_NETWORK_NAME = (id: number): ChainName => {
@@ -702,6 +709,8 @@ export const ID_TO_NETWORK_NAME = (id: number): ChainName => {
       return ChainName.MATCHAIN;
     case 9745:
       return ChainName.PLASMA;
+    case 16661:
+      return ChainName.ZEROG;
     default:
       throw new Error(`Unknown chain id: ${id}`);
   }
@@ -827,6 +836,8 @@ export const ID_TO_PROVIDER = (id: ChainId): string => {
       return process.env.JSON_RPC_PROVIDER_MATCHAIN!;
     case ChainId.PLASMA:
       return process.env.JSON_RPC_PROVIDER_PLASMA!;
+    case ChainId.ZEROG:
+      return process.env.JSON_RPC_PROVIDER_ZEROG!;
     default:
       throw new Error(`Chain id: ${id} not supported`);
   }
@@ -1247,6 +1258,13 @@ export const WRAPPED_NATIVE_CURRENCY: { [chainId in ChainId]: Token } = {
     18,
     'WXPL',
     'Wrapped XPL'
+  ),
+  [ChainId.ZEROG]: new Token(
+    ChainId.ZEROG,
+    '0x1cd0690ff9a693f5ef2dd976660a8dafc81a109c',
+    18,
+    'W0G',
+    'Wrapped 0G'
   ),
 };
 
@@ -2232,6 +2250,26 @@ class PlasmaNativeCurrency extends NativeCurrency {
     super(chainId, 18, 'ETH', 'Ether');
   }
 }
+function isZerog(chainId: number): chainId is ChainId.ZEROG {
+  return chainId === ChainId.ZEROG;
+}
+class ZerogNativeCurrency extends NativeCurrency {
+  equals(other: Currency): boolean {
+    return other.isNative && other.chainId === this.chainId;
+  }
+  get wrapped(): Token {
+    if (!isZerog(this.chainId)) throw new Error('Not zerog');
+    const nativeCurrency = WRAPPED_NATIVE_CURRENCY[this.chainId];
+    if (nativeCurrency) {
+      return nativeCurrency;
+    }
+    throw new Error(`Does not support this chain ${this.chainId}`);
+  }
+  public constructor(chainId: number) {
+    if (!isZerog(chainId)) throw new Error('Not zerog');
+    super(chainId, 18, '0G', 'ZeroG');
+  }
+}
 
 const cachedNativeCurrency: { [chainId: number]: NativeCurrency } = {};
 
@@ -2319,6 +2357,8 @@ export function nativeOnChain(chainId: number): NativeCurrency {
     cachedNativeCurrency[chainId] = new MatchainNativeCurrency(chainId);
   } else if (isPlasma(chainId)) {
     cachedNativeCurrency[chainId] = new PlasmaNativeCurrency(chainId);
+  } else if (isZerog(chainId)) {
+    cachedNativeCurrency[chainId] = new ZerogNativeCurrency(chainId);
   } else {
     cachedNativeCurrency[chainId] = ExtendedEther.onChain(chainId);
   }

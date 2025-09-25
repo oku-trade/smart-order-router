@@ -126,6 +126,7 @@ import {
   USDT_SCROLL,
   USDT_TELOS,
   USDT_UNICHAIN,
+  USDC_ZEROG,
   USDT_XLAYER,
   USDT_ZKLINK,
   USDT_ZKSYNC,
@@ -491,6 +492,10 @@ const baseTokensByChain: { [chainId in ChainId]?: Token[] } = {
     USDT_PLASMA,
     WETH_PLASMA,
     WRAPPED_NATIVE_CURRENCY[ChainId.PLASMA],
+  ],
+  [ChainId.ZEROG]: [
+    USDC_ZEROG,
+    WRAPPED_NATIVE_CURRENCY[ChainId.ZEROG],
   ],
 };
 

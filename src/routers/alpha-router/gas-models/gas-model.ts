@@ -113,6 +113,7 @@ import {
   USDT_SCROLL,
   USDT_TELOS,
   USDT_UNICHAIN,
+  USDC_ZEROG,
   USDT_XLAYER,
   USDT_ZKLINK,
   USDT_ZKSYNC,
@@ -219,6 +220,7 @@ export const usdGasTokensByChain: { [chainId in ChainId]?: Token[] } = {
   [ChainId.NIBIRU]: [USDC_NIBIRU],
   [ChainId.MATCHAIN]: [USDC_MATCHAIN, USDT_MATCHAIN],
   [ChainId.PLASMA]: [USDT_PLASMA],
+  [ChainId.ZEROG]: [USDC_ZEROG],
   [ChainId.BOBA]: [USDC_BOBA],
 };
 

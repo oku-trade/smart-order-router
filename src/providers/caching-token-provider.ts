@@ -120,6 +120,7 @@ import {
   USDT_SCROLL,
   USDT_TELOS,
   USDT_UNICHAIN,
+  USDC_ZEROG,
   USDT_XLAYER,
   USDT_ZKLINK,
   USDT_ZKSYNC,
@@ -473,6 +474,10 @@ export const CACHE_SEED_TOKENS: {
     USDT: USDT_PLASMA,
     WETH: WETH_PLASMA,
     WXPL: WRAPPED_NATIVE_CURRENCY[ChainId.PLASMA],
+  },
+  [ChainId.ZEROG]: {
+    USDC: USDC_ZEROG,
+    W0G: WRAPPED_NATIVE_CURRENCY[ChainId.ZEROG],
   },
   // Currently we do not have providers for Moonbeam mainnet or Gnosis testnet
 };

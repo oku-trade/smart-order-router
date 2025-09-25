@@ -83,6 +83,8 @@ export const DEFAULT_BLOCKS_TO_LIVE: { [chain in ChainId]: number } = {
   [ChainId.NIBIRU]: 1800,
   // (60 minutes) / (1 seconds) = 3600
   [ChainId.PLASMA]: 3600,
+  // (60 minutes) / (2 seconds) = 1800
+  [ChainId.ZEROG]: 1800,
   // (60 minutes) / (7 seconds) = 514
   [ChainId.POLYGON_ZKEVM]: 514,
   // (60 minutes) / (5 seconds) = 720

@@ -98,6 +98,7 @@ export const V3_CORE_FACTORY_ADDRESSES: AddressMap = {
   [ChainId.MATCHAIN]:
     CHAIN_TO_ADDRESSES_MAP[ChainId.MATCHAIN].v3CoreFactoryAddress,
   [ChainId.PLASMA]: CHAIN_TO_ADDRESSES_MAP[ChainId.PLASMA].v3CoreFactoryAddress,
+  [ChainId.ZEROG]: CHAIN_TO_ADDRESSES_MAP[ChainId.ZEROG].v3CoreFactoryAddress,
 };
 
 export const QUOTER_V2_ADDRESSES: AddressMap = {
@@ -167,6 +168,7 @@ export const QUOTER_V2_ADDRESSES: AddressMap = {
   [ChainId.NIBIRU]: CHAIN_TO_ADDRESSES_MAP[ChainId.NIBIRU].quoterAddress,
   [ChainId.MATCHAIN]: CHAIN_TO_ADDRESSES_MAP[ChainId.MATCHAIN].quoterAddress,
   [ChainId.PLASMA]: CHAIN_TO_ADDRESSES_MAP[ChainId.PLASMA].quoterAddress,
+  [ChainId.ZEROG]: CHAIN_TO_ADDRESSES_MAP[ChainId.ZEROG].quoterAddress,
 };
 
 export const NEW_QUOTER_V2_ADDRESSES: AddressMap = {
@@ -227,6 +229,7 @@ export const NEW_QUOTER_V2_ADDRESSES: AddressMap = {
   [ChainId.NIBIRU]: CHAIN_TO_ADDRESSES_MAP[ChainId.NIBIRU].quoterAddress,
   [ChainId.MATCHAIN]: CHAIN_TO_ADDRESSES_MAP[ChainId.MATCHAIN].quoterAddress,
   [ChainId.PLASMA]: CHAIN_TO_ADDRESSES_MAP[ChainId.PLASMA].quoterAddress,
+  [ChainId.ZEROG]: CHAIN_TO_ADDRESSES_MAP[ChainId.ZEROG].quoterAddress,
 };
 
 export const PROTOCOL_V4_QUOTER_ADDRESSES: AddressMap = {
@@ -354,6 +357,7 @@ export const UNISWAP_MULTICALL_ADDRESSES: AddressMap = {
   [ChainId.NIBIRU]: CHAIN_TO_ADDRESSES_MAP[ChainId.NIBIRU].multicallAddress,
   [ChainId.MATCHAIN]: CHAIN_TO_ADDRESSES_MAP[ChainId.MATCHAIN].multicallAddress,
   [ChainId.PLASMA]: CHAIN_TO_ADDRESSES_MAP[ChainId.PLASMA].multicallAddress,
+  [ChainId.ZEROG]: CHAIN_TO_ADDRESSES_MAP[ChainId.ZEROG].multicallAddress,
 };
 
 export const SWAP_ROUTER_02_ADDRESSES = (chainId: number): string => {
@@ -496,6 +500,7 @@ export const WETH9: {
   [ChainId.NIBIRU]: WETH9_HELPER[ChainId.NIBIRU]!,
   [ChainId.MATCHAIN]: WETH9_HELPER[ChainId.MATCHAIN]!,
   [ChainId.PLASMA]: WETH9_HELPER[ChainId.PLASMA]!,
+  [ChainId.ZEROG]: WETH9_HELPER[ChainId.ZEROG]!,
   [ChainId.ROOTSTOCK]: WETH9_HELPER[ChainId.ROOTSTOCK]!,
   [ChainId.SEI_TESTNET]: WETH9_HELPER[ChainId.SEI_TESTNET]!,
   [ChainId.FILECOIN]: WETH9_HELPER[ChainId.FILECOIN]!,
