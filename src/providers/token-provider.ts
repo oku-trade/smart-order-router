@@ -1637,10 +1637,18 @@ export const USDC_MATCHAIN = new Token(
 
 export const USDT_MATCHAIN = new Token(
   ChainId.MATCHAIN,
-  '0xB6dc6C8b71e88642cEAD3be1025565A9eE74d1C6',
+  '0xa0e73e30945b80010503e68e53abfd0b6b6a6ed9',
   6,
   'USDT',
   'Tether USD'
+);
+
+export const MAT_MATCHAIN = new Token(
+  ChainId.MATCHAIN,
+  '0x44a83a012b926853dfc1bbe2ec5bef37126067e8',
+  18,
+  'MAT',
+  'Matchain'
 );
 
 //Plasma

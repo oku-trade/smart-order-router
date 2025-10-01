@@ -49,6 +49,7 @@ import {
   LUSD_SCROLL,
   MANTA_MANTA,
   MATIC_POLYGON_ZKEVM,
+  MAT_MATCHAIN,
   MST_TELOS,
   PGK_REDBELLY,
   RAUD_REDBELLY,
@@ -99,6 +100,7 @@ import {
   USDC_UNICHAIN,
   USDC_XDC,
   USDC_XLAYER,
+  USDC_ZEROG,
   USDC_ZKLINK,
   USDC_ZKSYNC,
   USDM_TELOS,
@@ -126,7 +128,6 @@ import {
   USDT_SCROLL,
   USDT_TELOS,
   USDT_UNICHAIN,
-  USDC_ZEROG,
   USDT_XLAYER,
   USDT_ZKLINK,
   USDT_ZKSYNC,
@@ -486,6 +487,7 @@ const baseTokensByChain: { [chainId in ChainId]?: Token[] } = {
   [ChainId.MATCHAIN]: [
     USDC_MATCHAIN,
     USDT_MATCHAIN,
+    MAT_MATCHAIN,
     WRAPPED_NATIVE_CURRENCY[ChainId.MATCHAIN],
   ],
   [ChainId.PLASMA]: [
@@ -493,10 +495,7 @@ const baseTokensByChain: { [chainId in ChainId]?: Token[] } = {
     WETH_PLASMA,
     WRAPPED_NATIVE_CURRENCY[ChainId.PLASMA],
   ],
-  [ChainId.ZEROG]: [
-    USDC_ZEROG,
-    WRAPPED_NATIVE_CURRENCY[ChainId.ZEROG],
-  ],
+  [ChainId.ZEROG]: [USDC_ZEROG, WRAPPED_NATIVE_CURRENCY[ChainId.ZEROG]],
 };
 
 const excludedV3PoolIds = new Set([
