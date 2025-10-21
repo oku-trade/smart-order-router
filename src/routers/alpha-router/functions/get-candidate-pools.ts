@@ -88,6 +88,7 @@ import {
   USDC_POLYGON,
   USDC_POLYGON_ZKEVM,
   USDC_REDBELLY,
+  USDC_RONIN,
   USDC_SAGA,
   USDC_SCROLL,
   USDC_SEI,
@@ -495,6 +496,7 @@ const baseTokensByChain: { [chainId in ChainId]?: Token[] } = {
     WETH_PLASMA,
     WRAPPED_NATIVE_CURRENCY[ChainId.PLASMA],
   ],
+  [ChainId.RONIN]: [USDC_RONIN, WRAPPED_NATIVE_CURRENCY[ChainId.RONIN]],
   [ChainId.ZEROG]: [USDC_ZEROG, WRAPPED_NATIVE_CURRENCY[ChainId.ZEROG]],
 };
 

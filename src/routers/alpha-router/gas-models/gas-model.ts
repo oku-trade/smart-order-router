@@ -69,6 +69,7 @@ import {
   USDC_POLYGON,
   USDC_POLYGON_ZKEVM,
   USDC_REDBELLY,
+  USDC_RONIN,
   USDC_SAGA,
   USDC_SCROLL,
   USDC_SEI,
@@ -220,6 +221,7 @@ export const usdGasTokensByChain: { [chainId in ChainId]?: Token[] } = {
   [ChainId.NIBIRU]: [USDC_NIBIRU],
   [ChainId.MATCHAIN]: [USDC_MATCHAIN, USDT_MATCHAIN],
   [ChainId.PLASMA]: [USDT_PLASMA],
+  [ChainId.RONIN]: [USDC_RONIN],
   [ChainId.ZEROG]: [USDC_ZEROG],
   [ChainId.BOBA]: [USDC_BOBA],
 };

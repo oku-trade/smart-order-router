@@ -216,6 +216,7 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   [ChainId.ETHERLINK]: [],
   [ChainId.MATCHAIN]: [],
   [ChainId.PLASMA]: [],
+  [ChainId.RONIN]: [],
   [ChainId.ZEROG]: [],
 };
 

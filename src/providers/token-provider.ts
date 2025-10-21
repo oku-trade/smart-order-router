@@ -1664,8 +1664,25 @@ export const WETH_PLASMA = new Token(
   ChainId.PLASMA,
   '0x9895D81bB462A195b4922ED7De0e3ACD007c32CB',
   18,
-  'WXPL',
-  'Wrapped XPL'
+  'WETH',
+  'Wrapped ETH'
+);
+
+//RONIN
+export const USDC_RONIN = new Token(
+  ChainId.RONIN,
+  '0x0b7007c13325c48911f73a2dad5fa5dcbf808adc',
+  6,
+  'USDC',
+  'USD Coin'
+);
+
+export const WRON_PLASMA = new Token(
+  ChainId.RONIN,
+  '0xe514d9deb7966c8be0ca922de8a064264ea6bcd4',
+  18,
+  'WRON',
+  'Wrapped RON'
 );
 
 //ZEROG
@@ -2092,6 +2109,8 @@ export const USDC_ON = (chainId: ChainId): Token => {
       return USDC_NIBIRU;
     case ChainId.MATCHAIN:
       return USDC_MATCHAIN;
+    case ChainId.RONIN:
+      return USDC_RONIN;
     default:
       throw new Error(`Chain id: ${chainId} not supported`);
   }
