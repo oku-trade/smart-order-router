@@ -1,9 +1,9 @@
-import { ChainId, Token } from "@uniswap/sdk-core";
-import { Pair } from "@uniswap/v2-sdk";
-import _ from "lodash";
+import { ChainId, Token } from '@uniswap/sdk-core';
+import { Pair } from '@uniswap/v2-sdk';
+import _ from 'lodash';
 
-import { WRAPPED_NATIVE_CURRENCY } from "../../util/chains";
-import { log } from "../../util/log";
+import { WRAPPED_NATIVE_CURRENCY } from '../../util/chains';
+import { log } from '../../util/log';
 import {
   ARB_ARBITRUM,
   BTC_BNB,
@@ -53,9 +53,9 @@ import {
   WLD_WORLDCHAIN,
   WMATIC_POLYGON,
   WSTETH_MAINNET,
-} from "../token-provider";
+} from '../token-provider';
 
-import { IV2SubgraphProvider, V2SubgraphPool } from "./subgraph-provider";
+import { IV2SubgraphProvider, V2SubgraphPool } from './subgraph-provider';
 
 type ChainTokenList = {
   readonly [chainId in ChainId]: Token[];
@@ -201,35 +201,35 @@ const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
  * @class StaticV2SubgraphProvider
  */
 export class StaticV2SubgraphProvider implements IV2SubgraphProvider {
-  constructor(private chainId: ChainId) { }
+  constructor(private chainId: ChainId) {}
 
   public async getPools(
     tokenIn?: Token,
-    tokenOut?: Token,
+    tokenOut?: Token
   ): Promise<V2SubgraphPool[]> {
-    log.info("In static subgraph provider for V2");
+    log.info('In static subgraph provider for V2');
     const bases = BASES_TO_CHECK_TRADES_AGAINST[this.chainId];
 
     const basePairs: [Token, Token][] = _.flatMap(
       bases,
-      (base): [Token, Token][] => bases.map((otherBase) => [base, otherBase]),
+      (base): [Token, Token][] => bases.map((otherBase) => [base, otherBase])
     );
 
     if (tokenIn && tokenOut) {
       basePairs.push(
         [tokenIn, tokenOut],
         ...bases.map((base): [Token, Token] => [tokenIn, base]),
-        ...bases.map((base): [Token, Token] => [tokenOut, base]),
+        ...bases.map((base): [Token, Token] => [tokenOut, base])
       );
     }
 
     const pairs: [Token, Token][] = _(basePairs)
       .filter((tokens): tokens is [Token, Token] =>
-        Boolean(tokens[0] && tokens[1]),
+        Boolean(tokens[0] && tokens[1])
       )
       .filter(
         ([tokenA, tokenB]) =>
-          tokenA.address !== tokenB.address && !tokenA.equals(tokenB),
+          tokenA.address !== tokenB.address && !tokenA.equals(tokenB)
       )
       .value();
 
@@ -250,7 +250,7 @@ export class StaticV2SubgraphProvider implements IV2SubgraphProvider {
 
         return {
           id: poolAddress,
-          liquidity: "100",
+          liquidity: '100',
           token0: {
             id: token0.address,
           },
