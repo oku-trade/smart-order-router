@@ -1,11 +1,11 @@
-import { Protocol } from '@uniswap/router-sdk';
-import { ChainId, Currency, Token } from '@uniswap/sdk-core';
+import { Protocol } from "@uniswap/router-sdk";
+import { ChainId, Currency, Token } from "@uniswap/sdk-core";
 
-import { SubgraphPool } from '../routers/alpha-router/functions/get-candidate-pools';
-import { nativeOnChain, WRAPPED_NATIVE_CURRENCY } from '../util';
+import { SubgraphPool } from "../routers/alpha-router/functions/get-candidate-pools";
+import { nativeOnChain, WRAPPED_NATIVE_CURRENCY } from "../util";
 
-import { ICache } from './cache';
-import { ProviderConfig } from './provider';
+import { ICache } from "./cache";
+import { ProviderConfig } from "./provider";
 import {
   ARB_ARBITRUM,
   BTC_BNB,
@@ -30,6 +30,7 @@ import {
   USDC_BASE_SEPOLIA,
   USDC_BNB,
   USDC_MAINNET,
+  USDC_MONAD,
   USDC_MOONBEAM,
   USDC_NATIVE_ARBITRUM,
   USDC_OPTIMISM,
@@ -54,8 +55,8 @@ import {
   WLD_WORLDCHAIN,
   WMATIC_POLYGON,
   WSTETH_MAINNET,
-} from './token-provider';
-import { V3SubgraphPool } from './v3/subgraph-provider';
+} from "./token-provider";
+import { V3SubgraphPool } from "./v3/subgraph-provider";
 
 type ChainTokenList = {
   readonly [chainId in ChainId]: Currency[];
@@ -186,6 +187,11 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
     WRAPPED_NATIVE_CURRENCY[ChainId.SONEIUM]!,
     USDC_SONEIUM,
   ],
+  [ChainId.MONAD]: [
+    nativeOnChain(ChainId.MONAD),
+    WRAPPED_NATIVE_CURRENCY[ChainId.MONAD]!,
+    USDC_MONAD,
+  ],
   [ChainId.LENS]: [],
   [ChainId.XLAYER]: [],
   [ChainId.BOB]: [],
@@ -224,7 +230,7 @@ export interface IV3SubgraphProvider {
   getPools(
     tokenIn?: Token,
     tokenOut?: Token,
-    providerConfig?: ProviderConfig
+    providerConfig?: ProviderConfig,
   ): Promise<V3SubgraphPool[]>;
 }
 
@@ -232,13 +238,13 @@ export interface ISubgraphProvider<TSubgraphPool extends SubgraphPool> {
   getPools(
     tokenIn?: Token,
     tokenOut?: Token,
-    providerConfig?: ProviderConfig
+    providerConfig?: ProviderConfig,
   ): Promise<TSubgraphPool[]>;
 }
 
 export abstract class CachingSubgraphProvider<
-  TSubgraphPool extends SubgraphPool
-> implements ISubgraphProvider<TSubgraphPool>
+  TSubgraphPool extends SubgraphPool,
+  > implements ISubgraphProvider<TSubgraphPool>
 {
   private SUBGRAPH_KEY = (chainId: ChainId) =>
     `subgraph-pools-${this.protocol}-${chainId}`;
@@ -254,8 +260,8 @@ export abstract class CachingSubgraphProvider<
     private chainId: ChainId,
     protected subgraphProvider: ISubgraphProvider<TSubgraphPool>,
     private cache: ICache<TSubgraphPool[]>,
-    private protocol: Protocol
-  ) {}
+    private protocol: Protocol,
+  ) { }
 
   public async getPools(): Promise<TSubgraphPool[]> {
     const cachedPools = await this.cache.get(this.SUBGRAPH_KEY(this.chainId));

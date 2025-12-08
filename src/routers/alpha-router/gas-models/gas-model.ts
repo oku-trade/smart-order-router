@@ -1,13 +1,13 @@
-import { BigNumber } from '@ethersproject/bignumber';
+import { BigNumber } from "@ethersproject/bignumber";
 import {
   ChainId,
   CurrencyAmount as CurrencyAmountRaw,
   Token,
-} from '@uniswap/sdk-core';
-import { Pair } from '@uniswap/v2-sdk';
-import { Pool } from '@uniswap/v3-sdk';
+} from "@uniswap/sdk-core";
+import { Pair } from "@uniswap/v2-sdk";
+import { Pool } from "@uniswap/v3-sdk";
 
-import { ProviderConfig } from '../../../providers/provider';
+import { ProviderConfig } from "../../../providers/provider";
 import {
   CUSD_CELO,
   CUSD_CELO_ALFAJORES,
@@ -53,6 +53,7 @@ import {
   USDC_MANTA,
   USDC_MANTLE,
   USDC_MATCHAIN,
+  USDC_MONAD,
   USDC_MOONBEAM,
   USDC_NATIVE_ARBITRUM,
   USDC_NATIVE_AVAX,
@@ -119,21 +120,21 @@ import {
   USDT_ZKLINK,
   USDT_ZKSYNC,
   WBTC_GOERLI,
-} from '../../../providers/token-provider';
-import { IV2PoolProvider } from '../../../providers/v2/pool-provider';
+} from "../../../providers/token-provider";
+import { IV2PoolProvider } from "../../../providers/v2/pool-provider";
 import {
   ArbitrumGasData,
   IL2GasDataProvider,
-} from '../../../providers/v3/gas-data-provider';
-import { WRAPPED_NATIVE_CURRENCY } from '../../../util';
-import { CurrencyAmount } from '../../../util/amounts';
+} from "../../../providers/v3/gas-data-provider";
+import { WRAPPED_NATIVE_CURRENCY } from "../../../util";
+import { CurrencyAmount } from "../../../util/amounts";
 import {
   MixedRouteWithValidQuote,
   RouteWithValidQuote,
   V2RouteWithValidQuote,
   V3RouteWithValidQuote,
   V4RouteWithValidQuote,
-} from '../entities/route-with-valid-quote';
+} from "../entities/route-with-valid-quote";
 
 // When adding new usd gas tokens, ensure the tokens are ordered
 // from tokens with highest decimals to lowest decimals. For example,
@@ -186,6 +187,7 @@ export const usdGasTokensByChain: { [chainId in ChainId]?: Token[] } = {
   [ChainId.WORLDCHAIN]: [USDC_WORLDCHAIN],
   [ChainId.UNICHAIN_SEPOLIA]: [USDC_UNICHAIN_SEPOLIA],
   [ChainId.MONAD_TESTNET]: [USDT_MONAD_TESTNET],
+  [ChainId.MONAD]: [USDC_MONAD],
   [ChainId.BASE_SEPOLIA]: [USDC_BASE_SEPOLIA],
   [ChainId.UNICHAIN]: [DAI_UNICHAIN, USDC_UNICHAIN, USDT_UNICHAIN],
   [ChainId.SONEIUM]: [USDC_SONEIUM],
@@ -335,8 +337,8 @@ export abstract class IV2GasModelFactory {
  * @class IOnChainGasModelFactory
  */
 export abstract class IOnChainGasModelFactory<
-  TRouteWithValidQuote extends RouteWithValidQuote
-> {
+  TRouteWithValidQuote extends RouteWithValidQuote,
+  > {
   public abstract buildGasModel({
     chainId,
     gasPriceWei,
@@ -349,7 +351,7 @@ export abstract class IOnChainGasModelFactory<
   }: BuildOnChainGasModelFactoryType): Promise<IGasModel<TRouteWithValidQuote>>;
 
   protected totalInitializedTicksCrossed(
-    initializedTicksCrossedList: number[]
+    initializedTicksCrossedList: number[],
   ) {
     let ticksCrossed = 0;
     for (let i = 0; i < initializedTicksCrossedList.length; i++) {
@@ -371,7 +373,7 @@ export abstract class IOnChainGasModelFactory<
 export const getQuoteThroughNativePool = (
   chainId: ChainId,
   nativeTokenAmount: CurrencyAmountRaw<Token>,
-  nativeTokenPool: Pool | Pair
+  nativeTokenPool: Pool | Pair,
 ): CurrencyAmount => {
   const nativeCurrency = WRAPPED_NATIVE_CURRENCY[chainId];
   const isToken0 = nativeTokenPool.token0.equals(nativeCurrency);

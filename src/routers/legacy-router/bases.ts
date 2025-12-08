@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { ChainId, Token } from '@uniswap/sdk-core';
+import { ChainId, Token } from "@uniswap/sdk-core";
 
 import {
   BTC_BNB,
@@ -31,6 +31,7 @@ import {
   USDC_MAINNET,
   USDC_MANTLE,
   USDC_MATCHAIN,
+  USDC_MONAD,
   USDC_NIBIRU,
   USDC_REDBELLY,
   USDC_RONIN,
@@ -70,15 +71,15 @@ import {
   WLD_WORLDCHAIN,
   WMATIC_POLYGON,
   WMATIC_POLYGON_MUMBAI,
-} from '../../providers/token-provider';
-import { WRAPPED_NATIVE_CURRENCY } from '../../util/chains';
+} from "../../providers/token-provider";
+import { WRAPPED_NATIVE_CURRENCY } from "../../util/chains";
 
 type ChainTokenList = {
   readonly [chainId in ChainId]: Token[];
 };
 
 export const BASES_TO_CHECK_TRADES_AGAINST = (
-  _tokenProvider: ITokenProvider
+  _tokenProvider: ITokenProvider,
 ): ChainTokenList => {
   return {
     [ChainId.MAINNET]: [
@@ -154,6 +155,7 @@ export const BASES_TO_CHECK_TRADES_AGAINST = (
       WRAPPED_NATIVE_CURRENCY[ChainId.MONAD_TESTNET]!,
       USDT_MONAD_TESTNET,
     ],
+    [ChainId.MONAD]: [WRAPPED_NATIVE_CURRENCY[ChainId.MONAD]!, USDC_MONAD],
     [ChainId.BASE_SEPOLIA]: [
       WRAPPED_NATIVE_CURRENCY[ChainId.BASE_SEPOLIA]!,
       USDC_BASE_SEPOLIA,
@@ -259,7 +261,7 @@ const getBasePairByAddress = async (
   tokenProvider: ITokenProvider,
   _chainId: ChainId,
   fromAddress: string,
-  toAddress: string
+  toAddress: string,
 ): Promise<{ [tokenAddress: string]: Token[] }> => {
   const accessor = await tokenProvider.getTokens([toAddress]);
   const toToken: Token | undefined = accessor.getTokenByAddress(toAddress);
@@ -272,7 +274,7 @@ const getBasePairByAddress = async (
 };
 
 export const ADDITIONAL_BASES = async (
-  tokenProvider: ITokenProvider
+  tokenProvider: ITokenProvider,
 ): Promise<{
   [chainId in ChainId]?: { [tokenAddress: string]: Token[] };
 }> => {
@@ -281,50 +283,50 @@ export const ADDITIONAL_BASES = async (
       ...(await getBasePairByAddress(
         tokenProvider,
         ChainId.MAINNET,
-        '0xA948E86885e12Fb09AfEF8C52142EBDbDf73cD18',
-        '0x1f9840a85d5af5bf1d1762f925bdaddc4201f984'
+        "0xA948E86885e12Fb09AfEF8C52142EBDbDf73cD18",
+        "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
       )),
       ...(await getBasePairByAddress(
         tokenProvider,
         ChainId.MAINNET,
-        '0x561a4717537ff4AF5c687328c0f7E90a319705C0',
-        '0x1f9840a85d5af5bf1d1762f925bdaddc4201f984'
+        "0x561a4717537ff4AF5c687328c0f7E90a319705C0",
+        "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
       )),
       ...(await getBasePairByAddress(
         tokenProvider,
         ChainId.MAINNET,
-        '0x956F47F50A910163D8BF957Cf5846D573E7f87CA',
-        '0xc7283b66Eb1EB5FB86327f08e1B5816b0720212B'
+        "0x956F47F50A910163D8BF957Cf5846D573E7f87CA",
+        "0xc7283b66Eb1EB5FB86327f08e1B5816b0720212B",
       )),
       ...(await getBasePairByAddress(
         tokenProvider,
         ChainId.MAINNET,
-        '0xc7283b66Eb1EB5FB86327f08e1B5816b0720212B',
-        '0x956F47F50A910163D8BF957Cf5846D573E7f87CA'
+        "0xc7283b66Eb1EB5FB86327f08e1B5816b0720212B",
+        "0x956F47F50A910163D8BF957Cf5846D573E7f87CA",
       )),
       ...(await getBasePairByAddress(
         tokenProvider,
         ChainId.MAINNET,
-        '0x853d955acef822db058eb8505911ed77f175b99e',
-        '0x3432b6a60d23ca0dfca7761b7ab56459d9c964d0'
+        "0x853d955acef822db058eb8505911ed77f175b99e",
+        "0x3432b6a60d23ca0dfca7761b7ab56459d9c964d0",
       )),
       ...(await getBasePairByAddress(
         tokenProvider,
         ChainId.MAINNET,
-        '0x3432b6a60d23ca0dfca7761b7ab56459d9c964d0',
-        '0x853d955acef822db058eb8505911ed77f175b99e'
+        "0x3432b6a60d23ca0dfca7761b7ab56459d9c964d0",
+        "0x853d955acef822db058eb8505911ed77f175b99e",
       )),
       ...(await getBasePairByAddress(
         tokenProvider,
         ChainId.MAINNET,
-        '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599',
-        '0xeb4c2781e4eba804ce9a9803c67d0893436bb27d'
+        "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+        "0xeb4c2781e4eba804ce9a9803c67d0893436bb27d",
       )),
       ...(await getBasePairByAddress(
         tokenProvider,
         ChainId.MAINNET,
-        '0xeb4c2781e4eba804ce9a9803c67d0893436bb27d',
-        '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599'
+        "0xeb4c2781e4eba804ce9a9803c67d0893436bb27d",
+        "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
       )),
     },
   };
@@ -335,7 +337,7 @@ export const ADDITIONAL_BASES = async (
  * tokens.
  */
 export const CUSTOM_BASES = async (
-  tokenProvider: ITokenProvider
+  tokenProvider: ITokenProvider,
 ): Promise<{
   [chainId in ChainId]?: { [tokenAddress: string]: Token[] };
 }> => {
@@ -344,14 +346,14 @@ export const CUSTOM_BASES = async (
       ...(await getBasePairByAddress(
         tokenProvider,
         ChainId.MAINNET,
-        '0xd46ba6d942050d489dbd938a2c909a5d5039a161',
-        DAI_MAINNET.address
+        "0xd46ba6d942050d489dbd938a2c909a5d5039a161",
+        DAI_MAINNET.address,
       )),
       ...(await getBasePairByAddress(
         tokenProvider,
         ChainId.MAINNET,
-        '0xd46ba6d942050d489dbd938a2c909a5d5039a161',
-        WRAPPED_NATIVE_CURRENCY[1]!.address
+        "0xd46ba6d942050d489dbd938a2c909a5d5039a161",
+        WRAPPED_NATIVE_CURRENCY[1]!.address,
       )),
     },
   };

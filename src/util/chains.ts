@@ -4,7 +4,7 @@ import {
   Ether,
   NativeCurrency,
   Token,
-} from '@uniswap/sdk-core';
+} from "@uniswap/sdk-core";
 
 // WIP: Gnosis, Moonbeam
 export const SUPPORTED_CHAINS: ChainId[] = [
@@ -66,6 +66,7 @@ export const SUPPORTED_CHAINS: ChainId[] = [
   ChainId.NIBIRU,
   ChainId.MATCHAIN,
   ChainId.PLASMA,
+  ChainId.MONAD,
   ChainId.RONIN,
   ChainId.ZEROG,
 ];
@@ -264,6 +265,8 @@ export const ID_TO_CHAIN_ID = (id: number): ChainId => {
       return ChainId.MATCHAIN;
     case 9745:
       return ChainId.PLASMA;
+    case 143:
+      return ChainId.MONAD;
     case 2020:
       return ChainId.RONIN;
     case 16661:
@@ -274,266 +277,268 @@ export const ID_TO_CHAIN_ID = (id: number): ChainId => {
 };
 
 export enum ChainName {
-  MAINNET = 'mainnet',
-  GOERLI = 'goerli',
-  SEPOLIA = 'sepolia',
-  OPTIMISM = 'optimism-mainnet',
-  OPTIMISM_GOERLI = 'optimism-goerli',
-  OPTIMISM_SEPOLIA = 'optimism-sepolia',
-  ARBITRUM_ONE = 'arbitrum-mainnet',
-  ARBITRUM_GOERLI = 'arbitrum-goerli',
-  ARBITRUM_SEPOLIA = 'arbitrum-sepolia',
-  POLYGON = 'polygon-mainnet',
-  POLYGON_MUMBAI = 'polygon-mumbai',
-  CELO = 'celo-mainnet',
-  CELO_ALFAJORES = 'celo-alfajores',
-  GNOSIS = 'gnosis-mainnet',
-  MOONBEAM = 'moonbeam-mainnet',
-  BNB = 'bnb-mainnet',
-  AVALANCHE = 'avalanche-mainnet',
-  BASE = 'base-mainnet',
-  BASE_GOERLI = 'base-goerli',
-  BASE_SEPOLIA = 'base-sepolia',
-  BLAST = 'blast-mainnet',
-  ZORA = 'zora-mainnet',
-  ZKSYNC = 'zksync-mainnet',
-  WORLDCHAIN = 'worldchain-mainnet',
-  UNICHAIN_SEPOLIA = 'unichain-sepolia',
-  UNICHAIN = 'unichain-mainnet',
-  MONAD_TESTNET = 'monad-testnet',
-  SONEIUM = 'soneium-mainnet',
-  LENS = 'lens',
-  XLAYER = 'xlayer',
-  BOB = 'bob',
-  LISK = 'lisk',
-  ZKLINK = 'zklink',
-  TAIKO = 'taiko',
-  SEI = 'sei',
-  MANTLE = 'mantle',
-  SEI_TESTNET = 'sei-testnet',
-  LINEA = 'linea',
-  MANTA = 'manta-pacific',
-  POLYGON_ZKEVM = 'polygon-zkevm',
-  FILECOIN = 'filecoin',
-  ROOTSTOCK = 'rootstock',
-  SCROLL = 'scroll',
-  BOBA = 'boba-mainnet',
-  CORN = 'corn',
-  ETHERLINK = 'etherlink',
-  METAL = 'metal',
-  SONIC = 'sonic',
-  XDC = 'xdc',
-  LIGHTLINK = 'lightlink',
-  GOAT = 'goat',
-  REDBELLY = 'redbelly',
-  SAGA = 'saga',
-  TELOS = 'telos',
-  HEMI = 'hemi',
-  NIBIRU = 'nibiru',
-  MATCHAIN = 'matchain',
-  PLASMA = 'plasma',
-  RONIN = 'ronin',
-  ZEROG = 'zerog',
+  MAINNET = "mainnet",
+  GOERLI = "goerli",
+  SEPOLIA = "sepolia",
+  OPTIMISM = "optimism-mainnet",
+  OPTIMISM_GOERLI = "optimism-goerli",
+  OPTIMISM_SEPOLIA = "optimism-sepolia",
+  ARBITRUM_ONE = "arbitrum-mainnet",
+  ARBITRUM_GOERLI = "arbitrum-goerli",
+  ARBITRUM_SEPOLIA = "arbitrum-sepolia",
+  POLYGON = "polygon-mainnet",
+  POLYGON_MUMBAI = "polygon-mumbai",
+  CELO = "celo-mainnet",
+  CELO_ALFAJORES = "celo-alfajores",
+  GNOSIS = "gnosis-mainnet",
+  MOONBEAM = "moonbeam-mainnet",
+  BNB = "bnb-mainnet",
+  AVALANCHE = "avalanche-mainnet",
+  BASE = "base-mainnet",
+  BASE_GOERLI = "base-goerli",
+  BASE_SEPOLIA = "base-sepolia",
+  BLAST = "blast-mainnet",
+  ZORA = "zora-mainnet",
+  ZKSYNC = "zksync-mainnet",
+  WORLDCHAIN = "worldchain-mainnet",
+  UNICHAIN_SEPOLIA = "unichain-sepolia",
+  UNICHAIN = "unichain-mainnet",
+  MONAD_TESTNET = "monad-testnet",
+  SONEIUM = "soneium-mainnet",
+  LENS = "lens",
+  XLAYER = "xlayer",
+  BOB = "bob",
+  LISK = "lisk",
+  ZKLINK = "zklink",
+  TAIKO = "taiko",
+  SEI = "sei",
+  MANTLE = "mantle",
+  SEI_TESTNET = "sei-testnet",
+  LINEA = "linea",
+  MANTA = "manta-pacific",
+  POLYGON_ZKEVM = "polygon-zkevm",
+  FILECOIN = "filecoin",
+  ROOTSTOCK = "rootstock",
+  SCROLL = "scroll",
+  BOBA = "boba-mainnet",
+  CORN = "corn",
+  ETHERLINK = "etherlink",
+  METAL = "metal",
+  SONIC = "sonic",
+  XDC = "xdc",
+  LIGHTLINK = "lightlink",
+  GOAT = "goat",
+  REDBELLY = "redbelly",
+  SAGA = "saga",
+  TELOS = "telos",
+  HEMI = "hemi",
+  NIBIRU = "nibiru",
+  MATCHAIN = "matchain",
+  PLASMA = "plasma",
+  MONAD = "monad",
+  RONIN = "ronin",
+  ZEROG = "zerog",
 }
 
 export enum NativeCurrencyName {
   // Strings match input for CLI
-  ETHER = 'ETH',
-  MATIC = 'MATIC',
-  CELO = 'CELO',
-  GNOSIS = 'XDAI',
-  MOONBEAM = 'GLMR',
-  ZKSYNC = 'ETH',
-  BNB = 'BNB',
-  AVALANCHE = 'AVAX',
-  MONAD = 'MON',
-  LENS = 'GHO',
-  XLAYER = 'OKB',
-  BOB = 'ETH',
-  LISK = 'ETH',
-  ZKLINK = 'ETH',
-  TAIKO = 'ETH',
-  SEI = 'SEI',
-  MANTLE = 'MNT',
-  SEI_TESTNET = 'SEI',
-  LINEA = 'ETH',
-  BLAST = 'ETH',
-  MANTA = 'ETH',
-  POLYGON_ZKEVM = 'ETH',
-  FILECOIN = 'FIL',
-  ROOTSTOCK = 'RBTC',
-  SCROLL = 'ETH',
-  BOBA = 'BOBA',
-  CORN = 'BTCN',
-  ETHERLINK = 'XTZ',
-  METAL = 'ETH',
-  SONIC = 'SONIC',
-  XDC = 'XDC',
-  WORLDCHAIN = 'ETH',
-  LIGHTLINK = 'ETH',
-  GOAT = 'BTC',
-  REDBELLY = 'RBNT',
-  SAGA = 'GAS',
-  TELOS = 'TLOS',
-  HEMI = 'ETH',
-  NIBIRU = 'NIBI',
-  UNICHAIN = 'ETH',
-  MATCHAIN = 'BNB',
-  PLASMA = 'XPL',
-  RONIN = 'RON',
-  ZEROG = '0G',
+  ETHER = "ETH",
+  MATIC = "MATIC",
+  CELO = "CELO",
+  GNOSIS = "XDAI",
+  MOONBEAM = "GLMR",
+  ZKSYNC = "ETH",
+  BNB = "BNB",
+  AVALANCHE = "AVAX",
+  MONAD = "MON",
+  LENS = "GHO",
+  XLAYER = "OKB",
+  BOB = "ETH",
+  LISK = "ETH",
+  ZKLINK = "ETH",
+  TAIKO = "ETH",
+  SEI = "SEI",
+  MANTLE = "MNT",
+  SEI_TESTNET = "SEI",
+  LINEA = "ETH",
+  BLAST = "ETH",
+  MANTA = "ETH",
+  POLYGON_ZKEVM = "ETH",
+  FILECOIN = "FIL",
+  ROOTSTOCK = "RBTC",
+  SCROLL = "ETH",
+  BOBA = "BOBA",
+  CORN = "BTCN",
+  ETHERLINK = "XTZ",
+  METAL = "ETH",
+  SONIC = "SONIC",
+  XDC = "XDC",
+  WORLDCHAIN = "ETH",
+  LIGHTLINK = "ETH",
+  GOAT = "BTC",
+  REDBELLY = "RBNT",
+  SAGA = "GAS",
+  TELOS = "TLOS",
+  HEMI = "ETH",
+  NIBIRU = "NIBI",
+  UNICHAIN = "ETH",
+  MATCHAIN = "BNB",
+  PLASMA = "XPL",
+  RONIN = "RON",
+  ZEROG = "0G",
 }
 
 export const NATIVE_NAMES_BY_ID: { [chainId: number]: string[] } = {
   [ChainId.MAINNET]: [
-    'ETH',
-    'ETHER',
-    '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
+    "ETH",
+    "ETHER",
+    "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
   ],
   [ChainId.GOERLI]: [
-    'ETH',
-    'ETHER',
-    '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
+    "ETH",
+    "ETHER",
+    "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
   ],
   [ChainId.SEPOLIA]: [
-    'ETH',
-    'ETHER',
-    '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
+    "ETH",
+    "ETHER",
+    "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
   ],
   [ChainId.OPTIMISM]: [
-    'ETH',
-    'ETHER',
-    '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
+    "ETH",
+    "ETHER",
+    "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
   ],
   [ChainId.OPTIMISM_GOERLI]: [
-    'ETH',
-    'ETHER',
-    '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
+    "ETH",
+    "ETHER",
+    "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
   ],
   [ChainId.OPTIMISM_SEPOLIA]: [
-    'ETH',
-    'ETHER',
-    '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
+    "ETH",
+    "ETHER",
+    "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
   ],
   [ChainId.ARBITRUM_ONE]: [
-    'ETH',
-    'ETHER',
-    '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
+    "ETH",
+    "ETHER",
+    "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
   ],
   [ChainId.ARBITRUM_GOERLI]: [
-    'ETH',
-    'ETHER',
-    '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
+    "ETH",
+    "ETHER",
+    "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
   ],
   [ChainId.ARBITRUM_SEPOLIA]: [
-    'ETH',
-    'ETHER',
-    '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
+    "ETH",
+    "ETHER",
+    "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
   ],
-  [ChainId.POLYGON]: ['MATIC', '0x0000000000000000000000000000000000001010'],
+  [ChainId.POLYGON]: ["MATIC", "0x0000000000000000000000000000000000001010"],
   [ChainId.POLYGON_MUMBAI]: [
-    'MATIC',
-    '0x0000000000000000000000000000000000001010',
+    "MATIC",
+    "0x0000000000000000000000000000000000001010",
   ],
-  [ChainId.CELO]: ['CELO'],
-  [ChainId.CELO_ALFAJORES]: ['CELO'],
-  [ChainId.GNOSIS]: ['XDAI'],
-  [ChainId.MOONBEAM]: ['GLMR'],
-  [ChainId.BNB]: ['BNB', 'BNB', '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'],
+  [ChainId.CELO]: ["CELO"],
+  [ChainId.CELO_ALFAJORES]: ["CELO"],
+  [ChainId.GNOSIS]: ["XDAI"],
+  [ChainId.MOONBEAM]: ["GLMR"],
+  [ChainId.BNB]: ["BNB", "BNB", "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"],
   [ChainId.AVALANCHE]: [
-    'AVAX',
-    'AVALANCHE',
-    '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
+    "AVAX",
+    "AVALANCHE",
+    "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
   ],
   [ChainId.BASE]: [
-    'ETH',
-    'ETHER',
-    '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
+    "ETH",
+    "ETHER",
+    "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
   ],
   [ChainId.BLAST]: [
-    'ETH',
-    'ETHER',
-    '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
+    "ETH",
+    "ETHER",
+    "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
   ],
   [ChainId.ZORA]: [
-    'ETH',
-    'ETHER',
-    '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
+    "ETH",
+    "ETHER",
+    "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
   ],
   [ChainId.ZKSYNC]: [
-    'ETH',
-    'ETHER',
-    '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
+    "ETH",
+    "ETHER",
+    "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
   ],
   [ChainId.WORLDCHAIN]: [
-    'ETH',
-    'ETHER',
-    '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
+    "ETH",
+    "ETHER",
+    "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
   ],
   [ChainId.UNICHAIN_SEPOLIA]: [
-    'ETH',
-    'ETHER',
-    '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
+    "ETH",
+    "ETHER",
+    "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
   ],
   [ChainId.MONAD_TESTNET]: [
-    'MON',
-    'MONAD',
-    '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
+    "MON",
+    "MONAD",
+    "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
   ],
   [ChainId.BASE_SEPOLIA]: [
-    'ETH',
-    'ETHER',
-    '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
+    "ETH",
+    "ETHER",
+    "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
   ],
   [ChainId.UNICHAIN]: [
-    'ETH',
-    'ETHER',
-    '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
+    "ETH",
+    "ETHER",
+    "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
   ],
   [ChainId.SONEIUM]: [
-    'ETH',
-    'ETHER',
-    '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
+    "ETH",
+    "ETHER",
+    "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
   ],
-  [ChainId.MOONBEAM]: ['GLMR'],
-  [ChainId.ZKSYNC]: ['ETH'],
-  [ChainId.LENS]: ['GHO'],
-  [ChainId.XLAYER]: ['OKB'],
-  [ChainId.BOB]: ['ETH'],
-  [ChainId.LISK]: ['ETH'],
-  [ChainId.ZKLINK]: ['ETH'],
-  [ChainId.TAIKO]: ['ETH'],
-  [ChainId.SEI]: ['SEI'],
-  [ChainId.MANTLE]: ['MNT'],
-  [ChainId.SEI_TESTNET]: ['SEI'],
-  [ChainId.LINEA]: ['ETH'],
-  [ChainId.MANTA]: ['ETH'],
-  [ChainId.POLYGON_ZKEVM]: ['ETH'],
-  [ChainId.FILECOIN]: ['FIL'],
-  [ChainId.ROOTSTOCK]: ['RBTC'],
-  [ChainId.SCROLL]: ['ETH'],
+  [ChainId.MOONBEAM]: ["GLMR"],
+  [ChainId.ZKSYNC]: ["ETH"],
+  [ChainId.LENS]: ["GHO"],
+  [ChainId.XLAYER]: ["OKB"],
+  [ChainId.BOB]: ["ETH"],
+  [ChainId.LISK]: ["ETH"],
+  [ChainId.ZKLINK]: ["ETH"],
+  [ChainId.TAIKO]: ["ETH"],
+  [ChainId.SEI]: ["SEI"],
+  [ChainId.MANTLE]: ["MNT"],
+  [ChainId.SEI_TESTNET]: ["SEI"],
+  [ChainId.LINEA]: ["ETH"],
+  [ChainId.MANTA]: ["ETH"],
+  [ChainId.POLYGON_ZKEVM]: ["ETH"],
+  [ChainId.FILECOIN]: ["FIL"],
+  [ChainId.ROOTSTOCK]: ["RBTC"],
+  [ChainId.SCROLL]: ["ETH"],
   [ChainId.BOBA]: [
-    'ETH',
-    'ETHER',
-    '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
+    "ETH",
+    "ETHER",
+    "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
   ],
-  [ChainId.CORN]: ['BTCN'],
-  [ChainId.ETHERLINK]: ['XTZ'],
-  [ChainId.METAL]: ['ETH'],
-  [ChainId.SONIC]: ['SONIC'],
-  [ChainId.XDC]: ['XDC'],
-  [ChainId.WORLDCHAIN]: ['ETH'],
-  [ChainId.LIGHTLINK]: ['ETH'],
-  [ChainId.GOAT]: ['BTC'],
-  [ChainId.REDBELLY]: ['RBNT'],
-  [ChainId.SAGA]: ['GAS'],
-  [ChainId.TELOS]: ['TLOS'],
-  [ChainId.HEMI]: ['ETH'],
-  [ChainId.NIBIRU]: ['NIBI'],
-  [ChainId.MATCHAIN]: ['BNB'],
-  [ChainId.PLASMA]: ['XPL'],
-  [ChainId.RONIN]: ['RON'],
-  [ChainId.ZEROG]: ['0G'],
+  [ChainId.CORN]: ["BTCN"],
+  [ChainId.ETHERLINK]: ["XTZ"],
+  [ChainId.METAL]: ["ETH"],
+  [ChainId.SONIC]: ["SONIC"],
+  [ChainId.XDC]: ["XDC"],
+  [ChainId.WORLDCHAIN]: ["ETH"],
+  [ChainId.LIGHTLINK]: ["ETH"],
+  [ChainId.GOAT]: ["BTC"],
+  [ChainId.REDBELLY]: ["RBNT"],
+  [ChainId.SAGA]: ["GAS"],
+  [ChainId.TELOS]: ["TLOS"],
+  [ChainId.HEMI]: ["ETH"],
+  [ChainId.NIBIRU]: ["NIBI"],
+  [ChainId.MATCHAIN]: ["BNB"],
+  [ChainId.PLASMA]: ["XPL"],
+  [ChainId.MONAD]: ["MON"],
+  [ChainId.RONIN]: ["RON"],
+  [ChainId.ZEROG]: ["0G"],
 };
 
 export const NATIVE_CURRENCY: { [chainId: number]: NativeCurrencyName } = {
@@ -594,6 +599,7 @@ export const NATIVE_CURRENCY: { [chainId: number]: NativeCurrencyName } = {
   [ChainId.NIBIRU]: NativeCurrencyName.NIBIRU,
   [ChainId.MATCHAIN]: NativeCurrencyName.MATCHAIN,
   [ChainId.PLASMA]: NativeCurrencyName.PLASMA,
+  [ChainId.MONAD]: NativeCurrencyName.MONAD,
   [ChainId.RONIN]: NativeCurrencyName.RONIN,
   [ChainId.ZEROG]: NativeCurrencyName.ZEROG,
 };
@@ -716,6 +722,8 @@ export const ID_TO_NETWORK_NAME = (id: number): ChainName => {
       return ChainName.MATCHAIN;
     case 9745:
       return ChainName.PLASMA;
+    case 143:
+      return ChainName.MONAD;
     case 2020:
       return ChainName.RONIN;
     case 16661:
@@ -726,7 +734,7 @@ export const ID_TO_NETWORK_NAME = (id: number): ChainName => {
 };
 
 export const CHAIN_IDS_LIST = Object.values(ChainId).map((c) =>
-  c.toString()
+  c.toString(),
 ) as string[];
 
 export const ID_TO_PROVIDER = (id: ChainId): string => {
@@ -845,6 +853,8 @@ export const ID_TO_PROVIDER = (id: ChainId): string => {
       return process.env.JSON_RPC_PROVIDER_MATCHAIN!;
     case ChainId.PLASMA:
       return process.env.JSON_RPC_PROVIDER_PLASMA!;
+    case ChainId.MONAD:
+      return process.env.JSON_RPC_PROVIDER_MONAD!;
     case ChainId.RONIN:
       return process.env.JSON_RPC_PROVIDER_RONIN!;
     case ChainId.ZEROG:
@@ -857,437 +867,444 @@ export const ID_TO_PROVIDER = (id: ChainId): string => {
 export const WRAPPED_NATIVE_CURRENCY: { [chainId in ChainId]: Token } = {
   [ChainId.MAINNET]: new Token(
     1,
-    '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
+    "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
     18,
-    'WETH',
-    'Wrapped Ether'
+    "WETH",
+    "Wrapped Ether",
   ),
   [ChainId.GOERLI]: new Token(
     5,
-    '0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6',
+    "0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6",
     18,
-    'WETH',
-    'Wrapped Ether'
+    "WETH",
+    "Wrapped Ether",
   ),
   [ChainId.SEPOLIA]: new Token(
     11155111,
-    '0xfFf9976782d46CC05630D1f6eBAb18b2324d6B14',
+    "0xfFf9976782d46CC05630D1f6eBAb18b2324d6B14",
     18,
-    'WETH',
-    'Wrapped Ether'
+    "WETH",
+    "Wrapped Ether",
   ),
   [ChainId.BNB]: new Token(
     56,
-    '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c',
+    "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
     18,
-    'WBNB',
-    'Wrapped BNB'
+    "WBNB",
+    "Wrapped BNB",
   ),
   [ChainId.OPTIMISM]: new Token(
     ChainId.OPTIMISM,
-    '0x4200000000000000000000000000000000000006',
+    "0x4200000000000000000000000000000000000006",
     18,
-    'WETH',
-    'Wrapped Ether'
+    "WETH",
+    "Wrapped Ether",
   ),
   [ChainId.OPTIMISM_GOERLI]: new Token(
     ChainId.OPTIMISM_GOERLI,
-    '0x4200000000000000000000000000000000000006',
+    "0x4200000000000000000000000000000000000006",
     18,
-    'WETH',
-    'Wrapped Ether'
+    "WETH",
+    "Wrapped Ether",
   ),
   [ChainId.OPTIMISM_SEPOLIA]: new Token(
     ChainId.OPTIMISM_SEPOLIA,
-    '0x4200000000000000000000000000000000000006',
+    "0x4200000000000000000000000000000000000006",
     18,
-    'WETH',
-    'Wrapped Ether'
+    "WETH",
+    "Wrapped Ether",
   ),
   [ChainId.ARBITRUM_ONE]: new Token(
     ChainId.ARBITRUM_ONE,
-    '0x82aF49447D8a07e3bd95BD0d56f35241523fBab1',
+    "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
     18,
-    'WETH',
-    'Wrapped Ether'
+    "WETH",
+    "Wrapped Ether",
   ),
   [ChainId.ARBITRUM_GOERLI]: new Token(
     ChainId.ARBITRUM_GOERLI,
-    '0xe39Ab88f8A4777030A534146A9Ca3B52bd5D43A3',
+    "0xe39Ab88f8A4777030A534146A9Ca3B52bd5D43A3",
     18,
-    'WETH',
-    'Wrapped Ether'
+    "WETH",
+    "Wrapped Ether",
   ),
   [ChainId.ARBITRUM_SEPOLIA]: new Token(
     ChainId.ARBITRUM_SEPOLIA,
-    '0x980B62Da83eFf3D4576C647993b0c1D7faf17c73',
+    "0x980B62Da83eFf3D4576C647993b0c1D7faf17c73",
     18,
-    'WETH',
-    'Wrapped Ether'
+    "WETH",
+    "Wrapped Ether",
   ),
   [ChainId.POLYGON]: new Token(
     ChainId.POLYGON,
-    '0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270',
+    "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
     18,
-    'WMATIC',
-    'Wrapped MATIC'
+    "WMATIC",
+    "Wrapped MATIC",
   ),
   [ChainId.POLYGON_MUMBAI]: new Token(
     ChainId.POLYGON_MUMBAI,
-    '0x9c3C9283D3e44854697Cd22D3Faa240Cfb032889',
+    "0x9c3C9283D3e44854697Cd22D3Faa240Cfb032889",
     18,
-    'WMATIC',
-    'Wrapped MATIC'
+    "WMATIC",
+    "Wrapped MATIC",
   ),
 
   // The Celo native currency 'CELO' implements the erc-20 token standard
   [ChainId.CELO]: new Token(
     ChainId.CELO,
-    '0x471EcE3750Da237f93B8E339c536989b8978a438',
+    "0x471EcE3750Da237f93B8E339c536989b8978a438",
     18,
-    'CELO',
-    'Celo native asset'
+    "CELO",
+    "Celo native asset",
   ),
   [ChainId.CELO_ALFAJORES]: new Token(
     ChainId.CELO_ALFAJORES,
-    '0xF194afDf50B03e69Bd7D057c1Aa9e10c9954E4C9',
+    "0xF194afDf50B03e69Bd7D057c1Aa9e10c9954E4C9",
     18,
-    'CELO',
-    'Celo native asset'
+    "CELO",
+    "Celo native asset",
   ),
   [ChainId.GNOSIS]: new Token(
     ChainId.GNOSIS,
-    '0xe91d153e0b41518a2ce8dd3d7944fa863463a97d',
+    "0xe91d153e0b41518a2ce8dd3d7944fa863463a97d",
     18,
-    'WXDAI',
-    'Wrapped XDAI on Gnosis'
+    "WXDAI",
+    "Wrapped XDAI on Gnosis",
   ),
   [ChainId.MOONBEAM]: new Token(
     ChainId.MOONBEAM,
-    '0xAcc15dC74880C9944775448304B263D191c6077F',
+    "0xAcc15dC74880C9944775448304B263D191c6077F",
     18,
-    'WGLMR',
-    'Wrapped GLMR'
+    "WGLMR",
+    "Wrapped GLMR",
   ),
   [ChainId.AVALANCHE]: new Token(
     ChainId.AVALANCHE,
-    '0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7',
+    "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
     18,
-    'WAVAX',
-    'Wrapped AVAX'
+    "WAVAX",
+    "Wrapped AVAX",
   ),
   [ChainId.BASE]: new Token(
     ChainId.BASE,
-    '0x4200000000000000000000000000000000000006',
+    "0x4200000000000000000000000000000000000006",
     18,
-    'WETH',
-    'Wrapped Ether'
+    "WETH",
+    "Wrapped Ether",
   ),
   [ChainId.BASE_GOERLI]: new Token(
     ChainId.BASE_GOERLI,
-    '0x4200000000000000000000000000000000000006',
+    "0x4200000000000000000000000000000000000006",
     18,
-    'WETH',
-    'Wrapped Ether'
+    "WETH",
+    "Wrapped Ether",
   ),
   [ChainId.ROOTSTOCK]: new Token(
     ChainId.ROOTSTOCK,
-    '0x542fDA317318eBF1d3DEAf76E0b632741A7e677d',
+    "0x542fDA317318eBF1d3DEAf76E0b632741A7e677d",
     18,
-    'WRBTC',
-    'Wrapped BTC'
+    "WRBTC",
+    "Wrapped BTC",
   ),
   [ChainId.ZORA]: new Token(
     ChainId.ZORA,
-    '0x4200000000000000000000000000000000000006',
+    "0x4200000000000000000000000000000000000006",
     18,
-    'WETH',
-    'Wrapped Ether'
+    "WETH",
+    "Wrapped Ether",
   ),
   [ChainId.ZORA_SEPOLIA]: new Token(
     ChainId.ZORA_SEPOLIA,
-    '0x4200000000000000000000000000000000000006',
+    "0x4200000000000000000000000000000000000006",
     18,
-    'WETH',
-    'Wrapped Ether'
+    "WETH",
+    "Wrapped Ether",
   ),
   [ChainId.BLAST]: new Token(
     ChainId.BLAST,
-    '0x4300000000000000000000000000000000000004',
+    "0x4300000000000000000000000000000000000004",
     18,
-    'WETH',
-    'Wrapped Ether'
+    "WETH",
+    "Wrapped Ether",
   ),
   [ChainId.ZKSYNC]: new Token(
     ChainId.ZKSYNC,
-    '0x5aea5775959fbc2557cc8789bc1bf90a239d9a91',
+    "0x5aea5775959fbc2557cc8789bc1bf90a239d9a91",
     18,
-    'WETH',
-    'Wrapped Ether'
+    "WETH",
+    "Wrapped Ether",
   ),
   [ChainId.WORLDCHAIN]: new Token(
     ChainId.WORLDCHAIN,
-    '0x4200000000000000000000000000000000000006',
+    "0x4200000000000000000000000000000000000006",
     18,
-    'WETH',
-    'Wrapped Ether'
+    "WETH",
+    "Wrapped Ether",
   ),
   [ChainId.UNICHAIN_SEPOLIA]: new Token(
     ChainId.UNICHAIN_SEPOLIA,
-    '0x4200000000000000000000000000000000000006',
+    "0x4200000000000000000000000000000000000006",
     18,
-    'WETH',
-    'Wrapped Ether'
+    "WETH",
+    "Wrapped Ether",
   ),
   [ChainId.UNICHAIN]: new Token(
     ChainId.UNICHAIN,
-    '0x4200000000000000000000000000000000000006',
+    "0x4200000000000000000000000000000000000006",
     18,
-    'WETH',
-    'Wrapped Ether'
+    "WETH",
+    "Wrapped Ether",
   ),
   [ChainId.MONAD_TESTNET]: new Token(
     ChainId.MONAD_TESTNET,
-    '0x760AfE86e5de5fa0Ee542fc7B7B713e1c5425701',
+    "0x760AfE86e5de5fa0Ee542fc7B7B713e1c5425701",
     18,
-    'WMON',
-    'Wrapped Monad'
+    "WMON",
+    "Wrapped Monad",
   ),
   [ChainId.BASE_SEPOLIA]: new Token(
     ChainId.BASE_SEPOLIA,
-    '0x4200000000000000000000000000000000000006',
+    "0x4200000000000000000000000000000000000006",
     18,
-    'WETH',
-    'Wrapped Ether'
+    "WETH",
+    "Wrapped Ether",
   ),
   [ChainId.SONEIUM]: new Token(
     ChainId.SONEIUM,
-    '0x4200000000000000000000000000000000000006',
+    "0x4200000000000000000000000000000000000006",
     18,
-    'WETH',
-    'Wrapped Ether'
+    "WETH",
+    "Wrapped Ether",
   ),
   [ChainId.LENS]: new Token(
     ChainId.LENS,
-    '0x6bDc36E20D267Ff0dd6097799f82e78907105e2F',
+    "0x6bDc36E20D267Ff0dd6097799f82e78907105e2F",
     18,
-    'WGHO',
-    'Wrapped GHO'
+    "WGHO",
+    "Wrapped GHO",
   ),
   [ChainId.XLAYER]: new Token(
     ChainId.XLAYER,
-    '0xe538905cf8410324e03a5a23c1c177a474d59b2b',
+    "0xe538905cf8410324e03a5a23c1c177a474d59b2b",
     18,
-    'WOKB',
-    'Wrapped OKB'
+    "WOKB",
+    "Wrapped OKB",
   ),
   [ChainId.BOB]: new Token(
     ChainId.BOB,
-    '0x4200000000000000000000000000000000000006',
+    "0x4200000000000000000000000000000000000006",
     18,
-    'WETH',
-    'Wrapped Ether'
+    "WETH",
+    "Wrapped Ether",
   ),
   [ChainId.LISK]: new Token(
     ChainId.LISK,
-    '0x4200000000000000000000000000000000000006',
+    "0x4200000000000000000000000000000000000006",
     18,
-    'WETH',
-    'Wrapped ETH'
+    "WETH",
+    "Wrapped ETH",
   ),
   [ChainId.ZKLINK]: new Token(
     ChainId.ZKLINK,
-    '0x8280a4e7D5B3B658ec4580d3Bc30f5e50454F169',
+    "0x8280a4e7D5B3B658ec4580d3Bc30f5e50454F169",
     18,
-    'WETH',
-    'Wrapped ETH'
+    "WETH",
+    "Wrapped ETH",
   ),
   [ChainId.TAIKO]: new Token(
     ChainId.TAIKO,
-    '0xA51894664A773981C6C112C43ce576f315d5b1B6',
+    "0xA51894664A773981C6C112C43ce576f315d5b1B6",
     18,
-    'WETH',
-    'Wrapped ETH'
+    "WETH",
+    "Wrapped ETH",
   ),
   [ChainId.SEI]: new Token(
     ChainId.SEI,
-    '0xE30feDd158A2e3b13e9badaeABaFc5516e95e8C7',
+    "0xE30feDd158A2e3b13e9badaeABaFc5516e95e8C7",
     18,
-    'WSEI',
-    'Wrapped SEI'
+    "WSEI",
+    "Wrapped SEI",
   ),
   [ChainId.MANTLE]: new Token(
     ChainId.MANTLE,
-    '0x78c1b0C915c4FAA5FffA6CAbf0219DA63d7f4cb8',
+    "0x78c1b0C915c4FAA5FffA6CAbf0219DA63d7f4cb8",
     18,
-    'MNT',
-    'Wrapped Mantle'
+    "MNT",
+    "Wrapped Mantle",
   ),
   [ChainId.SEI_TESTNET]: new Token(
     ChainId.SEI_TESTNET,
-    '0x57eE725BEeB991c70c53f9642f36755EC6eb2139',
+    "0x57eE725BEeB991c70c53f9642f36755EC6eb2139",
     18,
-    'WSEI',
-    'Wrapped SEI'
+    "WSEI",
+    "Wrapped SEI",
   ),
   [ChainId.LINEA]: new Token(
     ChainId.LINEA,
-    '0xe5d7c2a44ffddf6b295a15c148167daaaf5cf34f',
+    "0xe5d7c2a44ffddf6b295a15c148167daaaf5cf34f",
     18,
-    'WETH',
-    'Wrapped ETH'
+    "WETH",
+    "Wrapped ETH",
   ),
   [ChainId.MANTA]: new Token(
     ChainId.MANTA,
-    '0x0Dc808adcE2099A9F62AA87D9670745AbA741746',
+    "0x0Dc808adcE2099A9F62AA87D9670745AbA741746",
     18,
-    'WETH',
-    'Wrapped ETH'
+    "WETH",
+    "Wrapped ETH",
   ),
   [ChainId.POLYGON_ZKEVM]: new Token(
     ChainId.POLYGON_ZKEVM,
-    '0x4F9A0e7FD2Bf6067db6994CF12E4495Df938E6e9',
+    "0x4F9A0e7FD2Bf6067db6994CF12E4495Df938E6e9",
     18,
-    'WETH',
-    'Wrapped ETH'
+    "WETH",
+    "Wrapped ETH",
   ),
   [ChainId.FILECOIN]: new Token(
     ChainId.FILECOIN,
-    '0x60E1773636CF5E4A227d9AC24F20fEca034ee25A',
+    "0x60E1773636CF5E4A227d9AC24F20fEca034ee25A",
     18,
-    'WFIL',
-    'Wrapped FIL'
+    "WFIL",
+    "Wrapped FIL",
   ),
   [ChainId.SCROLL]: new Token(
     ChainId.SCROLL,
-    '0x5300000000000000000000000000000000000004',
+    "0x5300000000000000000000000000000000000004",
     18,
-    'WETH',
-    'Wrapped Ether'
+    "WETH",
+    "Wrapped Ether",
   ),
   [ChainId.BOBA]: new Token(
     ChainId.BOBA,
-    '0xDeadDeAddeAddEAddeadDEaDDEAdDeaDDeAD0000',
+    "0xDeadDeAddeAddEAddeadDEaDDEAdDeaDDeAD0000",
     18,
-    'WETH',
-    'Wrapped Ether'
+    "WETH",
+    "Wrapped Ether",
   ),
   [ChainId.CORN]: new Token(
     ChainId.CORN,
-    '0xda5dDd7270381A7C2717aD10D1c0ecB19e3CDFb2',
+    "0xda5dDd7270381A7C2717aD10D1c0ecB19e3CDFb2",
     18,
-    'WBTCN',
-    'Wrapped BTCN'
+    "WBTCN",
+    "Wrapped BTCN",
   ),
   [ChainId.ETHERLINK]: new Token(
     ChainId.ETHERLINK,
-    '0xc9B53AB2679f573e480d01e0f49e2B5CFB7a3EAb',
+    "0xc9B53AB2679f573e480d01e0f49e2B5CFB7a3EAb",
     18,
-    'WXTZ',
-    'Wrapped XTZ'
+    "WXTZ",
+    "Wrapped XTZ",
   ),
   [ChainId.METAL]: new Token(
     ChainId.METAL,
-    '0x4200000000000000000000000000000000000006',
+    "0x4200000000000000000000000000000000000006",
     18,
-    'WETH',
-    'Wrapped Ether'
+    "WETH",
+    "Wrapped Ether",
   ),
   [ChainId.SONIC]: new Token(
     ChainId.SONIC,
-    '0x039e2fb66102314ce7b64ce5ce3e5183bc94ad38',
+    "0x039e2fb66102314ce7b64ce5ce3e5183bc94ad38",
     18,
-    'wS',
-    'Wrapped Sonic'
+    "wS",
+    "Wrapped Sonic",
   ),
   [ChainId.XDC]: new Token(
     ChainId.XDC,
-    '0x951857744785e80e2de051c32ee7b25f9c458c42',
+    "0x951857744785e80e2de051c32ee7b25f9c458c42",
     18,
-    'WXDC',
-    'Wrapped XDC'
+    "WXDC",
+    "Wrapped XDC",
   ),
   [ChainId.LIGHTLINK]: new Token(
     ChainId.LIGHTLINK,
-    '0x7EbeF2A4b1B09381Ec5B9dF8C5c6f2dBECA59c73',
+    "0x7EbeF2A4b1B09381Ec5B9dF8C5c6f2dBECA59c73",
     18,
-    'WETH',
-    'Wrapped Ether'
+    "WETH",
+    "Wrapped Ether",
   ),
   [ChainId.GOAT]: new Token(
     ChainId.GOAT,
-    '0xbC10000000000000000000000000000000000000',
+    "0xbC10000000000000000000000000000000000000",
     18,
-    'WGBTC',
-    'Wrapped Goat Bitcoin'
+    "WGBTC",
+    "Wrapped Goat Bitcoin",
   ),
   [ChainId.REDBELLY]: new Token(
     ChainId.REDBELLY,
-    '0x6ed1F491e2d31536D6561f6bdB2AdC8F092a6076',
+    "0x6ed1F491e2d31536D6561f6bdB2AdC8F092a6076",
     18,
-    'WRBNT',
-    'Wrapped RBNT'
+    "WRBNT",
+    "Wrapped RBNT",
   ),
   [ChainId.SAGA]: new Token(
     ChainId.SAGA,
-    '0xE3dbcD53f4Ce1b06Ab200f4912BD35672e68f1FA',
+    "0xE3dbcD53f4Ce1b06Ab200f4912BD35672e68f1FA",
     18,
-    'wGAS',
-    'Wrapped Gas'
+    "wGAS",
+    "Wrapped Gas",
   ),
   [ChainId.TELOS]: new Token(
     ChainId.TELOS,
-    '0xD102cE6A4dB07D247fcc28F366A623Df0938CA9E',
+    "0xD102cE6A4dB07D247fcc28F366A623Df0938CA9E",
     18,
-    'WTLOS',
-    'Wrapped TLOS'
+    "WTLOS",
+    "Wrapped TLOS",
   ),
   [ChainId.HEMI]: new Token(
     ChainId.HEMI,
-    '0x4200000000000000000000000000000000000006',
+    "0x4200000000000000000000000000000000000006",
     18,
-    'WETH',
-    'Wrapped Ether'
+    "WETH",
+    "Wrapped Ether",
   ),
   [ChainId.NIBIRU]: new Token(
     ChainId.NIBIRU,
-    '0x0CaCF669f8446BeCA826913a3c6B96aCD4b02a97',
+    "0x0CaCF669f8446BeCA826913a3c6B96aCD4b02a97",
     18,
-    'WNIBI',
-    'Wrapped NIBI'
+    "WNIBI",
+    "Wrapped NIBI",
   ),
   [ChainId.MATCHAIN]: new Token(
     ChainId.MATCHAIN,
-    '0x4200000000000000000000000000000000000006',
+    "0x4200000000000000000000000000000000000006",
     18,
-    'WBNB',
-    'Wrapped BNB'
+    "WBNB",
+    "Wrapped BNB",
   ),
   [ChainId.PLASMA]: new Token(
     ChainId.PLASMA,
-    '0x6100E367285b01F48D07953803A2d8dCA5D19873',
+    "0x6100E367285b01F48D07953803A2d8dCA5D19873",
     18,
-    'WXPL',
-    'Wrapped XPL'
+    "WXPL",
+    "Wrapped XPL",
+  ),
+  [ChainId.MONAD]: new Token(
+    ChainId.MONAD,
+    "0x3bd359C1119dA7Da1D913D1C4D2B7c461115433A",
+    18,
+    "WMON",
+    "Wrapped Monad",
   ),
   [ChainId.RONIN]: new Token(
     ChainId.RONIN,
-    '0xe514d9deb7966c8be0ca922de8a064264ea6bcd4',
+    "0xe514d9deb7966c8be0ca922de8a064264ea6bcd4",
     18,
-    'WRON',
-    'Wrapped RON'
+    "WRON",
+    "Wrapped RON",
   ),
   [ChainId.ZEROG]: new Token(
     ChainId.ZEROG,
-    '0x1cd0690ff9a693f5ef2dd976660a8dafc81a109c',
+    "0x1cd0690ff9a693f5ef2dd976660a8dafc81a109c",
     18,
-    'W0G',
-    'Wrapped 0G'
+    "W0G",
+    "Wrapped 0G",
   ),
 };
 
 function isMatic(
-  chainId: number
+  chainId: number,
 ): chainId is ChainId.POLYGON | ChainId.POLYGON_MUMBAI {
   return chainId === ChainId.POLYGON_MUMBAI || chainId === ChainId.POLYGON;
 }
@@ -1298,7 +1315,7 @@ class MaticNativeCurrency extends NativeCurrency {
   }
 
   get wrapped(): Token {
-    if (!isMatic(this.chainId)) throw new Error('Not matic');
+    if (!isMatic(this.chainId)) throw new Error("Not matic");
     const nativeCurrency = WRAPPED_NATIVE_CURRENCY[this.chainId];
     if (nativeCurrency) {
       return nativeCurrency;
@@ -1307,13 +1324,13 @@ class MaticNativeCurrency extends NativeCurrency {
   }
 
   public constructor(chainId: number) {
-    if (!isMatic(chainId)) throw new Error('Not matic');
-    super(chainId, 18, 'MATIC', 'Polygon Matic');
+    if (!isMatic(chainId)) throw new Error("Not matic");
+    super(chainId, 18, "MATIC", "Polygon Matic");
   }
 }
 
 function isCelo(
-  chainId: number
+  chainId: number,
 ): chainId is ChainId.CELO | ChainId.CELO_ALFAJORES {
   return chainId === ChainId.CELO_ALFAJORES || chainId === ChainId.CELO;
 }
@@ -1324,7 +1341,7 @@ class CeloNativeCurrency extends NativeCurrency {
   }
 
   get wrapped(): Token {
-    if (!isCelo(this.chainId)) throw new Error('Not celo');
+    if (!isCelo(this.chainId)) throw new Error("Not celo");
     const nativeCurrency = WRAPPED_NATIVE_CURRENCY[this.chainId];
     if (nativeCurrency) {
       return nativeCurrency;
@@ -1333,8 +1350,8 @@ class CeloNativeCurrency extends NativeCurrency {
   }
 
   public constructor(chainId: number) {
-    if (!isCelo(chainId)) throw new Error('Not celo');
-    super(chainId, 18, 'CELO', 'Celo');
+    if (!isCelo(chainId)) throw new Error("Not celo");
+    super(chainId, 18, "CELO", "Celo");
   }
 }
 
@@ -1348,7 +1365,7 @@ class GnosisNativeCurrency extends NativeCurrency {
   }
 
   get wrapped(): Token {
-    if (!isGnosis(this.chainId)) throw new Error('Not gnosis');
+    if (!isGnosis(this.chainId)) throw new Error("Not gnosis");
     const nativeCurrency = WRAPPED_NATIVE_CURRENCY[this.chainId];
     if (nativeCurrency) {
       return nativeCurrency;
@@ -1357,8 +1374,8 @@ class GnosisNativeCurrency extends NativeCurrency {
   }
 
   public constructor(chainId: number) {
-    if (!isGnosis(chainId)) throw new Error('Not gnosis');
-    super(chainId, 18, 'XDAI', 'xDai');
+    if (!isGnosis(chainId)) throw new Error("Not gnosis");
+    super(chainId, 18, "XDAI", "xDai");
   }
 }
 
@@ -1372,7 +1389,7 @@ class BnbNativeCurrency extends NativeCurrency {
   }
 
   get wrapped(): Token {
-    if (!isBnb(this.chainId)) throw new Error('Not bnb');
+    if (!isBnb(this.chainId)) throw new Error("Not bnb");
     const nativeCurrency = WRAPPED_NATIVE_CURRENCY[this.chainId];
     if (nativeCurrency) {
       return nativeCurrency;
@@ -1381,8 +1398,8 @@ class BnbNativeCurrency extends NativeCurrency {
   }
 
   public constructor(chainId: number) {
-    if (!isBnb(chainId)) throw new Error('Not bnb');
-    super(chainId, 18, 'BNB', 'BNB');
+    if (!isBnb(chainId)) throw new Error("Not bnb");
+    super(chainId, 18, "BNB", "BNB");
   }
 }
 
@@ -1396,7 +1413,7 @@ class MoonbeamNativeCurrency extends NativeCurrency {
   }
 
   get wrapped(): Token {
-    if (!isMoonbeam(this.chainId)) throw new Error('Not moonbeam');
+    if (!isMoonbeam(this.chainId)) throw new Error("Not moonbeam");
     const nativeCurrency = WRAPPED_NATIVE_CURRENCY[this.chainId];
     if (nativeCurrency) {
       return nativeCurrency;
@@ -1405,8 +1422,32 @@ class MoonbeamNativeCurrency extends NativeCurrency {
   }
 
   public constructor(chainId: number) {
-    if (!isMoonbeam(chainId)) throw new Error('Not moonbeam');
-    super(chainId, 18, 'GLMR', 'Glimmer');
+    if (!isMoonbeam(chainId)) throw new Error("Not moonbeam");
+    super(chainId, 18, "GLMR", "Glimmer");
+  }
+}
+
+function isMonad(chainId: number): chainId is ChainId.MONAD {
+  return chainId === ChainId.MONAD;
+}
+
+class MonadNativeCurrency extends NativeCurrency {
+  equals(other: Currency): boolean {
+    return other.isNative && other.chainId === this.chainId;
+  }
+
+  get wrapped(): Token {
+    if (!isMonad(this.chainId)) throw new Error("Not monad");
+    const nativeCurrency = WRAPPED_NATIVE_CURRENCY[this.chainId];
+    if (nativeCurrency) {
+      return nativeCurrency;
+    }
+    throw new Error(`Does not support this chain ${this.chainId}`);
+  }
+
+  public constructor(chainId: number) {
+    if (!isMonad(chainId)) throw new Error("Not monad");
+    super(chainId, 18, "MON", "Monad");
   }
 }
 
@@ -1420,7 +1461,7 @@ class AvalancheNativeCurrency extends NativeCurrency {
   }
 
   get wrapped(): Token {
-    if (!isAvax(this.chainId)) throw new Error('Not avalanche');
+    if (!isAvax(this.chainId)) throw new Error("Not avalanche");
     const nativeCurrency = WRAPPED_NATIVE_CURRENCY[this.chainId];
     if (nativeCurrency) {
       return nativeCurrency;
@@ -1429,8 +1470,8 @@ class AvalancheNativeCurrency extends NativeCurrency {
   }
 
   public constructor(chainId: number) {
-    if (!isAvax(chainId)) throw new Error('Not avalanche');
-    super(chainId, 18, 'AVAX', 'Avalanche');
+    if (!isAvax(chainId)) throw new Error("Not avalanche");
+    super(chainId, 18, "AVAX", "Avalanche");
   }
 }
 
@@ -1439,7 +1480,7 @@ export class ExtendedEther extends Ether {
     if (this.chainId in WRAPPED_NATIVE_CURRENCY) {
       return WRAPPED_NATIVE_CURRENCY[this.chainId as ChainId];
     }
-    throw new Error('Unsupported chain ID');
+    throw new Error("Unsupported chain ID");
   }
 
   private static _cachedExtendedEther: { [chainId: number]: NativeCurrency } =
@@ -1463,7 +1504,7 @@ class ZksyncNativeCurrency extends NativeCurrency {
   }
 
   get wrapped(): Token {
-    if (!isZksync(this.chainId)) throw new Error('Not zksync');
+    if (!isZksync(this.chainId)) throw new Error("Not zksync");
     const nativeCurrency = WRAPPED_NATIVE_CURRENCY[this.chainId];
     if (nativeCurrency) {
       return nativeCurrency;
@@ -1472,8 +1513,8 @@ class ZksyncNativeCurrency extends NativeCurrency {
   }
 
   public constructor(chainId: number) {
-    if (!isZksync(chainId)) throw new Error('Not zksync');
-    super(chainId, 18, 'ETH', 'Ether');
+    if (!isZksync(chainId)) throw new Error("Not zksync");
+    super(chainId, 18, "ETH", "Ether");
   }
 }
 
@@ -1487,7 +1528,7 @@ class LensNativeCurrency extends NativeCurrency {
   }
 
   get wrapped(): Token {
-    if (!isLens(this.chainId)) throw new Error('Not lens');
+    if (!isLens(this.chainId)) throw new Error("Not lens");
     const nativeCurrency = WRAPPED_NATIVE_CURRENCY[this.chainId];
     if (nativeCurrency) {
       return nativeCurrency;
@@ -1496,8 +1537,8 @@ class LensNativeCurrency extends NativeCurrency {
   }
 
   public constructor(chainId: number) {
-    if (!isLens(chainId)) throw new Error('Not lens');
-    super(chainId, 18, 'GHO', 'GHO');
+    if (!isLens(chainId)) throw new Error("Not lens");
+    super(chainId, 18, "GHO", "GHO");
   }
 }
 
@@ -1511,7 +1552,7 @@ class XlayerNativeCurrency extends NativeCurrency {
   }
 
   get wrapped(): Token {
-    if (!isXlayer(this.chainId)) throw new Error('Not xlayer');
+    if (!isXlayer(this.chainId)) throw new Error("Not xlayer");
     const nativeCurrency = WRAPPED_NATIVE_CURRENCY[this.chainId];
     if (nativeCurrency) {
       return nativeCurrency;
@@ -1520,8 +1561,8 @@ class XlayerNativeCurrency extends NativeCurrency {
   }
 
   public constructor(chainId: number) {
-    if (!isXlayer(chainId)) throw new Error('Not xlayer');
-    super(chainId, 18, 'ETH', 'Ether');
+    if (!isXlayer(chainId)) throw new Error("Not xlayer");
+    super(chainId, 18, "ETH", "Ether");
   }
 }
 
@@ -1535,7 +1576,7 @@ class BobNativeCurrency extends NativeCurrency {
   }
 
   get wrapped(): Token {
-    if (!isBob(this.chainId)) throw new Error('Not bob');
+    if (!isBob(this.chainId)) throw new Error("Not bob");
     const nativeCurrency = WRAPPED_NATIVE_CURRENCY[this.chainId];
     if (nativeCurrency) {
       return nativeCurrency;
@@ -1544,8 +1585,8 @@ class BobNativeCurrency extends NativeCurrency {
   }
 
   public constructor(chainId: number) {
-    if (!isBob(chainId)) throw new Error('Not bob');
-    super(chainId, 18, 'ETH', 'Ether');
+    if (!isBob(chainId)) throw new Error("Not bob");
+    super(chainId, 18, "ETH", "Ether");
   }
 }
 
@@ -1559,7 +1600,7 @@ class LiskNativeCurrency extends NativeCurrency {
   }
 
   get wrapped(): Token {
-    if (!isLisk(this.chainId)) throw new Error('Not lisk');
+    if (!isLisk(this.chainId)) throw new Error("Not lisk");
     const nativeCurrency = WRAPPED_NATIVE_CURRENCY[this.chainId];
     if (nativeCurrency) {
       return nativeCurrency;
@@ -1568,8 +1609,8 @@ class LiskNativeCurrency extends NativeCurrency {
   }
 
   public constructor(chainId: number) {
-    if (!isLisk(chainId)) throw new Error('Not lisk');
-    super(chainId, 18, 'ETH', 'Ether');
+    if (!isLisk(chainId)) throw new Error("Not lisk");
+    super(chainId, 18, "ETH", "Ether");
   }
 }
 
@@ -1583,7 +1624,7 @@ class ZklinkNativeCurrency extends NativeCurrency {
   }
 
   get wrapped(): Token {
-    if (!isZklink(this.chainId)) throw new Error('Not zklink');
+    if (!isZklink(this.chainId)) throw new Error("Not zklink");
     const nativeCurrency = WRAPPED_NATIVE_CURRENCY[this.chainId];
     if (nativeCurrency) {
       return nativeCurrency;
@@ -1592,8 +1633,8 @@ class ZklinkNativeCurrency extends NativeCurrency {
   }
 
   public constructor(chainId: number) {
-    if (!isZklink(chainId)) throw new Error('Not zklink');
-    super(chainId, 18, 'ETH', 'Ether');
+    if (!isZklink(chainId)) throw new Error("Not zklink");
+    super(chainId, 18, "ETH", "Ether");
   }
 }
 
@@ -1607,7 +1648,7 @@ class TaikoNativeCurrency extends NativeCurrency {
   }
 
   get wrapped(): Token {
-    if (!isTaiko(this.chainId)) throw new Error('Not taiko');
+    if (!isTaiko(this.chainId)) throw new Error("Not taiko");
     const nativeCurrency = WRAPPED_NATIVE_CURRENCY[this.chainId];
     if (nativeCurrency) {
       return nativeCurrency;
@@ -1616,8 +1657,8 @@ class TaikoNativeCurrency extends NativeCurrency {
   }
 
   public constructor(chainId: number) {
-    if (!isTaiko(chainId)) throw new Error('Not taiko');
-    super(chainId, 18, 'ETH', 'Ether');
+    if (!isTaiko(chainId)) throw new Error("Not taiko");
+    super(chainId, 18, "ETH", "Ether");
   }
 }
 
@@ -1631,7 +1672,7 @@ class SeiNativeCurrency extends NativeCurrency {
   }
 
   get wrapped(): Token {
-    if (!isSei(this.chainId)) throw new Error('Not sei');
+    if (!isSei(this.chainId)) throw new Error("Not sei");
     const nativeCurrency = WRAPPED_NATIVE_CURRENCY[this.chainId];
     if (nativeCurrency) {
       return nativeCurrency;
@@ -1640,8 +1681,8 @@ class SeiNativeCurrency extends NativeCurrency {
   }
 
   public constructor(chainId: number) {
-    if (!isSei(chainId)) throw new Error('Not sei');
-    super(chainId, 18, 'SEI', 'Sei');
+    if (!isSei(chainId)) throw new Error("Not sei");
+    super(chainId, 18, "SEI", "Sei");
   }
 }
 
@@ -1655,7 +1696,7 @@ class MantleNativeCurrency extends NativeCurrency {
   }
 
   get wrapped(): Token {
-    if (!isMantle(this.chainId)) throw new Error('Not mantle');
+    if (!isMantle(this.chainId)) throw new Error("Not mantle");
     const nativeCurrency = WRAPPED_NATIVE_CURRENCY[this.chainId];
     if (nativeCurrency) {
       return nativeCurrency;
@@ -1664,8 +1705,8 @@ class MantleNativeCurrency extends NativeCurrency {
   }
 
   public constructor(chainId: number) {
-    if (!isMantle(chainId)) throw new Error('Not mantle');
-    super(chainId, 18, 'MNT', 'Mantle');
+    if (!isMantle(chainId)) throw new Error("Not mantle");
+    super(chainId, 18, "MNT", "Mantle");
   }
 }
 
@@ -1679,7 +1720,7 @@ class SeiTestnetNativeCurrency extends NativeCurrency {
   }
 
   get wrapped(): Token {
-    if (!isSeiTestnet(this.chainId)) throw new Error('Not sei testnet');
+    if (!isSeiTestnet(this.chainId)) throw new Error("Not sei testnet");
     const nativeCurrency = WRAPPED_NATIVE_CURRENCY[this.chainId];
     if (nativeCurrency) {
       return nativeCurrency;
@@ -1688,8 +1729,8 @@ class SeiTestnetNativeCurrency extends NativeCurrency {
   }
 
   public constructor(chainId: number) {
-    if (!isSeiTestnet(chainId)) throw new Error('Not sei testnet');
-    super(chainId, 18, 'SEI', 'Sei');
+    if (!isSeiTestnet(chainId)) throw new Error("Not sei testnet");
+    super(chainId, 18, "SEI", "Sei");
   }
 }
 
@@ -1703,7 +1744,7 @@ class LineaNativeCurrency extends NativeCurrency {
   }
 
   get wrapped(): Token {
-    if (!isLinea(this.chainId)) throw new Error('Not linea');
+    if (!isLinea(this.chainId)) throw new Error("Not linea");
     const nativeCurrency = WRAPPED_NATIVE_CURRENCY[this.chainId];
     if (nativeCurrency) {
       return nativeCurrency;
@@ -1712,8 +1753,8 @@ class LineaNativeCurrency extends NativeCurrency {
   }
 
   public constructor(chainId: number) {
-    if (!isLinea(chainId)) throw new Error('Not linea');
-    super(chainId, 18, 'ETH', 'Ether');
+    if (!isLinea(chainId)) throw new Error("Not linea");
+    super(chainId, 18, "ETH", "Ether");
   }
 }
 
@@ -1727,7 +1768,7 @@ class BlastNativeCurrency extends NativeCurrency {
   }
 
   get wrapped(): Token {
-    if (!isBlast(this.chainId)) throw new Error('Not blast');
+    if (!isBlast(this.chainId)) throw new Error("Not blast");
     const nativeCurrency = WRAPPED_NATIVE_CURRENCY[this.chainId];
     if (nativeCurrency) {
       return nativeCurrency;
@@ -1736,8 +1777,8 @@ class BlastNativeCurrency extends NativeCurrency {
   }
 
   public constructor(chainId: number) {
-    if (!isBlast(chainId)) throw new Error('Not blast');
-    super(chainId, 18, 'ETH', 'Ether');
+    if (!isBlast(chainId)) throw new Error("Not blast");
+    super(chainId, 18, "ETH", "Ether");
   }
 }
 
@@ -1751,7 +1792,7 @@ class MantaNativeCurrency extends NativeCurrency {
   }
 
   get wrapped(): Token {
-    if (!isManta(this.chainId)) throw new Error('Not manta');
+    if (!isManta(this.chainId)) throw new Error("Not manta");
     const nativeCurrency = WRAPPED_NATIVE_CURRENCY[this.chainId];
     if (nativeCurrency) {
       return nativeCurrency;
@@ -1760,8 +1801,8 @@ class MantaNativeCurrency extends NativeCurrency {
   }
 
   public constructor(chainId: number) {
-    if (!isManta(chainId)) throw new Error('Not manta');
-    super(chainId, 18, 'ETH', 'Ether');
+    if (!isManta(chainId)) throw new Error("Not manta");
+    super(chainId, 18, "ETH", "Ether");
   }
 }
 
@@ -1775,7 +1816,7 @@ class PolygonZkevmNativeCurrency extends NativeCurrency {
   }
 
   get wrapped(): Token {
-    if (!isPolygonZkevm(this.chainId)) throw new Error('Not polygon-zkevm');
+    if (!isPolygonZkevm(this.chainId)) throw new Error("Not polygon-zkevm");
     const nativeCurrency = WRAPPED_NATIVE_CURRENCY[this.chainId];
     if (nativeCurrency) {
       return nativeCurrency;
@@ -1784,8 +1825,8 @@ class PolygonZkevmNativeCurrency extends NativeCurrency {
   }
 
   public constructor(chainId: number) {
-    if (!isPolygonZkevm(chainId)) throw new Error('Not polygon-zkevm');
-    super(chainId, 18, 'ETH', 'Ether');
+    if (!isPolygonZkevm(chainId)) throw new Error("Not polygon-zkevm");
+    super(chainId, 18, "ETH", "Ether");
   }
 }
 
@@ -1799,7 +1840,7 @@ class FilecoinNativeCurrency extends NativeCurrency {
   }
 
   get wrapped(): Token {
-    if (!isFilecoin(this.chainId)) throw new Error('Not filecoin');
+    if (!isFilecoin(this.chainId)) throw new Error("Not filecoin");
     const nativeCurrency = WRAPPED_NATIVE_CURRENCY[this.chainId];
     if (nativeCurrency) {
       return nativeCurrency;
@@ -1808,8 +1849,8 @@ class FilecoinNativeCurrency extends NativeCurrency {
   }
 
   public constructor(chainId: number) {
-    if (!isFilecoin(chainId)) throw new Error('Not filecoin');
-    super(chainId, 18, 'FIL', 'Filecoin');
+    if (!isFilecoin(chainId)) throw new Error("Not filecoin");
+    super(chainId, 18, "FIL", "Filecoin");
   }
 }
 
@@ -1823,7 +1864,7 @@ class RootstockNativeCurrency extends NativeCurrency {
   }
 
   get wrapped(): Token {
-    if (!isRootstock(this.chainId)) throw new Error('Not rootstock');
+    if (!isRootstock(this.chainId)) throw new Error("Not rootstock");
     const nativeCurrency = WRAPPED_NATIVE_CURRENCY[this.chainId];
     if (nativeCurrency) {
       return nativeCurrency;
@@ -1832,8 +1873,8 @@ class RootstockNativeCurrency extends NativeCurrency {
   }
 
   public constructor(chainId: number) {
-    if (!isRootstock(chainId)) throw new Error('Not rootstock');
-    super(chainId, 18, 'RBTC', 'Rootstock Bitcoin');
+    if (!isRootstock(chainId)) throw new Error("Not rootstock");
+    super(chainId, 18, "RBTC", "Rootstock Bitcoin");
   }
 }
 
@@ -1847,7 +1888,7 @@ class ScrollNativeCurrency extends NativeCurrency {
   }
 
   get wrapped(): Token {
-    if (!isScroll(this.chainId)) throw new Error('Not scroll');
+    if (!isScroll(this.chainId)) throw new Error("Not scroll");
     const nativeCurrency = WRAPPED_NATIVE_CURRENCY[this.chainId];
     if (nativeCurrency) {
       return nativeCurrency;
@@ -1856,8 +1897,8 @@ class ScrollNativeCurrency extends NativeCurrency {
   }
 
   public constructor(chainId: number) {
-    if (!isScroll(chainId)) throw new Error('Not scroll');
-    super(chainId, 18, 'ETH', 'Ether');
+    if (!isScroll(chainId)) throw new Error("Not scroll");
+    super(chainId, 18, "ETH", "Ether");
   }
 }
 
@@ -1871,7 +1912,7 @@ class BobaNativeCurrency extends NativeCurrency {
   }
 
   get wrapped(): Token {
-    if (!isBoba(this.chainId)) throw new Error('Not boba');
+    if (!isBoba(this.chainId)) throw new Error("Not boba");
     const nativeCurrency = WRAPPED_NATIVE_CURRENCY[this.chainId];
     if (nativeCurrency) {
       return nativeCurrency;
@@ -1880,8 +1921,8 @@ class BobaNativeCurrency extends NativeCurrency {
   }
 
   public constructor(chainId: number) {
-    if (!isBoba(chainId)) throw new Error('Not boba');
-    super(chainId, 18, 'ETH', 'Ether');
+    if (!isBoba(chainId)) throw new Error("Not boba");
+    super(chainId, 18, "ETH", "Ether");
   }
 }
 
@@ -1895,7 +1936,7 @@ class CornNativeCurrency extends NativeCurrency {
   }
 
   get wrapped(): Token {
-    if (!isCorn(this.chainId)) throw new Error('Not corn');
+    if (!isCorn(this.chainId)) throw new Error("Not corn");
     const nativeCurrency = WRAPPED_NATIVE_CURRENCY[this.chainId];
     if (nativeCurrency) {
       return nativeCurrency;
@@ -1904,8 +1945,8 @@ class CornNativeCurrency extends NativeCurrency {
   }
 
   public constructor(chainId: number) {
-    if (!isCorn(chainId)) throw new Error('Not corn');
-    super(chainId, 18, 'ETH', 'Ether');
+    if (!isCorn(chainId)) throw new Error("Not corn");
+    super(chainId, 18, "ETH", "Ether");
   }
 }
 
@@ -1919,7 +1960,7 @@ class EtherlinkNativeCurrency extends NativeCurrency {
   }
 
   get wrapped(): Token {
-    if (!isEtherlink(this.chainId)) throw new Error('Not etherlink');
+    if (!isEtherlink(this.chainId)) throw new Error("Not etherlink");
     const nativeCurrency = WRAPPED_NATIVE_CURRENCY[this.chainId];
     if (nativeCurrency) {
       return nativeCurrency;
@@ -1928,8 +1969,8 @@ class EtherlinkNativeCurrency extends NativeCurrency {
   }
 
   public constructor(chainId: number) {
-    if (!isEtherlink(chainId)) throw new Error('Not etherlink');
-    super(chainId, 18, 'XTZ', 'XTZ');
+    if (!isEtherlink(chainId)) throw new Error("Not etherlink");
+    super(chainId, 18, "XTZ", "XTZ");
   }
 }
 
@@ -1943,7 +1984,7 @@ class MetalNativeCurrency extends NativeCurrency {
   }
 
   get wrapped(): Token {
-    if (!isMetal(this.chainId)) throw new Error('Not metal');
+    if (!isMetal(this.chainId)) throw new Error("Not metal");
     const nativeCurrency = WRAPPED_NATIVE_CURRENCY[this.chainId];
     if (nativeCurrency) {
       return nativeCurrency;
@@ -1952,8 +1993,8 @@ class MetalNativeCurrency extends NativeCurrency {
   }
 
   public constructor(chainId: number) {
-    if (!isMetal(chainId)) throw new Error('Not metal');
-    super(chainId, 18, 'ETH', 'Ether');
+    if (!isMetal(chainId)) throw new Error("Not metal");
+    super(chainId, 18, "ETH", "Ether");
   }
 }
 
@@ -1967,7 +2008,7 @@ class SonicNativeCurrency extends NativeCurrency {
   }
 
   get wrapped(): Token {
-    if (!isSonic(this.chainId)) throw new Error('Not sonic');
+    if (!isSonic(this.chainId)) throw new Error("Not sonic");
     const nativeCurrency = WRAPPED_NATIVE_CURRENCY[this.chainId];
     if (nativeCurrency) {
       return nativeCurrency;
@@ -1976,8 +2017,8 @@ class SonicNativeCurrency extends NativeCurrency {
   }
 
   public constructor(chainId: number) {
-    if (!isSonic(chainId)) throw new Error('Not sonic');
-    super(chainId, 18, 'ETH', 'Ether');
+    if (!isSonic(chainId)) throw new Error("Not sonic");
+    super(chainId, 18, "ETH", "Ether");
   }
 }
 
@@ -1991,7 +2032,7 @@ class XdcNativeCurrency extends NativeCurrency {
   }
 
   get wrapped(): Token {
-    if (!isXdc(this.chainId)) throw new Error('Not xdc');
+    if (!isXdc(this.chainId)) throw new Error("Not xdc");
     const nativeCurrency = WRAPPED_NATIVE_CURRENCY[this.chainId];
     if (nativeCurrency) {
       return nativeCurrency;
@@ -2000,8 +2041,8 @@ class XdcNativeCurrency extends NativeCurrency {
   }
 
   public constructor(chainId: number) {
-    if (!isXdc(chainId)) throw new Error('Not xdc');
-    super(chainId, 18, 'XDC', 'XDC');
+    if (!isXdc(chainId)) throw new Error("Not xdc");
+    super(chainId, 18, "XDC", "XDC");
   }
 }
 
@@ -2015,7 +2056,7 @@ class WorldchainNativeCurrency extends NativeCurrency {
   }
 
   get wrapped(): Token {
-    if (!isWorldchain(this.chainId)) throw new Error('Not worldchain');
+    if (!isWorldchain(this.chainId)) throw new Error("Not worldchain");
     const nativeCurrency = WRAPPED_NATIVE_CURRENCY[this.chainId];
     if (nativeCurrency) {
       return nativeCurrency;
@@ -2024,8 +2065,8 @@ class WorldchainNativeCurrency extends NativeCurrency {
   }
 
   public constructor(chainId: number) {
-    if (!isWorldchain(chainId)) throw new Error('Not worldchain');
-    super(chainId, 18, 'ETH', 'Ether');
+    if (!isWorldchain(chainId)) throw new Error("Not worldchain");
+    super(chainId, 18, "ETH", "Ether");
   }
 }
 
@@ -2039,7 +2080,7 @@ class LightlinkNativeCurrency extends NativeCurrency {
   }
 
   get wrapped(): Token {
-    if (!isLightlink(this.chainId)) throw new Error('Not lightlink');
+    if (!isLightlink(this.chainId)) throw new Error("Not lightlink");
     const nativeCurrency = WRAPPED_NATIVE_CURRENCY[this.chainId];
     if (nativeCurrency) {
       return nativeCurrency;
@@ -2048,8 +2089,8 @@ class LightlinkNativeCurrency extends NativeCurrency {
   }
 
   public constructor(chainId: number) {
-    if (!isLightlink(chainId)) throw new Error('Not lightlink');
-    super(chainId, 18, 'ETH', 'Ether');
+    if (!isLightlink(chainId)) throw new Error("Not lightlink");
+    super(chainId, 18, "ETH", "Ether");
   }
 }
 
@@ -2063,7 +2104,7 @@ class GoatNativeCurrency extends NativeCurrency {
   }
 
   get wrapped(): Token {
-    if (!isGoat(this.chainId)) throw new Error('Not goat');
+    if (!isGoat(this.chainId)) throw new Error("Not goat");
     const nativeCurrency = WRAPPED_NATIVE_CURRENCY[this.chainId];
     if (nativeCurrency) {
       return nativeCurrency;
@@ -2072,8 +2113,8 @@ class GoatNativeCurrency extends NativeCurrency {
   }
 
   public constructor(chainId: number) {
-    if (!isGoat(chainId)) throw new Error('Not goat');
-    super(chainId, 18, 'ETH', 'Ether');
+    if (!isGoat(chainId)) throw new Error("Not goat");
+    super(chainId, 18, "ETH", "Ether");
   }
 }
 
@@ -2087,7 +2128,7 @@ class RedbellyNativeCurrency extends NativeCurrency {
   }
 
   get wrapped(): Token {
-    if (!isRedbelly(this.chainId)) throw new Error('Not redbelly');
+    if (!isRedbelly(this.chainId)) throw new Error("Not redbelly");
     const nativeCurrency = WRAPPED_NATIVE_CURRENCY[this.chainId];
     if (nativeCurrency) {
       return nativeCurrency;
@@ -2096,8 +2137,8 @@ class RedbellyNativeCurrency extends NativeCurrency {
   }
 
   public constructor(chainId: number) {
-    if (!isRedbelly(chainId)) throw new Error('Not redbelly');
-    super(chainId, 18, 'ETH', 'Ether');
+    if (!isRedbelly(chainId)) throw new Error("Not redbelly");
+    super(chainId, 18, "ETH", "Ether");
   }
 }
 
@@ -2111,7 +2152,7 @@ class SagaNativeCurrency extends NativeCurrency {
   }
 
   get wrapped(): Token {
-    if (!isSaga(this.chainId)) throw new Error('Not saga');
+    if (!isSaga(this.chainId)) throw new Error("Not saga");
     const nativeCurrency = WRAPPED_NATIVE_CURRENCY[this.chainId];
     if (nativeCurrency) {
       return nativeCurrency;
@@ -2120,8 +2161,8 @@ class SagaNativeCurrency extends NativeCurrency {
   }
 
   public constructor(chainId: number) {
-    if (!isSaga(chainId)) throw new Error('Not saga');
-    super(chainId, 18, 'ETH', 'Ether');
+    if (!isSaga(chainId)) throw new Error("Not saga");
+    super(chainId, 18, "ETH", "Ether");
   }
 }
 
@@ -2135,7 +2176,7 @@ class TelosNativeCurrency extends NativeCurrency {
   }
 
   get wrapped(): Token {
-    if (!isTelos(this.chainId)) throw new Error('Not telos');
+    if (!isTelos(this.chainId)) throw new Error("Not telos");
     const nativeCurrency = WRAPPED_NATIVE_CURRENCY[this.chainId];
     if (nativeCurrency) {
       return nativeCurrency;
@@ -2144,8 +2185,8 @@ class TelosNativeCurrency extends NativeCurrency {
   }
 
   public constructor(chainId: number) {
-    if (!isTelos(chainId)) throw new Error('Not telos');
-    super(chainId, 18, 'ETH', 'Ether');
+    if (!isTelos(chainId)) throw new Error("Not telos");
+    super(chainId, 18, "ETH", "Ether");
   }
 }
 
@@ -2159,7 +2200,7 @@ class HemiNativeCurrency extends NativeCurrency {
   }
 
   get wrapped(): Token {
-    if (!isHemi(this.chainId)) throw new Error('Not hemi');
+    if (!isHemi(this.chainId)) throw new Error("Not hemi");
     const nativeCurrency = WRAPPED_NATIVE_CURRENCY[this.chainId];
     if (nativeCurrency) {
       return nativeCurrency;
@@ -2168,8 +2209,8 @@ class HemiNativeCurrency extends NativeCurrency {
   }
 
   public constructor(chainId: number) {
-    if (!isHemi(chainId)) throw new Error('Not hemi');
-    super(chainId, 18, 'ETH', 'Ether');
+    if (!isHemi(chainId)) throw new Error("Not hemi");
+    super(chainId, 18, "ETH", "Ether");
   }
 }
 
@@ -2183,7 +2224,7 @@ class NibiruNativeCurrency extends NativeCurrency {
   }
 
   get wrapped(): Token {
-    if (!isNibiru(this.chainId)) throw new Error('Not nibiru');
+    if (!isNibiru(this.chainId)) throw new Error("Not nibiru");
     const nativeCurrency = WRAPPED_NATIVE_CURRENCY[this.chainId];
     if (nativeCurrency) {
       return nativeCurrency;
@@ -2192,8 +2233,8 @@ class NibiruNativeCurrency extends NativeCurrency {
   }
 
   public constructor(chainId: number) {
-    if (!isNibiru(chainId)) throw new Error('Not nibiru');
-    super(chainId, 18, 'NIBI', 'Nibiru');
+    if (!isNibiru(chainId)) throw new Error("Not nibiru");
+    super(chainId, 18, "NIBI", "Nibiru");
   }
 }
 
@@ -2207,7 +2248,7 @@ class UnichainNativeCurrency extends NativeCurrency {
   }
 
   get wrapped(): Token {
-    if (!isUnichain(this.chainId)) throw new Error('Not unichain');
+    if (!isUnichain(this.chainId)) throw new Error("Not unichain");
     const nativeCurrency = WRAPPED_NATIVE_CURRENCY[this.chainId];
     if (nativeCurrency) {
       return nativeCurrency;
@@ -2216,8 +2257,8 @@ class UnichainNativeCurrency extends NativeCurrency {
   }
 
   public constructor(chainId: number) {
-    if (!isUnichain(chainId)) throw new Error('Not unichain');
-    super(chainId, 18, 'ETH', 'Ether');
+    if (!isUnichain(chainId)) throw new Error("Not unichain");
+    super(chainId, 18, "ETH", "Ether");
   }
 }
 
@@ -2231,7 +2272,7 @@ class MatchainNativeCurrency extends NativeCurrency {
   }
 
   get wrapped(): Token {
-    if (!isMatchain(this.chainId)) throw new Error('Not matchain');
+    if (!isMatchain(this.chainId)) throw new Error("Not matchain");
     const nativeCurrency = WRAPPED_NATIVE_CURRENCY[this.chainId];
     if (nativeCurrency) {
       return nativeCurrency;
@@ -2240,8 +2281,8 @@ class MatchainNativeCurrency extends NativeCurrency {
   }
 
   public constructor(chainId: number) {
-    if (!isMatchain(chainId)) throw new Error('Not matchain');
-    super(chainId, 18, 'BNB', 'BNB');
+    if (!isMatchain(chainId)) throw new Error("Not matchain");
+    super(chainId, 18, "BNB", "BNB");
   }
 }
 
@@ -2255,7 +2296,7 @@ class PlasmaNativeCurrency extends NativeCurrency {
   }
 
   get wrapped(): Token {
-    if (!isPlasma(this.chainId)) throw new Error('Not plasma');
+    if (!isPlasma(this.chainId)) throw new Error("Not plasma");
     const nativeCurrency = WRAPPED_NATIVE_CURRENCY[this.chainId];
     if (nativeCurrency) {
       return nativeCurrency;
@@ -2264,8 +2305,8 @@ class PlasmaNativeCurrency extends NativeCurrency {
   }
 
   public constructor(chainId: number) {
-    if (!isPlasma(chainId)) throw new Error('Not plasma');
-    super(chainId, 18, 'ETH', 'Ether');
+    if (!isPlasma(chainId)) throw new Error("Not plasma");
+    super(chainId, 18, "ETH", "Ether");
   }
 }
 function isRonin(chainId: number): chainId is ChainId.RONIN {
@@ -2277,7 +2318,7 @@ class RoninNativeCurrency extends NativeCurrency {
     return other.isNative && other.chainId === this.chainId;
   }
   get wrapped(): Token {
-    if (!isRonin(this.chainId)) throw new Error('Not ronin');
+    if (!isRonin(this.chainId)) throw new Error("Not ronin");
     const nativeCurrency = WRAPPED_NATIVE_CURRENCY[this.chainId];
     if (nativeCurrency) {
       return nativeCurrency;
@@ -2285,8 +2326,8 @@ class RoninNativeCurrency extends NativeCurrency {
     throw new Error(`Does not support this chain ${this.chainId}`);
   }
   public constructor(chainId: number) {
-    if (!isRonin(chainId)) throw new Error('Not ronin');
-    super(chainId, 18, 'RON', 'Ronin');
+    if (!isRonin(chainId)) throw new Error("Not ronin");
+    super(chainId, 18, "RON", "Ronin");
   }
 }
 
@@ -2298,7 +2339,7 @@ class ZerogNativeCurrency extends NativeCurrency {
     return other.isNative && other.chainId === this.chainId;
   }
   get wrapped(): Token {
-    if (!isZerog(this.chainId)) throw new Error('Not zerog');
+    if (!isZerog(this.chainId)) throw new Error("Not zerog");
     const nativeCurrency = WRAPPED_NATIVE_CURRENCY[this.chainId];
     if (nativeCurrency) {
       return nativeCurrency;
@@ -2306,8 +2347,8 @@ class ZerogNativeCurrency extends NativeCurrency {
     throw new Error(`Does not support this chain ${this.chainId}`);
   }
   public constructor(chainId: number) {
-    if (!isZerog(chainId)) throw new Error('Not zerog');
-    super(chainId, 18, '0G', 'ZeroG');
+    if (!isZerog(chainId)) throw new Error("Not zerog");
+    super(chainId, 18, "0G", "ZeroG");
   }
 }
 
@@ -2397,6 +2438,8 @@ export function nativeOnChain(chainId: number): NativeCurrency {
     cachedNativeCurrency[chainId] = new MatchainNativeCurrency(chainId);
   } else if (isPlasma(chainId)) {
     cachedNativeCurrency[chainId] = new PlasmaNativeCurrency(chainId);
+  } else if (isMonad(chainId)) {
+    cachedNativeCurrency[chainId] = new MonadNativeCurrency(chainId);
   } else if (isRonin(chainId)) {
     cachedNativeCurrency[chainId] = new RoninNativeCurrency(chainId);
   } else if (isZerog(chainId)) {
