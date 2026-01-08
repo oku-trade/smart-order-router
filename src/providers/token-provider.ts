@@ -1258,9 +1258,9 @@ export const RUSDT_ROOTSTOCK = new Token(
 
 export const USDT_ROOTSTOCK = new Token(
   ChainId.ROOTSTOCK,
-  '0xaf368c91793cb22739386dfcbbb2f1a9e4bcbebf',
+  '0x779ded0c9e1022225f8e0630b35a9b54be713736',
   6,
-  'USDT',
+  'USDT0',
   'Tether USD'
 );
 
