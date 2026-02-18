@@ -1702,6 +1702,15 @@ export const USDC_ZEROG = new Token(
   'USD Coin'
 );
 
+//GENSYN
+export const USDC_GENSYN = new Token(
+  ChainId.GENSYN,
+  '0x1B8972370B26f6b9b7d5B823437Ba7674C53cb2a',
+  6,
+  'USDC.e',
+  'Bridged USDC'
+);
+
 export class TokenProvider implements ITokenProvider {
   constructor(
     private chainId: ChainId,
@@ -2121,6 +2130,8 @@ export const USDC_ON = (chainId: ChainId): Token => {
       return USDC_RONIN;
     case ChainId.MONAD:
       return USDC_MONAD;
+    case ChainId.GENSYN:
+      return USDC_GENSYN;
     default:
       throw new Error(`Chain id: ${chainId} not supported`);
   }

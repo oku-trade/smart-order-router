@@ -22,7 +22,6 @@ import {
   ETH_BNB,
   OP_OPTIMISM,
   USDB_BLAST,
-  USDCE_ZKSYNC,
   USDC_ARBITRUM,
   USDC_AVAX,
   USDC_BASE,
@@ -39,6 +38,7 @@ import {
   USDC_UNICHAIN_SEPOLIA,
   USDC_WORLDCHAIN,
   USDC_ZKSYNC,
+  USDCE_ZKSYNC,
   USDT_ARBITRUM,
   USDT_BNB,
   USDT_MAINNET,
@@ -186,6 +186,7 @@ const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   [ChainId.PLASMA]: [],
   [ChainId.RONIN]: [],
   [ChainId.ZEROG]: [],
+  [ChainId.GENSYN]: [],
 };
 
 /**

@@ -628,4 +628,14 @@ export const V4_ETH_WETH_FAKE_POOL: { [chainId in ChainId]: V4Pool } = {
     0,
     0
   ),
+  [ChainId.GENSYN]: new V4Pool(
+    nativeOnChain(ChainId.GENSYN),
+    nativeOnChain(ChainId.GENSYN).wrapped,
+    0,
+    FAKE_TICK_SPACING,
+    ADDRESS_ZERO,
+    79228162514264337593543950336,
+    0,
+    0
+  ),
 };

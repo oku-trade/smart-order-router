@@ -1,7 +1,7 @@
 import { ADDRESS_ZERO } from '@uniswap/router-sdk';
 import {
-  ChainId,
   CHAIN_TO_ADDRESSES_MAP,
+  ChainId,
   Currency,
   SWAP_ROUTER_02_ADDRESSES as SWAP_ROUTER_02_ADDRESSES_HELPER,
   Token,
@@ -101,6 +101,7 @@ export const V3_CORE_FACTORY_ADDRESSES: AddressMap = {
   [ChainId.MONAD]: CHAIN_TO_ADDRESSES_MAP[ChainId.MONAD].v3CoreFactoryAddress,
   [ChainId.RONIN]: CHAIN_TO_ADDRESSES_MAP[ChainId.RONIN].v3CoreFactoryAddress,
   [ChainId.ZEROG]: CHAIN_TO_ADDRESSES_MAP[ChainId.ZEROG].v3CoreFactoryAddress,
+  [ChainId.GENSYN]: CHAIN_TO_ADDRESSES_MAP[ChainId.GENSYN].v3CoreFactoryAddress,
 };
 
 export const QUOTER_V2_ADDRESSES: AddressMap = {
@@ -173,6 +174,7 @@ export const QUOTER_V2_ADDRESSES: AddressMap = {
   [ChainId.MONAD]: CHAIN_TO_ADDRESSES_MAP[ChainId.MONAD].quoterAddress,
   [ChainId.RONIN]: CHAIN_TO_ADDRESSES_MAP[ChainId.RONIN].quoterAddress,
   [ChainId.ZEROG]: CHAIN_TO_ADDRESSES_MAP[ChainId.ZEROG].quoterAddress,
+  [ChainId.GENSYN]: CHAIN_TO_ADDRESSES_MAP[ChainId.GENSYN].quoterAddress,
 };
 
 export const NEW_QUOTER_V2_ADDRESSES: AddressMap = {
@@ -236,6 +238,7 @@ export const NEW_QUOTER_V2_ADDRESSES: AddressMap = {
   [ChainId.MONAD]: CHAIN_TO_ADDRESSES_MAP[ChainId.MONAD].quoterAddress,
   [ChainId.RONIN]: CHAIN_TO_ADDRESSES_MAP[ChainId.RONIN].quoterAddress,
   [ChainId.ZEROG]: CHAIN_TO_ADDRESSES_MAP[ChainId.ZEROG].quoterAddress,
+  [ChainId.GENSYN]: CHAIN_TO_ADDRESSES_MAP[ChainId.GENSYN].quoterAddress,
 };
 
 export const PROTOCOL_V4_QUOTER_ADDRESSES: AddressMap = {
@@ -366,6 +369,7 @@ export const UNISWAP_MULTICALL_ADDRESSES: AddressMap = {
   [ChainId.MONAD]: CHAIN_TO_ADDRESSES_MAP[ChainId.MONAD].multicallAddress,
   [ChainId.RONIN]: CHAIN_TO_ADDRESSES_MAP[ChainId.RONIN].multicallAddress,
   [ChainId.ZEROG]: CHAIN_TO_ADDRESSES_MAP[ChainId.ZEROG].multicallAddress,
+  [ChainId.GENSYN]: CHAIN_TO_ADDRESSES_MAP[ChainId.GENSYN].multicallAddress,
 };
 
 export const SWAP_ROUTER_02_ADDRESSES = (chainId: number): string => {
@@ -514,6 +518,7 @@ export const WETH9: {
   [ChainId.ROOTSTOCK]: WETH9_HELPER[ChainId.ROOTSTOCK]!,
   [ChainId.SEI_TESTNET]: WETH9_HELPER[ChainId.SEI_TESTNET]!,
   [ChainId.FILECOIN]: WETH9_HELPER[ChainId.FILECOIN]!,
+  [ChainId.GENSYN]: WETH9_HELPER[ChainId.GENSYN]!,
 };
 
 export const BEACON_CHAIN_DEPOSIT_ADDRESS =

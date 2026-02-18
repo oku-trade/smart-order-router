@@ -28,8 +28,6 @@ import {
   DAI_UNICHAIN,
   DAI_ZKSYNC,
   USDB_BLAST,
-  USDCE_XDC,
-  USDCE_ZKSYNC,
   USDC_ARBITRUM,
   USDC_ARBITRUM_GOERLI,
   USDC_ARBITRUM_SEPOLIA,
@@ -45,6 +43,7 @@ import {
   USDC_ETHEREUM_GNOSIS,
   USDC_ETHERLINK,
   USDC_FILECOIN,
+  USDC_GENSYN,
   USDC_GOAT,
   USDC_GOERLI,
   USDC_HEMI,
@@ -90,6 +89,8 @@ import {
   USDC_ZKLINK,
   USDC_ZKSYNC,
   USDC_ZORA,
+  USDCE_XDC,
+  USDCE_ZKSYNC,
   USDM_TELOS,
   USDT_ARBITRUM,
   USDT_BNB,
@@ -225,6 +226,7 @@ export const usdGasTokensByChain: { [chainId in ChainId]?: Token[] } = {
   [ChainId.PLASMA]: [USDT_PLASMA],
   [ChainId.RONIN]: [USDC_RONIN],
   [ChainId.ZEROG]: [USDC_ZEROG],
+  [ChainId.GENSYN]: [USDC_GENSYN],
   [ChainId.BOBA]: [USDC_BOBA],
 };
 

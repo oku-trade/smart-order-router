@@ -46,7 +46,6 @@ import {
   STNIBI_NIBIRU,
   TokenAccessor,
   USDB_BLAST,
-  USDCE_XDC,
   USDC_ARBITRUM,
   USDC_ARBITRUM_GOERLI,
   USDC_ARBITRUM_SEPOLIA,
@@ -60,6 +59,7 @@ import {
   USDC_ETHEREUM_GNOSIS,
   USDC_ETHERLINK,
   USDC_FILECOIN,
+  USDC_GENSYN,
   USDC_GNOSIS,
   USDC_GOAT,
   USDC_HEMI,
@@ -97,6 +97,7 @@ import {
   USDC_ZEROG,
   USDC_ZKLINK,
   USDC_ZKSYNC,
+  USDCE_XDC,
   USDM_TELOS,
   USDT_ARBITRUM,
   USDT_BNB,
@@ -490,6 +491,10 @@ export const CACHE_SEED_TOKENS: {
   [ChainId.MONAD]: {
     USDC: USDC_MONAD,
     WMON: WRAPPED_NATIVE_CURRENCY[ChainId.MONAD],
+  },
+  [ChainId.GENSYN]: {
+    USDC: USDC_GENSYN,
+    WETH: WRAPPED_NATIVE_CURRENCY[ChainId.GENSYN],
   },
   // Currently we do not have providers for Moonbeam mainnet or Gnosis testnet
 };

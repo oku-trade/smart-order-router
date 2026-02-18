@@ -24,12 +24,12 @@ import {
   ETH_BNB,
   OP_OPTIMISM,
   USDB_BLAST,
-  USDCE_ZKSYNC,
   USDC_ARBITRUM,
   USDC_AVAX,
   USDC_BASE,
   USDC_BASE_SEPOLIA,
   USDC_BNB,
+  USDC_GENSYN,
   USDC_MAINNET,
   USDC_MONAD,
   USDC_MOONBEAM,
@@ -41,6 +41,7 @@ import {
   USDC_UNICHAIN_SEPOLIA,
   USDC_WORLDCHAIN,
   USDC_ZKSYNC,
+  USDCE_ZKSYNC,
   USDT_ARBITRUM,
   USDT_BNB,
   USDT_MAINNET,
@@ -224,6 +225,11 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   [ChainId.PLASMA]: [],
   [ChainId.RONIN]: [],
   [ChainId.ZEROG]: [],
+  [ChainId.GENSYN]: [
+    nativeOnChain(ChainId.GENSYN),
+    WRAPPED_NATIVE_CURRENCY[ChainId.GENSYN]!,
+    USDC_GENSYN,
+  ],
 };
 
 export interface IV3SubgraphProvider {

@@ -45,7 +45,6 @@ export const DEFAULT_BLOCKS_TO_LIVE: { [chain in ChainId]: number } = {
   [ChainId.ROOTSTOCK]: 148,
   // (60 minutes) / (1 seconds) = 3600
   [ChainId.ZKSYNC]: 3600,
-  [ChainId.MONAD_TESTNET]: 3600,
   // (60 minutes) / (1 seconds) = 3600
   [ChainId.SONEIUM]: 3600,
   // (60 minutes) / (2 seconds) = 1800
@@ -58,8 +57,6 @@ export const DEFAULT_BLOCKS_TO_LIVE: { [chain in ChainId]: number } = {
   [ChainId.ETHERLINK]: 6000,
   // (60 minutes) / (30 seconds) = 120
   [ChainId.FILECOIN]: 120,
-  // (60 minutes) / (5 seconds) = 720
-  [ChainId.GNOSIS]: 720,
   // (60 minutes) / (3 seconds) = 1200
   [ChainId.GOAT]: 1200,
   // (60 minutes) / (12 seconds) = 300
@@ -112,4 +109,6 @@ export const DEFAULT_BLOCKS_TO_LIVE: { [chain in ChainId]: number } = {
   [ChainId.XLAYER]: 7200,
   // (60 minutes) / (1 minutes) = 60
   [ChainId.ZKLINK]: 60,
+  // (60 minutes) / (2 seconds) = 1800
+  [ChainId.GENSYN]: 1800,
 };
