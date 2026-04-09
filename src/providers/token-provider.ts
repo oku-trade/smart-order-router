@@ -1713,7 +1713,7 @@ export const USDC_ZEROG = new Token(
 //GENSYN
 export const USDC_GENSYN = new Token(
   ChainId.GENSYN,
-  "0x1B8972370B26f6b9b7d5B823437Ba7674C53cb2a",
+  "0x5b32c997211621d55a89Cc5abAF1cC21F3A6ddF5",
   6,
   "USDC.e",
   "Bridged USDC",
