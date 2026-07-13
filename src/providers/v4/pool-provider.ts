@@ -8,7 +8,6 @@ import { IMulticallProvider, Result } from '../multicall-provider';
 import { ILiquidity, ISlot0, PoolProvider } from '../pool-provider';
 import { ProviderConfig } from '../provider';
 
-
 type V4ISlot0 = ISlot0 & {
   poolId: string;
   protocolFee: number;
