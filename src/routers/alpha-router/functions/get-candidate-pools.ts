@@ -1173,30 +1173,36 @@ export async function getV4CandidatePools({
 		`V4 Candidate Pools`,
 	);
 
-	const tokenPairsRaw = _.map<
-		V4SubgraphPool,
-		[Currency, Currency, number, number, string] | undefined
-	>(subgraphPools, (subgraphPool) => {
-		// native currency is not erc20 token, therefore there's no way to retrieve native currency metadata as the erc20 token.
-		const tokenA = isNativeCurrency(subgraphPool.token0.id)
-			? nativeOnChain(chainId)
-			: tokenAccessor.getTokenByAddress(subgraphPool.token0.id);
-		const tokenB = isNativeCurrency(subgraphPool.token1.id)
-			? nativeOnChain(chainId)
-			: tokenAccessor.getTokenByAddress(subgraphPool.token1.id);
-		let fee: number;
-		try {
-			fee = Number(subgraphPool.feeTier);
-			fee = isPoolFeeDynamic(tokenA!, tokenB!, subgraphPool)
-				? DYNAMIC_FEE_FLAG
-				: fee;
-		} catch (err) {
-			log.info(
-				{ subgraphPool },
-				`Dropping candidate pool for ${subgraphPool.token0.id}/${subgraphPool.token1.id}/${subgraphPool.feeTier} because fee tier not supported`,
-			);
-			return undefined;
-		}
+  const tokenPairsRaw = _.map<
+    V4SubgraphPool,
+    [Currency, Currency, number, number, string] | undefined
+  >(subgraphPools, (subgraphPool) => {
+    // native currency is not erc20 token, therefore there's no way to retrieve native currency metadata as the erc20 token.
+    const tokenA = isNativeCurrency(subgraphPool.token0.id)
+      ? nativeOnChain(chainId)
+      : tokenAccessor.getTokenByAddress(subgraphPool.token0.id);
+    const tokenB = isNativeCurrency(subgraphPool.token1.id)
+      ? nativeOnChain(chainId)
+      : tokenAccessor.getTokenByAddress(subgraphPool.token1.id);
+    let fee: number;
+    try {
+      fee = Number(subgraphPool.feeTier);
+      fee = isPoolFeeDynamic(
+        tokenA!,
+        tokenB!,
+        Number(subgraphPool.tickSpacing),
+        subgraphPool.hooks,
+        subgraphPool.id
+      )
+        ? DYNAMIC_FEE_FLAG
+        : fee;
+    } catch (err) {
+      log.info(
+        { subgraphPool },
+        `Dropping candidate pool for ${subgraphPool.token0.id}/${subgraphPool.token1.id}/${subgraphPool.feeTier} because fee tier not supported`
+      );
+      return undefined;
+    }
 
 		if (!tokenA || !tokenB) {
 			log.info(

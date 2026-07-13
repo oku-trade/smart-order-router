@@ -571,6 +571,20 @@ export type AlphaRouterConfig = {
    * pass in hooks options for hooks routing toggles from the frontend
    */
   hooksOptions?: HooksOptions;
+  /**
+   * sync call request id passed from the upstream (TAPI)
+   */
+  requestId?: string;
+  /**
+   * async call request id passed from sync routing lambda
+   */
+  asyncRequestId?: string;
+  /**
+   * pools to manually route through
+   * couple use cases for this, the top one is to route through hooked pool(s)
+   * Note this can only work when cached routes are not hit
+   */
+  poolsToManuallyRouteThrough?: string[];
 };
 
 export class AlphaRouter
@@ -785,9 +799,11 @@ export class AlphaRouter
         case ChainId.WORLDCHAIN:
         case ChainId.UNICHAIN_SEPOLIA:
         case ChainId.MONAD_TESTNET:
+        case ChainId.MONAD:
         case ChainId.BASE_SEPOLIA:
         case ChainId.BASE_GOERLI:
         case ChainId.SONEIUM:
+        case ChainId.XLAYER:
           this.onChainQuoteProvider = new OnChainQuoteProvider(
             chainId,
             provider,

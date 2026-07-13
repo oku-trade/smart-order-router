@@ -50,6 +50,7 @@ export const V3_CORE_FACTORY_ADDRESSES: AddressMap = {
     CHAIN_TO_ADDRESSES_MAP[ChainId.UNICHAIN_SEPOLIA].v3CoreFactoryAddress,
   [ChainId.MONAD_TESTNET]:
     CHAIN_TO_ADDRESSES_MAP[ChainId.MONAD_TESTNET].v3CoreFactoryAddress,
+  [ChainId.MONAD]: CHAIN_TO_ADDRESSES_MAP[ChainId.MONAD].v3CoreFactoryAddress,
   [ChainId.BASE_SEPOLIA]:
     CHAIN_TO_ADDRESSES_MAP[ChainId.BASE_SEPOLIA].v3CoreFactoryAddress,
   // TODO: Gnosis + Moonbeam contracts to be deployed
@@ -132,6 +133,7 @@ export const QUOTER_V2_ADDRESSES: AddressMap = {
     CHAIN_TO_ADDRESSES_MAP[ChainId.UNICHAIN_SEPOLIA].quoterAddress,
   [ChainId.MONAD_TESTNET]:
     CHAIN_TO_ADDRESSES_MAP[ChainId.MONAD_TESTNET].quoterAddress,
+  [ChainId.MONAD]: CHAIN_TO_ADDRESSES_MAP[ChainId.MONAD].quoterAddress,
   [ChainId.BASE_SEPOLIA]:
     CHAIN_TO_ADDRESSES_MAP[ChainId.BASE_SEPOLIA].quoterAddress,
   // TODO: Gnosis + Moonbeam contracts to be deployed
@@ -197,6 +199,7 @@ export const NEW_QUOTER_V2_ADDRESSES: AddressMap = {
     CHAIN_TO_ADDRESSES_MAP[ChainId.UNICHAIN_SEPOLIA].quoterAddress, // TODO: deploy view-only-quoter to UNICHAIN
   [ChainId.MONAD_TESTNET]:
     CHAIN_TO_ADDRESSES_MAP[ChainId.MONAD_TESTNET].quoterAddress, // TODO: deploy view-only-quoter to monad testnet
+  [ChainId.MONAD]: CHAIN_TO_ADDRESSES_MAP[ChainId.MONAD].quoterAddress, // TODO: deploy view-only-quoter to monad
   [ChainId.BASE_SEPOLIA]:
     CHAIN_TO_ADDRESSES_MAP[ChainId.BASE_SEPOLIA].quoterAddress,
   [ChainId.UNICHAIN]: CHAIN_TO_ADDRESSES_MAP[ChainId.UNICHAIN].quoterAddress, // TODO: deploy view-only-quoter to unichain
@@ -261,6 +264,9 @@ export const PROTOCOL_V4_QUOTER_ADDRESSES: AddressMap = {
   [ChainId.BLAST]: CHAIN_TO_ADDRESSES_MAP[ChainId.BLAST].v4QuoterAddress,
   [ChainId.MAINNET]: CHAIN_TO_ADDRESSES_MAP[ChainId.MAINNET].v4QuoterAddress,
   [ChainId.SONEIUM]: CHAIN_TO_ADDRESSES_MAP[ChainId.SONEIUM].v4QuoterAddress,
+  [ChainId.MONAD]: CHAIN_TO_ADDRESSES_MAP[ChainId.MONAD].v4QuoterAddress,
+  [ChainId.CELO]: CHAIN_TO_ADDRESSES_MAP[ChainId.CELO].v4QuoterAddress,
+  [ChainId.XLAYER]: CHAIN_TO_ADDRESSES_MAP[ChainId.XLAYER].v4QuoterAddress,
 };
 
 export const MIXED_ROUTE_QUOTER_V1_ADDRESSES: AddressMap = {
@@ -278,6 +284,8 @@ export const MIXED_ROUTE_QUOTER_V1_ADDRESSES: AddressMap = {
   [ChainId.WORLDCHAIN]: '0x204FAca1764B154221e35c0d20aBb3c525710498',
   [ChainId.ZORA]: '0x204FAca1764B154221e35c0d20aBb3c525710498',
   [ChainId.SONEIUM]: '0x42c14CE921e85bf14467A82fAf8182546cf7c604',
+  [ChainId.XLAYER]: '0x2d01411773c8c24805306e89a41f7855c3c4fe65',
+  [ChainId.MONAD]: '0xdcd9f4e8972f619b325b0c3109412dfc4d184734',
 };
 
 export const MIXED_ROUTE_QUOTER_V2_ADDRESSES: AddressMap = {
@@ -294,6 +302,8 @@ export const MIXED_ROUTE_QUOTER_V2_ADDRESSES: AddressMap = {
   [ChainId.WORLDCHAIN]: '0x9D0F15f2cf58655fDDcD1EE6129C547fDaeD01b1',
   [ChainId.ZORA]: '0x5f739c790a48E97eec0efb81bab5D152c0A0ecA0',
   [ChainId.SONEIUM]: '0x42c14CE921e85bf14467A82fAf8182546cf7c604',
+  [ChainId.XLAYER]: '0x2d01411773c8c24805306e89a41f7855c3c4fe65',
+  [ChainId.MONAD]: '0xdcd9f4e8972f619b325b0c3109412dfc4d184734',
 };
 
 export const UNISWAP_MULTICALL_ADDRESSES: AddressMap = {
@@ -325,6 +335,7 @@ export const UNISWAP_MULTICALL_ADDRESSES: AddressMap = {
     CHAIN_TO_ADDRESSES_MAP[ChainId.UNICHAIN_SEPOLIA].multicallAddress,
   [ChainId.MONAD_TESTNET]:
     CHAIN_TO_ADDRESSES_MAP[ChainId.MONAD_TESTNET].multicallAddress,
+  [ChainId.MONAD]: CHAIN_TO_ADDRESSES_MAP[ChainId.MONAD].multicallAddress,
   [ChainId.BASE_SEPOLIA]:
     CHAIN_TO_ADDRESSES_MAP[ChainId.BASE_SEPOLIA].multicallAddress,
   [ChainId.UNICHAIN]: CHAIN_TO_ADDRESSES_MAP[ChainId.UNICHAIN].multicallAddress,
@@ -397,6 +408,9 @@ export const STATE_VIEW_ADDRESSES: AddressMap = {
   [ChainId.BLAST]: CHAIN_TO_ADDRESSES_MAP[ChainId.BLAST].v4StateView,
   [ChainId.MAINNET]: CHAIN_TO_ADDRESSES_MAP[ChainId.MAINNET].v4StateView,
   [ChainId.SONEIUM]: CHAIN_TO_ADDRESSES_MAP[ChainId.SONEIUM].v4StateView,
+  [ChainId.MONAD]: CHAIN_TO_ADDRESSES_MAP[ChainId.MONAD].v4StateView,
+  [ChainId.CELO]: CHAIN_TO_ADDRESSES_MAP[ChainId.CELO].v4StateView,
+  [ChainId.XLAYER]: CHAIN_TO_ADDRESSES_MAP[ChainId.XLAYER].v4StateView,
 };
 
 export const OVM_GASPRICE_ADDRESS =

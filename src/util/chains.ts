@@ -30,6 +30,7 @@ export const SUPPORTED_CHAINS: ChainId[] = [
   ChainId.UNICHAIN,
   ChainId.UNICHAIN_SEPOLIA,
   ChainId.MONAD_TESTNET,
+  ChainId.MONAD,
   ChainId.BASE_SEPOLIA,
   ChainId.SONEIUM,
   ChainId.GOERLI,
@@ -82,9 +83,11 @@ export const V2_SUPPORTED = [
   ChainId.BNB,
   ChainId.AVALANCHE,
   ChainId.MONAD_TESTNET,
+  ChainId.MONAD,
   ChainId.UNICHAIN_SEPOLIA,
   ChainId.UNICHAIN,
   ChainId.SONEIUM,
+  ChainId.XLAYER,
 ];
 
 export const V4_SUPPORTED = [
@@ -97,9 +100,12 @@ export const V4_SUPPORTED = [
   ChainId.BNB,
   ChainId.AVALANCHE,
   ChainId.MONAD_TESTNET,
+  ChainId.MONAD,
   ChainId.UNICHAIN_SEPOLIA,
   ChainId.UNICHAIN,
   ChainId.SONEIUM,
+  ChainId.CELO,
+  ChainId.XLAYER,
 ];
 
 export const MIXED_SUPPORTED = [
@@ -108,6 +114,7 @@ export const MIXED_SUPPORTED = [
   ChainId.GOERLI,
   ChainId.BASE,
   ChainId.UNICHAIN,
+  // ChainId.MONAD, // ROUTE-760: enable this when monad is supported by the router
   ChainId.BASE,
   ChainId.ARBITRUM_ONE,
   ChainId.POLYGON,
@@ -117,6 +124,8 @@ export const MIXED_SUPPORTED = [
   ChainId.WORLDCHAIN,
   ChainId.ZORA,
   ChainId.SONEIUM,
+  ChainId.XLAYER,
+  ChainId.MONAD,
 ];
 
 export const MIXED_CROSS_LIQUIDITY_V3_AGAINST_V4_SUPPORTED = [ChainId.BASE];
@@ -135,9 +144,11 @@ export const HAS_L1_FEE = [
   ChainId.WORLDCHAIN,
   ChainId.UNICHAIN_SEPOLIA,
   ChainId.MONAD_TESTNET,
+  ChainId.MONAD,
   ChainId.UNICHAIN,
   ChainId.SONEIUM,
   ChainId.GENSYN,
+  ChainId.XLAYER,
 ];
 
 export const NETWORKS_WITH_SAME_UNISWAP_ADDRESSES = [
@@ -203,6 +214,8 @@ export const ID_TO_CHAIN_ID = (id: number): ChainId => {
       return ChainId.UNICHAIN_SEPOLIA;
     case 10143:
       return ChainId.MONAD_TESTNET;
+    case 143:
+      return ChainId.MONAD;
     case 130:
       return ChainId.UNICHAIN;
     case 1868:
@@ -490,6 +503,11 @@ export const NATIVE_NAMES_BY_ID: { [chainId: number]: string[] } = {
     'MONAD',
     '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
   ],
+  [ChainId.MONAD]: [
+    'MON',
+    'MONAD',
+    '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
+  ],
   [ChainId.BASE_SEPOLIA]: [
     'ETH',
     'ETHER',
@@ -577,6 +595,7 @@ export const NATIVE_CURRENCY: { [chainId: number]: NativeCurrencyName } = {
   [ChainId.WORLDCHAIN]: NativeCurrencyName.ETHER,
   [ChainId.UNICHAIN_SEPOLIA]: NativeCurrencyName.ETHER,
   [ChainId.MONAD_TESTNET]: NativeCurrencyName.MONAD,
+  [ChainId.MONAD]: NativeCurrencyName.MONAD,
   [ChainId.BASE_SEPOLIA]: NativeCurrencyName.ETHER,
   [ChainId.UNICHAIN]: NativeCurrencyName.ETHER,
   [ChainId.SONEIUM]: NativeCurrencyName.ETHER,
@@ -672,6 +691,8 @@ export const ID_TO_NETWORK_NAME = (id: number): ChainName => {
       return ChainName.UNICHAIN;
     case 10143:
       return ChainName.MONAD_TESTNET;
+    case 143:
+      return ChainName.MONAD;
     case 1868:
       return ChainName.SONEIUM;
     case 232:
@@ -797,6 +818,8 @@ export const ID_TO_PROVIDER = (id: ChainId): string => {
       return process.env.JSON_RPC_PROVIDER_UNICHAIN_SEPOLIA!;
     case ChainId.MONAD_TESTNET:
       return process.env.JSON_RPC_PROVIDER_MONAD_TESTNET!;
+    case ChainId.MONAD:
+      return process.env.JSON_RPC_PROVIDER_MONAD!;
     case ChainId.BASE_SEPOLIA:
       return process.env.JSON_RPC_PROVIDER_BASE_SEPOLIA!;
     case ChainId.UNICHAIN:
@@ -1075,6 +1098,13 @@ export const WRAPPED_NATIVE_CURRENCY: { [chainId in ChainId]: Token } = {
   [ChainId.MONAD_TESTNET]: new Token(
     ChainId.MONAD_TESTNET,
     '0x760AfE86e5de5fa0Ee542fc7B7B713e1c5425701',
+    18,
+    'WMON',
+    'Wrapped Monad'
+  ),
+  [ChainId.MONAD]: new Token(
+    ChainId.MONAD,
+    '0x3bd359C1119dA7Da1D913D1C4D2B7c461115433A',
     18,
     'WMON',
     'Wrapped Monad'
@@ -1495,6 +1525,54 @@ class AvalancheNativeCurrency extends NativeCurrency {
   public constructor(chainId: number) {
     if (!isAvax(chainId)) throw new Error('Not avalanche');
     super(chainId, 18, 'AVAX', 'Avalanche');
+  }
+}
+
+function isMonad(chainId: number): chainId is ChainId.MONAD {
+  return chainId === ChainId.MONAD;
+}
+
+class MonadNativeCurrency extends NativeCurrency {
+  equals(other: Currency): boolean {
+    return other.isNative && other.chainId === this.chainId;
+  }
+
+  get wrapped(): Token {
+    if (!isMonad(this.chainId)) throw new Error('Not monad');
+    const nativeCurrency = WRAPPED_NATIVE_CURRENCY[this.chainId];
+    if (nativeCurrency) {
+      return nativeCurrency;
+    }
+    throw new Error(`Does not support this chain ${this.chainId}`);
+  }
+
+  public constructor(chainId: number) {
+    if (!isMonad(chainId)) throw new Error('Not monad');
+    super(chainId, 18, 'MON', 'Monad');
+  }
+}
+
+function isXLayer(chainId: number): chainId is ChainId.XLAYER {
+  return chainId === ChainId.XLAYER;
+}
+
+class XLayerNativeCurrency extends NativeCurrency {
+  equals(other: Currency): boolean {
+    return other.isNative && other.chainId === this.chainId;
+  }
+
+  get wrapped(): Token {
+    if (!isXLayer(this.chainId)) throw new Error('Not xlayer');
+    const nativeCurrency = WRAPPED_NATIVE_CURRENCY[this.chainId];
+    if (nativeCurrency) {
+      return nativeCurrency;
+    }
+    throw new Error(`Does not support this chain ${this.chainId}`);
+  }
+
+  public constructor(chainId: number) {
+    if (!isXLayer(chainId)) throw new Error('Not xlayer');
+    super(chainId, 18, 'OKB', 'OKB');
   }
 }
 
@@ -2493,6 +2571,8 @@ export function nativeOnChain(chainId: number): NativeCurrency {
     cachedNativeCurrency[chainId] = new ZerogNativeCurrency(chainId);
   } else if (isGensyn(chainId)) {
     cachedNativeCurrency[chainId] = new GensynNativeCurrency(chainId);
+  } else if (isXLayer(chainId)) {
+    cachedNativeCurrency[chainId] = new XLayerNativeCurrency(chainId);
   } else {
     cachedNativeCurrency[chainId] = ExtendedEther.onChain(chainId);
   }

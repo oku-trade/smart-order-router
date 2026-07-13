@@ -21,10 +21,12 @@ import {
   USDC_ZORA,
   USDT_MAINNET,
   USDT_MONAD_TESTNET,
+  USDC_MONAD,
   V4_SEPOLIA_TEST_A,
   WETH9,
   WLD_WORLDCHAIN,
-  WNATIVE_ON
+  WNATIVE_ON,
+  USDC_XLAYER
 } from '../../src';
 import { BULLET, BULLET_WITHOUT_TAX } from './mock-data';
 
@@ -53,6 +55,8 @@ export const WHALES = (token: Currency): string => {
       return '0xBC698ce1933aFb2980D4A5a0F85feA1b02fbb1c9';
     case nativeOnChain(ChainId.UNICHAIN):
       return '0x1f49a3fa2b5B5b61df8dE486aBb6F3b9df066d86';
+    case nativeOnChain(ChainId.XLAYER):
+      return '0xfdF6a5b37910fbDa8A52F566E4F3e224652C4818';
     case WETH9[1]:
       return '0x6B44ba0a126a2A1a8aa6cD1AdeeD002e141Bcd44';
     case WNATIVE_ON(ChainId.MAINNET):
@@ -75,6 +79,8 @@ export const WHALES = (token: Currency): string => {
       return '0xBC698ce1933aFb2980D4A5a0F85feA1b02fbb1c9';
     case WNATIVE_ON(ChainId.UNICHAIN):
       return '0x07aE8551Be970cB1cCa11Dd7a11F47Ae82e70E67';
+    case WNATIVE_ON(ChainId.XLAYER):
+      return '0xfdF6a5b37910fbDa8A52F566E4F3e224652C4818';
     case USDC_MAINNET:
       return '0x8eb8a3b98659cce290402893d0123abb75e3ab28';
     case UNI_MAINNET:
@@ -119,6 +125,8 @@ export const WHALES = (token: Currency): string => {
       return '0xca8cA8840c77589981E63f4D8122fFEc4b74e2a1';
     case USDC_UNICHAIN:
       return '0xB5A2a236581dbd6BCECD8A25EeBFF140595f138C';
+    case USDC_XLAYER:
+      return '0xfdF6a5b37910fbDa8A52F566E4F3e224652C4818';
     case DAI_ON(ChainId.GOERLI):
       return '0x20918f71e99c09ae2ac3e33dbde33457d3be01f4';
     case DAI_ON(ChainId.SEPOLIA):
@@ -168,6 +176,15 @@ export const WHALES = (token: Currency): string => {
     case WNATIVE_ON(ChainId.MONAD_TESTNET):
       // TODO: get a real whale address for monad testnet
       return '0x440e9a5b9df01D7CFf465D391A883315A5e8f41c'
+    case USDC_MONAD:
+      // TODO: get a real whale address for monad mainnet
+      return '0x440e9a5b9df01D7CFf465D391A883315A5e8f41c';
+    case USDT_ON(ChainId.MONAD):
+      // TODO: get a real whale address for monad mainnet
+      return '0x440e9a5b9df01D7CFf465D391A883315A5e8f41c';
+    case WNATIVE_ON(ChainId.MONAD):
+      // TODO: get a real whale address for monad mainnet
+      return '0x440e9a5b9df01D7CFf465D391A883315A5e8f41c';
     case USDC_UNICHAIN:
       // TODO: get a real whale address for unichain mainnet
       return '0x440e9a5b9df01D7CFf465D391A883315A5e8f41c';
@@ -181,6 +198,12 @@ export const WHALES = (token: Currency): string => {
       return '0xfdF6a5b37910fbDa8A52F566E4F3e224652C4818';
     case USDC_ON(ChainId.SONEIUM):
       return '0x07aE8551Be970cB1cCa11Dd7a11F47Ae82e70E67';
+    case nativeOnChain(ChainId.XLAYER):
+      return '0x5075ff68a0efb54db13423ad924bd680327d305e';
+    case USDC_ON(ChainId.XLAYER):
+      return '0x5cf187661393f4a2395cd67bfbfd42a59068a830';
+    case WNATIVE_ON(ChainId.XLAYER):
+      return '0x6b9fba95023d3e7598972ebd54db2ec226565179';
     default:
       return '0xf04a5cc80b1e94c69b48f5ee68a08cd2f09a7c3e';
   }
