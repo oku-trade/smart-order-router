@@ -1354,6 +1354,41 @@ export const WRAPPED_NATIVE_CURRENCY: { [chainId in ChainId]: Token } = {
     'WETH',
     'Wrapped Ether'
   ),
+  [ChainId.TEMPO]: new Token(
+    ChainId.TEMPO,
+    '0x0000000000000000000000000000000000000000',
+    18,
+    'WETH',
+    'Wrapped Ether (not supported)'
+  ),
+  [ChainId.MEGAETH]: new Token(
+    ChainId.MEGAETH,
+    '0x4200000000000000000000000000000000000006',
+    18,
+    'WETH',
+    'Wrapped Ether'
+  ),
+  [ChainId.ARC]: new Token(
+    ChainId.ARC,
+    '0x0000000000000000000000000000000000000000',
+    18,
+    'WETH',
+    'Wrapped Ether (not supported)'
+  ),
+  [ChainId.ROBINHOOD]: new Token(
+    ChainId.ROBINHOOD,
+    '0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73',
+    18,
+    'WETH',
+    'Wrapped Ether'
+  ),
+  [ChainId.INK]: new Token(
+    ChainId.INK,
+    '0x4200000000000000000000000000000000000006',
+    18,
+    'WETH',
+    'Wrapped Ether'
+  ),
 };
 
 function isMatic(
@@ -1525,30 +1560,6 @@ class AvalancheNativeCurrency extends NativeCurrency {
   public constructor(chainId: number) {
     if (!isAvax(chainId)) throw new Error('Not avalanche');
     super(chainId, 18, 'AVAX', 'Avalanche');
-  }
-}
-
-function isMonad(chainId: number): chainId is ChainId.MONAD {
-  return chainId === ChainId.MONAD;
-}
-
-class MonadNativeCurrency extends NativeCurrency {
-  equals(other: Currency): boolean {
-    return other.isNative && other.chainId === this.chainId;
-  }
-
-  get wrapped(): Token {
-    if (!isMonad(this.chainId)) throw new Error('Not monad');
-    const nativeCurrency = WRAPPED_NATIVE_CURRENCY[this.chainId];
-    if (nativeCurrency) {
-      return nativeCurrency;
-    }
-    throw new Error(`Does not support this chain ${this.chainId}`);
-  }
-
-  public constructor(chainId: number) {
-    if (!isMonad(chainId)) throw new Error('Not monad');
-    super(chainId, 18, 'MON', 'Monad');
   }
 }
 

@@ -188,6 +188,11 @@ const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   [ChainId.RONIN]: [],
   [ChainId.ZEROG]: [],
   [ChainId.GENSYN]: [],
+  [ChainId.TEMPO]: [],
+  [ChainId.MEGAETH]: [],
+  [ChainId.ARC]: [],
+  [ChainId.ROBINHOOD]: [],
+  [ChainId.INK]: [],
 };
 
 /**

@@ -33,6 +33,7 @@ import {
   USDC_MANTLE,
   USDC_MATCHAIN,
   USDC_MONAD,
+  USDC_XLAYER,
   USDC_NIBIRU,
   USDC_REDBELLY,
   USDC_RONIN,
@@ -256,6 +257,11 @@ export const BASES_TO_CHECK_TRADES_AGAINST = (
     [ChainId.RONIN]: [WRAPPED_NATIVE_CURRENCY[ChainId.RONIN]!, USDC_RONIN],
     [ChainId.ZEROG]: [WRAPPED_NATIVE_CURRENCY[ChainId.ZEROG]!, USDC_ZEROG],
     [ChainId.GENSYN]: [WRAPPED_NATIVE_CURRENCY[ChainId.GENSYN]!, USDC_GENSYN],
+    [ChainId.TEMPO]: [],
+    [ChainId.MEGAETH]: [],
+    [ChainId.ARC]: [],
+    [ChainId.ROBINHOOD]: [],
+    [ChainId.INK]: [],
   };
 };
 

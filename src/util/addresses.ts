@@ -451,6 +451,8 @@ export const WETH9: {
     | ChainId.BNB
     | ChainId.AVALANCHE
     | ChainId.MONAD_TESTNET
+    | ChainId.TEMPO
+    | ChainId.ARC
   >]: Token;
 } = {
   [ChainId.MAINNET]: WETH9_HELPER[ChainId.MAINNET]!,
@@ -533,6 +535,9 @@ export const WETH9: {
   [ChainId.SEI_TESTNET]: WETH9_HELPER[ChainId.SEI_TESTNET]!,
   [ChainId.FILECOIN]: WETH9_HELPER[ChainId.FILECOIN]!,
   [ChainId.GENSYN]: WETH9_HELPER[ChainId.GENSYN]!,
+  [ChainId.MEGAETH]: WETH9_HELPER[ChainId.MEGAETH]!,
+  [ChainId.ROBINHOOD]: WETH9_HELPER[ChainId.ROBINHOOD]!,
+  [ChainId.INK]: WETH9_HELPER[ChainId.INK]!,
 };
 
 export const BEACON_CHAIN_DEPOSIT_ADDRESS =

@@ -455,6 +455,11 @@ const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
 	[ChainId.ZEROG]: [WRAPPED_NATIVE_CURRENCY[ChainId.ZEROG], USDC_ZEROG],
 	[ChainId.MONAD]: [WRAPPED_NATIVE_CURRENCY[ChainId.MONAD]!, USDC_MONAD],
 	[ChainId.GENSYN]: [WRAPPED_NATIVE_CURRENCY[ChainId.GENSYN]!, USDC_GENSYN],
+	[ChainId.TEMPO]: [],
+	[ChainId.MEGAETH]: [],
+	[ChainId.ARC]: [],
+	[ChainId.ROBINHOOD]: [],
+	[ChainId.INK]: [],
 };
 
 /**

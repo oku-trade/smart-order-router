@@ -112,4 +112,14 @@ export const DEFAULT_BLOCKS_TO_LIVE: { [chain in ChainId]: number } = {
   [ChainId.ZKLINK]: 60,
   // (60 minutes) / (2 seconds) = 1800
   [ChainId.GENSYN]: 1800,
+  // (60 minutes) / (0.5 seconds) = 7200
+  [ChainId.TEMPO]: 7200,
+  // (60 minutes) / (1 seconds) = 3600
+  [ChainId.MEGAETH]: 3600,
+  // (60 minutes) / (0.48 seconds) = 7500
+  [ChainId.ARC]: 7500,
+  // (60 minutes) / (0.1 seconds) = 36000
+  [ChainId.ROBINHOOD]: 36000,
+  // (60 minutes) / (1 seconds) = 3600
+  [ChainId.INK]: 3600,
 };

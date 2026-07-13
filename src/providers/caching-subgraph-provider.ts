@@ -235,6 +235,11 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
     WRAPPED_NATIVE_CURRENCY[ChainId.GENSYN]!,
     USDC_GENSYN,
   ],
+  [ChainId.TEMPO]: [],
+  [ChainId.MEGAETH]: [],
+  [ChainId.ARC]: [],
+  [ChainId.ROBINHOOD]: [],
+  [ChainId.INK]: [],
 };
 
 export interface IV3SubgraphProvider {
