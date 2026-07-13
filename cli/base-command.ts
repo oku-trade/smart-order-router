@@ -424,9 +424,10 @@ export abstract class BaseCommand extends Command {
     let total = BigNumber.from(0);
     for (let i = 0; i < v3Routes.length; i++) {
       const route = v3Routes[i]!;
-      const tick = BigNumber.from(
-        Math.max(1, _.sum(route.initializedTicksCrossedList))
+      const ticksCrossed = (route.initializedTicksCrossedList ?? []).filter(
+        Number.isFinite
       );
+      const tick = BigNumber.from(Math.max(1, _.sum(ticksCrossed)));
       total = total.add(tick);
     }
     this.logger.info(`Total ticks crossed: ${total}`);

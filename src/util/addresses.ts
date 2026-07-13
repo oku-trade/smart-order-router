@@ -271,6 +271,8 @@ export const PROTOCOL_V4_QUOTER_ADDRESSES: AddressMap = {
   [ChainId.MONAD]: CHAIN_TO_ADDRESSES_MAP[ChainId.MONAD].v4QuoterAddress,
   [ChainId.CELO]: CHAIN_TO_ADDRESSES_MAP[ChainId.CELO].v4QuoterAddress,
   [ChainId.XLAYER]: CHAIN_TO_ADDRESSES_MAP[ChainId.XLAYER].v4QuoterAddress,
+  [ChainId.ROBINHOOD]:
+    CHAIN_TO_ADDRESSES_MAP[ChainId.ROBINHOOD].v4QuoterAddress,
 };
 
 export const MIXED_ROUTE_QUOTER_V1_ADDRESSES: AddressMap = {
@@ -417,6 +419,7 @@ export const STATE_VIEW_ADDRESSES: AddressMap = {
   [ChainId.MONAD]: CHAIN_TO_ADDRESSES_MAP[ChainId.MONAD].v4StateView,
   [ChainId.CELO]: CHAIN_TO_ADDRESSES_MAP[ChainId.CELO].v4StateView,
   [ChainId.XLAYER]: CHAIN_TO_ADDRESSES_MAP[ChainId.XLAYER].v4StateView,
+  [ChainId.ROBINHOOD]: CHAIN_TO_ADDRESSES_MAP[ChainId.ROBINHOOD].v4StateView,
 };
 
 export const OVM_GASPRICE_ADDRESS =

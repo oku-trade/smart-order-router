@@ -107,6 +107,7 @@ export const V4_SUPPORTED = [
   ChainId.SONEIUM,
   ChainId.CELO,
   ChainId.XLAYER,
+  ChainId.ROBINHOOD,
 ];
 
 export const MIXED_SUPPORTED = [
