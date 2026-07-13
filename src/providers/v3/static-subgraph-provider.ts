@@ -101,6 +101,8 @@ import {
   USDC_ZEROG,
   USDC_ZKLINK,
   USDC_ZKSYNC,
+  USDE_ROBINHOOD,
+  USDG_ROBINHOOD,
   USDM_TELOS,
   USDT_ARBITRUM,
   USDT_BNB,
@@ -458,7 +460,11 @@ const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   [ChainId.TEMPO]: [],
   [ChainId.MEGAETH]: [],
   [ChainId.ARC]: [],
-  [ChainId.ROBINHOOD]: [],
+  [ChainId.ROBINHOOD]: [
+    WRAPPED_NATIVE_CURRENCY[ChainId.ROBINHOOD]!,
+    USDG_ROBINHOOD,
+    USDE_ROBINHOOD,
+  ],
   [ChainId.INK]: [],
 };
 

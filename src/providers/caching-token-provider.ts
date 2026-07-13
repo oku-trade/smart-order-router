@@ -98,6 +98,8 @@ import {
   USDC_ZEROG,
   USDC_ZKLINK,
   USDC_ZKSYNC,
+  USDE_ROBINHOOD,
+  USDG_ROBINHOOD,
   USDM_TELOS,
   USDT_ARBITRUM,
   USDT_BNB,
@@ -497,6 +499,11 @@ export const CACHE_SEED_TOKENS: {
   [ChainId.GENSYN]: {
     USDC: USDC_GENSYN,
     WETH: WRAPPED_NATIVE_CURRENCY[ChainId.GENSYN],
+  },
+  [ChainId.ROBINHOOD]: {
+    USDG: USDG_ROBINHOOD,
+    USDE: USDE_ROBINHOOD,
+    WETH: WRAPPED_NATIVE_CURRENCY[ChainId.ROBINHOOD],
   },
   // Currently we do not have providers for Moonbeam mainnet or Gnosis testnet
 };

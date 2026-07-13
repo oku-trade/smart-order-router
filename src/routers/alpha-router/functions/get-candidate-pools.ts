@@ -106,6 +106,8 @@ import {
   USDC_ZEROG,
   USDC_ZKLINK,
   USDC_ZKSYNC,
+  USDE_ROBINHOOD,
+  USDG_ROBINHOOD,
   USDM_TELOS,
   USDT_ARBITRUM,
   USDT_BNB,
@@ -503,6 +505,11 @@ const baseTokensByChain: { [chainId in ChainId]?: Token[] } = {
   [ChainId.RONIN]: [USDC_RONIN, WRAPPED_NATIVE_CURRENCY[ChainId.RONIN]],
   [ChainId.ZEROG]: [USDC_ZEROG, WRAPPED_NATIVE_CURRENCY[ChainId.ZEROG]],
   [ChainId.GENSYN]: [USDC_GENSYN, WRAPPED_NATIVE_CURRENCY[ChainId.GENSYN]],
+  [ChainId.ROBINHOOD]: [
+    USDG_ROBINHOOD,
+    USDE_ROBINHOOD,
+    WRAPPED_NATIVE_CURRENCY[ChainId.ROBINHOOD],
+  ],
 };
 
 const excludedV3PoolIds = new Set([

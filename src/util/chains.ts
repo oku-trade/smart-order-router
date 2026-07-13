@@ -71,6 +71,7 @@ export const SUPPORTED_CHAINS: ChainId[] = [
   ChainId.RONIN,
   ChainId.ZEROG,
   ChainId.GENSYN,
+  ChainId.ROBINHOOD,
 ];
 
 export const V2_SUPPORTED = [
@@ -288,6 +289,8 @@ export const ID_TO_CHAIN_ID = (id: number): ChainId => {
       return ChainId.ZEROG;
     case 685689:
       return ChainId.GENSYN;
+    case 4663:
+      return ChainId.ROBINHOOD;
     default:
       throw new Error(`Unknown chain id: ${id}`);
   }
@@ -356,6 +359,7 @@ export enum ChainName {
   RONIN = 'ronin',
   ZEROG = 'zerog',
   GENSYN = 'gensyn',
+  ROBINHOOD = 'robinhood',
 }
 
 export enum NativeCurrencyName {
@@ -405,6 +409,7 @@ export enum NativeCurrencyName {
   RONIN = 'RON',
   ZEROG = '0G',
   GENSYN = 'ETH',
+  ROBINHOOD = 'ETH',
 }
 
 export const NATIVE_NAMES_BY_ID: { [chainId: number]: string[] } = {
@@ -568,6 +573,11 @@ export const NATIVE_NAMES_BY_ID: { [chainId: number]: string[] } = {
     'ETHER',
     '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
   ],
+  [ChainId.ROBINHOOD]: [
+    'ETH',
+    'ETHER',
+    '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
+  ],
 };
 
 export const NATIVE_CURRENCY: { [chainId: number]: NativeCurrencyName } = {
@@ -633,6 +643,7 @@ export const NATIVE_CURRENCY: { [chainId: number]: NativeCurrencyName } = {
   [ChainId.RONIN]: NativeCurrencyName.RONIN,
   [ChainId.ZEROG]: NativeCurrencyName.ZEROG,
   [ChainId.GENSYN]: NativeCurrencyName.GENSYN,
+  [ChainId.ROBINHOOD]: NativeCurrencyName.ROBINHOOD,
 };
 
 export const ID_TO_NETWORK_NAME = (id: number): ChainName => {
@@ -763,6 +774,8 @@ export const ID_TO_NETWORK_NAME = (id: number): ChainName => {
       return ChainName.ZEROG;
     case 685689:
       return ChainName.GENSYN;
+    case 4663:
+      return ChainName.ROBINHOOD;
     default:
       throw new Error(`Unknown chain id: ${id}`);
   }
@@ -898,6 +911,8 @@ export const ID_TO_PROVIDER = (id: ChainId): string => {
       return process.env.JSON_RPC_PROVIDER_ZEROG!;
     case ChainId.GENSYN:
       return process.env.JSON_RPC_PROVIDER_GENSYN!;
+    case ChainId.ROBINHOOD:
+      return process.env.JSON_RPC_PROVIDER_ROBINHOOD!;
     default:
       throw new Error(`Chain id: ${id} not supported`);
   }

@@ -91,6 +91,8 @@ import {
   USDC_ZKLINK,
   USDC_ZKSYNC,
   USDC_ZORA,
+  USDE_ROBINHOOD,
+  USDG_ROBINHOOD,
   USDM_TELOS,
   USDT_ARBITRUM,
   USDT_BNB,
@@ -228,6 +230,7 @@ export const usdGasTokensByChain: { [chainId in ChainId]?: Token[] } = {
   [ChainId.RONIN]: [USDC_RONIN],
   [ChainId.ZEROG]: [USDC_ZEROG],
   [ChainId.GENSYN]: [USDC_GENSYN],
+  [ChainId.ROBINHOOD]: [USDG_ROBINHOOD, USDE_ROBINHOOD],
   [ChainId.BOBA]: [USDC_BOBA],
 };
 

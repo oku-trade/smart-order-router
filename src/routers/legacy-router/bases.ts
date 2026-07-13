@@ -46,6 +46,7 @@ import {
   USDC_XLAYER,
   USDC_ZEROG,
   USDC_ZKSYNC,
+  USDG_ROBINHOOD,
   USDM_TELOS,
   USDT_BNB,
   USDT_ETHERLINK,
@@ -260,7 +261,10 @@ export const BASES_TO_CHECK_TRADES_AGAINST = (
     [ChainId.TEMPO]: [],
     [ChainId.MEGAETH]: [],
     [ChainId.ARC]: [],
-    [ChainId.ROBINHOOD]: [],
+    [ChainId.ROBINHOOD]: [
+      WRAPPED_NATIVE_CURRENCY[ChainId.ROBINHOOD]!,
+      USDG_ROBINHOOD,
+    ],
     [ChainId.INK]: [],
   };
 };

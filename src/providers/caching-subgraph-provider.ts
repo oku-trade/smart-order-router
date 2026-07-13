@@ -43,6 +43,7 @@ import {
   USDC_WORLDCHAIN,
   USDC_XLAYER,
   USDC_ZKSYNC,
+  USDG_ROBINHOOD,
   USDT_ARBITRUM,
   USDT_BNB,
   USDT_MAINNET,
@@ -238,7 +239,11 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   [ChainId.TEMPO]: [],
   [ChainId.MEGAETH]: [],
   [ChainId.ARC]: [],
-  [ChainId.ROBINHOOD]: [],
+  [ChainId.ROBINHOOD]: [
+    nativeOnChain(ChainId.ROBINHOOD),
+    WRAPPED_NATIVE_CURRENCY[ChainId.ROBINHOOD]!,
+    USDG_ROBINHOOD,
+  ],
   [ChainId.INK]: [],
 };
 

@@ -1719,6 +1719,23 @@ export const USDC_GENSYN = new Token(
   'Bridged USDC'
 );
 
+//ROBINHOOD
+export const USDG_ROBINHOOD = new Token(
+  ChainId.ROBINHOOD,
+  '0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168',
+  6,
+  'USDG',
+  'Global Dollar'
+);
+
+export const USDE_ROBINHOOD = new Token(
+  ChainId.ROBINHOOD,
+  '0x5d3a1Ff2b6BAb83b63cd9AD0787074081a52ef34',
+  18,
+  'USDe',
+  'USDe'
+);
+
 export class TokenProvider implements ITokenProvider {
   constructor(
     private chainId: ChainId,
@@ -2142,6 +2159,8 @@ export const USDC_ON = (chainId: ChainId): Token => {
       return USDC_MONAD;
     case ChainId.GENSYN:
       return USDC_GENSYN;
+    case ChainId.ROBINHOOD:
+      return USDG_ROBINHOOD;
     default:
       throw new Error(`Chain id: ${chainId} not supported`);
   }
