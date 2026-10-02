@@ -49,6 +49,7 @@ import {
   USDC_GOAT,
   USDC_GOERLI,
   USDC_HEMI,
+  USDC_HYPEREVM,
   USDC_LENS,
   USDC_LIGHTLINK,
   USDC_LINEA,
@@ -94,6 +95,7 @@ import {
   USDE_ROBINHOOD,
   USDG_ROBINHOOD,
   USDM_TELOS,
+  USDT0_HYPEREVM,
   USDT_ARBITRUM,
   USDT_BNB,
   USDT_BOB,
@@ -230,6 +232,7 @@ export const usdGasTokensByChain: { [chainId in ChainId]?: Token[] } = {
   [ChainId.RONIN]: [USDC_RONIN],
   [ChainId.ZEROG]: [USDC_ZEROG],
   [ChainId.GENSYN]: [USDC_GENSYN],
+  [ChainId.HYPEREVM]: [USDC_HYPEREVM, USDT0_HYPEREVM],
   [ChainId.ROBINHOOD]: [USDG_ROBINHOOD, USDE_ROBINHOOD],
   [ChainId.BOBA]: [USDC_BOBA],
 };

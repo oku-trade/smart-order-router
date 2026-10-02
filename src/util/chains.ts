@@ -72,6 +72,7 @@ export const SUPPORTED_CHAINS: ChainId[] = [
   ChainId.ZEROG,
   ChainId.GENSYN,
   ChainId.ROBINHOOD,
+  ChainId.HYPEREVM,
 ];
 
 export const V2_SUPPORTED = [
@@ -290,6 +291,8 @@ export const ID_TO_CHAIN_ID = (id: number): ChainId => {
       return ChainId.ZEROG;
     case 685689:
       return ChainId.GENSYN;
+    case 999:
+      return ChainId.HYPEREVM;
     case 4663:
       return ChainId.ROBINHOOD;
     default:
@@ -360,6 +363,7 @@ export enum ChainName {
   RONIN = 'ronin',
   ZEROG = 'zerog',
   GENSYN = 'gensyn',
+  HYPEREVM = 'hyperevm',
   ROBINHOOD = 'robinhood',
 }
 
@@ -410,6 +414,7 @@ export enum NativeCurrencyName {
   RONIN = 'RON',
   ZEROG = '0G',
   GENSYN = 'ETH',
+  HYPEREVM = 'HYPE',
   ROBINHOOD = 'ETH',
 }
 
@@ -569,6 +574,7 @@ export const NATIVE_NAMES_BY_ID: { [chainId: number]: string[] } = {
   [ChainId.MONAD]: ['MON'],
   [ChainId.RONIN]: ['RON'],
   [ChainId.ZEROG]: ['0G'],
+  [ChainId.HYPEREVM]: ['HYPE'],
   [ChainId.GENSYN]: [
     'ETH',
     'ETHER',
@@ -644,6 +650,7 @@ export const NATIVE_CURRENCY: { [chainId: number]: NativeCurrencyName } = {
   [ChainId.RONIN]: NativeCurrencyName.RONIN,
   [ChainId.ZEROG]: NativeCurrencyName.ZEROG,
   [ChainId.GENSYN]: NativeCurrencyName.GENSYN,
+  [ChainId.HYPEREVM]: NativeCurrencyName.HYPEREVM,
   [ChainId.ROBINHOOD]: NativeCurrencyName.ROBINHOOD,
 };
 
@@ -775,6 +782,8 @@ export const ID_TO_NETWORK_NAME = (id: number): ChainName => {
       return ChainName.ZEROG;
     case 685689:
       return ChainName.GENSYN;
+    case 999:
+      return ChainName.HYPEREVM;
     case 4663:
       return ChainName.ROBINHOOD;
     default:
@@ -912,6 +921,8 @@ export const ID_TO_PROVIDER = (id: ChainId): string => {
       return process.env.JSON_RPC_PROVIDER_ZEROG!;
     case ChainId.GENSYN:
       return process.env.JSON_RPC_PROVIDER_GENSYN!;
+    case ChainId.HYPEREVM:
+      return process.env.JSON_RPC_PROVIDER_HYPEREVM!;
     case ChainId.ROBINHOOD:
       return process.env.JSON_RPC_PROVIDER_ROBINHOOD!;
     default:
@@ -1369,6 +1380,13 @@ export const WRAPPED_NATIVE_CURRENCY: { [chainId in ChainId]: Token } = {
     18,
     'WETH',
     'Wrapped Ether'
+  ),
+  [ChainId.HYPEREVM]: new Token(
+    ChainId.HYPEREVM,
+    '0x5555555555555555555555555555555555555555',
+    18,
+    'WHYPE',
+    'Wrapped HYPE'
   ),
   [ChainId.TEMPO]: new Token(
     ChainId.TEMPO,
@@ -2480,6 +2498,28 @@ class ZerogNativeCurrency extends NativeCurrency {
   }
 }
 
+function isHyperevm(chainId: number): chainId is ChainId.HYPEREVM {
+  return chainId === ChainId.HYPEREVM;
+}
+
+class HyperevmNativeCurrency extends NativeCurrency {
+  equals(other: Currency): boolean {
+    return other.isNative && other.chainId === this.chainId;
+  }
+  get wrapped(): Token {
+    if (!isHyperevm(this.chainId)) throw new Error('Not hyperevm');
+    const nativeCurrency = WRAPPED_NATIVE_CURRENCY[this.chainId];
+    if (nativeCurrency) {
+      return nativeCurrency;
+    }
+    throw new Error(`Does not support this chain ${this.chainId}`);
+  }
+  public constructor(chainId: number) {
+    if (!isHyperevm(chainId)) throw new Error('Not hyperevm');
+    super(chainId, 18, 'HYPE', 'HYPE');
+  }
+}
+
 function isGensyn(chainId: number): chainId is ChainId.GENSYN {
   return chainId === ChainId.GENSYN;
 }
@@ -2598,6 +2638,8 @@ export function nativeOnChain(chainId: number): NativeCurrency {
     cachedNativeCurrency[chainId] = new ZerogNativeCurrency(chainId);
   } else if (isGensyn(chainId)) {
     cachedNativeCurrency[chainId] = new GensynNativeCurrency(chainId);
+  } else if (isHyperevm(chainId)) {
+    cachedNativeCurrency[chainId] = new HyperevmNativeCurrency(chainId);
   } else if (isXLayer(chainId)) {
     cachedNativeCurrency[chainId] = new XLayerNativeCurrency(chainId);
   } else {
