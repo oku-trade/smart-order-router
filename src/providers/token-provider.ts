@@ -1710,6 +1710,23 @@ export const USDC_ZEROG = new Token(
   'USD Coin'
 );
 
+//HYPEREVM
+export const USDC_HYPEREVM = new Token(
+  ChainId.HYPEREVM,
+  '0xb88339CB7199b77E23DB6E890353E22632Ba630f',
+  6,
+  'USDC',
+  'USD Coin'
+);
+
+export const USDT0_HYPEREVM = new Token(
+  ChainId.HYPEREVM,
+  '0xB8CE59FC3717ada4C02eaDF9682A9e934F625ebb',
+  6,
+  'USD₮0',
+  'USD₮0'
+);
+
 //GENSYN
 export const USDC_GENSYN = new Token(
   ChainId.GENSYN,
@@ -2159,6 +2176,8 @@ export const USDC_ON = (chainId: ChainId): Token => {
       return USDC_MONAD;
     case ChainId.GENSYN:
       return USDC_GENSYN;
+    case ChainId.HYPEREVM:
+      return USDC_HYPEREVM;
     case ChainId.ROBINHOOD:
       return USDG_ROBINHOOD;
     default:

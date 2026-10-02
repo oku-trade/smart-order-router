@@ -31,6 +31,7 @@ import {
   USDC_BASE_SEPOLIA,
   USDC_BNB,
   USDC_GENSYN,
+  USDC_HYPEREVM,
   USDC_MAINNET,
   USDC_MONAD,
   USDC_MOONBEAM,
@@ -44,6 +45,7 @@ import {
   USDC_XLAYER,
   USDC_ZKSYNC,
   USDG_ROBINHOOD,
+  USDT0_HYPEREVM,
   USDT_ARBITRUM,
   USDT_BNB,
   USDT_MAINNET,
@@ -231,6 +233,12 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   [ChainId.PLASMA]: [],
   [ChainId.RONIN]: [],
   [ChainId.ZEROG]: [],
+  [ChainId.HYPEREVM]: [
+    nativeOnChain(ChainId.HYPEREVM),
+    WRAPPED_NATIVE_CURRENCY[ChainId.HYPEREVM]!,
+    USDC_HYPEREVM,
+    USDT0_HYPEREVM,
+  ],
   [ChainId.GENSYN]: [
     nativeOnChain(ChainId.GENSYN),
     WRAPPED_NATIVE_CURRENCY[ChainId.GENSYN]!,

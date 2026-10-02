@@ -103,6 +103,8 @@ export const V3_CORE_FACTORY_ADDRESSES: AddressMap = {
   [ChainId.RONIN]: CHAIN_TO_ADDRESSES_MAP[ChainId.RONIN].v3CoreFactoryAddress,
   [ChainId.ZEROG]: CHAIN_TO_ADDRESSES_MAP[ChainId.ZEROG].v3CoreFactoryAddress,
   [ChainId.GENSYN]: CHAIN_TO_ADDRESSES_MAP[ChainId.GENSYN].v3CoreFactoryAddress,
+  [ChainId.HYPEREVM]:
+    CHAIN_TO_ADDRESSES_MAP[ChainId.HYPEREVM].v3CoreFactoryAddress,
   [ChainId.ROBINHOOD]:
     CHAIN_TO_ADDRESSES_MAP[ChainId.ROBINHOOD].v3CoreFactoryAddress,
 };
@@ -179,6 +181,7 @@ export const QUOTER_V2_ADDRESSES: AddressMap = {
   [ChainId.RONIN]: CHAIN_TO_ADDRESSES_MAP[ChainId.RONIN].quoterAddress,
   [ChainId.ZEROG]: CHAIN_TO_ADDRESSES_MAP[ChainId.ZEROG].quoterAddress,
   [ChainId.GENSYN]: CHAIN_TO_ADDRESSES_MAP[ChainId.GENSYN].quoterAddress,
+  [ChainId.HYPEREVM]: CHAIN_TO_ADDRESSES_MAP[ChainId.HYPEREVM].quoterAddress,
   [ChainId.ROBINHOOD]: CHAIN_TO_ADDRESSES_MAP[ChainId.ROBINHOOD].quoterAddress,
 };
 
@@ -245,6 +248,7 @@ export const NEW_QUOTER_V2_ADDRESSES: AddressMap = {
   [ChainId.RONIN]: CHAIN_TO_ADDRESSES_MAP[ChainId.RONIN].quoterAddress,
   [ChainId.ZEROG]: CHAIN_TO_ADDRESSES_MAP[ChainId.ZEROG].quoterAddress,
   [ChainId.GENSYN]: CHAIN_TO_ADDRESSES_MAP[ChainId.GENSYN].quoterAddress,
+  [ChainId.HYPEREVM]: CHAIN_TO_ADDRESSES_MAP[ChainId.HYPEREVM].quoterAddress,
   [ChainId.ROBINHOOD]: CHAIN_TO_ADDRESSES_MAP[ChainId.ROBINHOOD].quoterAddress,
 };
 
@@ -387,6 +391,7 @@ export const UNISWAP_MULTICALL_ADDRESSES: AddressMap = {
   [ChainId.RONIN]: CHAIN_TO_ADDRESSES_MAP[ChainId.RONIN].multicallAddress,
   [ChainId.ZEROG]: CHAIN_TO_ADDRESSES_MAP[ChainId.ZEROG].multicallAddress,
   [ChainId.GENSYN]: CHAIN_TO_ADDRESSES_MAP[ChainId.GENSYN].multicallAddress,
+  [ChainId.HYPEREVM]: CHAIN_TO_ADDRESSES_MAP[ChainId.HYPEREVM].multicallAddress,
   [ChainId.ROBINHOOD]:
     CHAIN_TO_ADDRESSES_MAP[ChainId.ROBINHOOD].multicallAddress,
 };
@@ -544,6 +549,7 @@ export const WETH9: {
   [ChainId.SEI_TESTNET]: WETH9_HELPER[ChainId.SEI_TESTNET]!,
   [ChainId.FILECOIN]: WETH9_HELPER[ChainId.FILECOIN]!,
   [ChainId.GENSYN]: WETH9_HELPER[ChainId.GENSYN]!,
+  [ChainId.HYPEREVM]: WETH9_HELPER[ChainId.HYPEREVM]!,
   [ChainId.MEGAETH]: WETH9_HELPER[ChainId.MEGAETH]!,
   [ChainId.ROBINHOOD]: WETH9_HELPER[ChainId.ROBINHOOD]!,
   [ChainId.INK]: WETH9_HELPER[ChainId.INK]!,
